@@ -1,0 +1,34 @@
+# Configuração para servidores Apache (a maioria das hospedagens compartilhadas).
+# Em outros servidores (Netlify, Vercel, GitHub Pages) este arquivo é ignorado sem problema.
+
+# Página de "não encontrada" com o Seu Zé
+ErrorDocument 404 /404.html
+
+# Não listar o conteúdo das pastas
+Options -Indexes
+
+# Tipos de arquivo
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# Compressão de textos
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml application/manifest+json
+</IfModule>
+
+# Guardar imagens e fontes no navegador por mais tempo (páginas e config.js sempre atualizados)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/javascript "access plus 1 hour"
+  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

@@ -1,0 +1,29 @@
+{
+  "name": "InclusiVR",
+  "short_name": "InclusiVR",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#100448",
+  "theme_color": "#100448",
+  "description": "Livro, app e jogos para aprender LIBRAS brincando, no mundo de Signária.",
+  "icons": [
+    {
+      "src": "assets/img/marca/icone-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/marca/icone-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/marca/icone-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

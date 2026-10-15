@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" width="220" height="200">
+  <!-- Seu Zé espiando por cima de uma borda. Redesenho no traço do Aram (contorno grosso, cor chapada, sombra deslocada lavanda).
+       Versão para aprovação da equipe. Sem mãos: não forma nenhum sinal. -->
+  <style>
+    .t{stroke:#1a1a1a;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}
+    .f{stroke:#1a1a1a;stroke-width:3.5;stroke-linejoin:round;stroke-linecap:round}
+    .olhos{transform-origin:110px 108px;animation:piscar 3.4s 1}
+    .pupilas{animation:olhar 3.4s 1}
+    @keyframes piscar{0%,46%,52%,100%{transform:scaleY(1)}49%{transform:scaleY(.08)}}
+    @keyframes olhar{0%,30%{transform:translateX(-3px)}40%,70%{transform:translateX(3px)}80%,100%{transform:translateX(-3px)}}
+    @media (prefers-reduced-motion:reduce){.olhos,.pupilas{animation:none}}
+  </style>
+  <!-- sombra deslocada lavanda (assinatura do logo) -->
+  <g fill="#ae7bff" transform="translate(-8 2)">
+    <g transform="rotate(-4 110 76) translate(0 -4)"><ellipse cx="110" cy="80" rx="90" ry="19"/><path d="M62 80C62 48 78 33 110 33s48 15 48 47z"/></g>
+    <circle cx="110" cy="114" r="44"/>
+    <path d="M70 118c0 40 18 66 40 66s40-26 40-66z"/>
+    <rect x="28" y="172" width="164" height="40" rx="26"/>
+  </g>
+  <!-- ombros: camisa verde-oliva e alças do macacão -->
+  <rect class="t" x="30" y="170" width="160" height="44" rx="26" fill="#7b7716"/>
+  <path class="f" d="M62 214v-30c0-6 4-10 10-10h8v40M158 214v-30c0-6-4-10-10-10h-8v40" fill="#9b2c12"/>
+  <circle cx="76" cy="190" r="4" fill="#f6c744" stroke="#1a1a1a" stroke-width="2.5"/>
+  <circle cx="144" cy="190" r="4" fill="#f6c744" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- cabelo branco nas laterais -->
+  <path class="f" d="M62 92c-10 6-12 22-4 34 4 6 10 8 14 6l6-36z" fill="#f6f2ea"/>
+  <path class="f" d="M158 92c10 6 12 22 4 34-4 6-10 8-14 6l-6-36z" fill="#f6f2ea"/>
+  <!-- rosto -->
+  <circle class="t" cx="110" cy="114" r="43" fill="#fedbb6"/>
+  <path d="M138 84c12 8 18 22 15 38-6-10-12-14-20-16z" fill="#f4c095"/>
+  <ellipse cx="85" cy="127" rx="9" ry="6" fill="#f6a9a4"/>
+  <ellipse cx="135" cy="127" rx="9" ry="6" fill="#f6a9a4"/>
+  <!-- barba -->
+  <path class="t" d="M68 120c4 0 8 4 12 4 8 18 18 26 30 26s22-8 30-26c4 0 8-4 12-4 2 34-18 62-42 62S66 154 68 120z" fill="#f6f2ea"/>
+  <path d="M134 150c8-6 12-16 14-28 2 20-6 40-20 50 4-8 6-14 6-22z" fill="#cfe6f7"/>
+  <!-- bigode -->
+  <path class="f" d="M110 133c-5-5-15-7-24-3-8 3-12 11-9 17 5-5 12-6 18-4 7 2 12 1 15-4 3 5 8 6 15 4 6-2 13-1 18 4 3-6-1-14-9-17-9-4-19-2-24 3z" fill="#f6f2ea"/><path d="M125 138c6-1 12 0 16 4" fill="none" stroke="#cfe6f7" stroke-width="3" stroke-linecap="round"/>
+  <!-- nariz -->
+  <circle class="f" cx="110" cy="126" r="9.5" fill="#f39b95"/>
+  <circle cx="106.5" cy="122.5" r="2.6" fill="#fff" opacity=".8"/>
+  <!-- óculos e olhos -->
+  <g class="olhos">
+    <circle cx="91" cy="106" r="15" fill="#e6f6ea"/>
+    <circle cx="129" cy="106" r="15" fill="#e6f6ea"/>
+    <g class="pupilas">
+      <circle cx="91" cy="107" r="6.5" fill="#4f9a4a"/>
+      <circle cx="129" cy="107" r="6.5" fill="#4f9a4a"/>
+      <circle cx="91" cy="107" r="3.2" fill="#1a1a1a"/>
+      <circle cx="129" cy="107" r="3.2" fill="#1a1a1a"/>
+      <circle cx="93" cy="104.5" r="1.6" fill="#fff"/>
+      <circle cx="131" cy="104.5" r="1.6" fill="#fff"/>
+    </g>
+  </g>
+  <circle cx="91" cy="106" r="15" fill="none" stroke="#1a1a1a" stroke-width="4.5"/>
+  <circle cx="129" cy="106" r="15" fill="none" stroke="#1a1a1a" stroke-width="4.5"/>
+  <path d="M106 104q4-4 8 0" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M84 99l5-4" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+  <path d="M122 99l5-4" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+  <!-- chapéu de palha -->
+  <g transform="rotate(-4 110 76) translate(0 -4)">
+  <path class="t" d="M64 78c0-30 16-45 46-45s46 15 46 45z" fill="#f0bb4c"/>
+  <path d="M128 36c16 6 24 20 26 40h-14c0-18-4-30-12-40z" fill="#d99a26"/>
+  <path class="f" d="M64 66h92v12H64z" fill="#6b3d14"/>
+  <path d="M82 50l6 8M100 44l3 8M120 44l-2 8M138 50l-5 8" stroke="#b77f1f" stroke-width="2.5" stroke-linecap="round"/>
+  <ellipse class="t" cx="110" cy="80" rx="88" ry="17" fill="#e8ad3d"/>
+  <path d="M150 70c20 3 40 6 46 10 0 6-20 12-40 14 10-4 14-10 10-16z" fill="#c98a19"/>
+  <path d="M40 82q30 8 70 8t70-8" fill="none" stroke="#b77f1f" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <!-- sobrancelhas brancas, bem cheias, por cima do aro -->
+  <path class="f" d="M74 93c5-9 18-12 29-5-5 1-9 4-11 7-6-3-12-3-18-2z" fill="#f6f2ea"/>
+  <path class="f" d="M146 93c-5-9-18-12-29-5 5 1 9 4 11 7 6-3 12-3 18-2z" fill="#f6f2ea"/>
+</svg>

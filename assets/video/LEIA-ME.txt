@@ -1,0 +1,4 @@
+Coloque aqui os vídeos em LIBRAS (.mp4) e as legendas em português (.vtt).
+Depois, informe o nome dos arquivos em assets/js/config.js, no bloco videosLibras.
+Exemplo:
+  'boas-vindas': { src: 'assets/video/boas-vindas.mp4', legendas: 'assets/video/boas-vindas.vtt', poster: '' },

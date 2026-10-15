@@ -1,0 +1,33 @@
+/* ==========================================================================
+   InclusiVR — impressão / salvar como PDF
+   Pensado para avaliadores de editais salvarem "Quem somos" como um PDF limpo.
+   ========================================================================== */
+@page { size: A4; margin: 16mm 14mm; }
+html, body { background: #fff !important; color: #1a1a1a !important; font-size: 10.5pt; }
+* { box-shadow: none !important; text-shadow: none !important; animation: none !important; transition: none !important; }
+.topo, .faixa-campanha, .barra-compra, .pular-link, .palco, .hud, .faiscas, .faiscas-hover, .ponto-aparicao, .animal-escondido, .aviso, .janela-libras,
+.fechamento, .rodape nav, .rodape .palco, .nao-imprimir, .galeria, .newsletter, .form, video, iframe, .aura, .lightbox, .tela-cheia, .botao-libras { display: none !important; }
+.sup-noite, .sup-indigo, .sup-roxo-profundo, .sup-signaria-noite, .sup-ceu, .sup-orquidea, .rodape {
+  background: #fff !important; color: #1a1a1a !important;
+  --texto: #1a1a1a; --texto-suave: #444141; --destaque: #5515a0; --link: #1a1a1a; --divisor: #ccc;
+}
+.fundo-tunel, .rodape::before { background-image: none !important; }
+.cena-fundo, .cena-signaria__fundo { display: none !important; }
+.secao, .abertura { padding-block: 8mm !important; }
+h1 { font-size: 24pt; } h2 { font-size: 16pt; break-after: avoid; } h3 { font-size: 12pt; break-after: avoid; }
+.container { max-width: none; padding-inline: 0; }
+.missao, .numero-grande, .conquista__ano, .modelo strong, .numeros strong { color: #5515a0 !important; }
+.pessoa, .conquista, .principio, .etapa, .material, .modelo li { break-inside: avoid; }
+.equipe { grid-template-columns: 1fr 1fr !important; gap: 6mm !important; }
+.pessoa__foto { width: 28mm !important; height: 28mm !important; }
+.conquista, .material, .parametros li, .principio { background: #fff !important; border: 1px solid #ccc; }
+.botao { display: none !important; }
+a { color: #1a1a1a !important; text-decoration: none; }
+.imprimir-url::after { content: " (" attr(href) ")"; font-size: 9pt; color: #444141; }
+.rodape { padding: 6mm 0 0 !important; border-top: 1px solid #ccc; }
+.rodape__grade { display: block !important; }
+.rodape__marca img { width: 22mm !important; filter: none; }
+.rodape__marca .marca-escura { display: none !important; }
+.rodape__marca .marca-clara { display: block !important; }
+.so-impressao { display: block !important; }
+.status { border: 1px solid #1a1a1a; background: #fff !important; }

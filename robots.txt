@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /blog/_modelo-de-post/
+
+Sitemap: https://inclusivr.com.br/sitemap.xml

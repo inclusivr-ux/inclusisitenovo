@@ -1,0 +1,137 @@
+/* ==========================================================================
+   InclusiVR — tokens da identidade
+   Fonte da verdade: Design System "InclusiVR" (marca do Aram + mundo Signária).
+   Para mudar uma cor do site inteiro, mude aqui.
+   ========================================================================== */
+
+/* Fontes hospedadas no próprio site (licença OFL, arquivos em assets/fonts/).
+   As pilhas começam pelas fontes originais da marca: quem as tiver instaladas vê as originais. */
+@font-face { font-family: "Archivo Expanded"; src: url("../fonts/ArchivoExpanded-Variable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Outfit"; src: url("../fonts/Outfit-Variable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Lexend"; src: url("../fonts/Lexend-Variable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Fraunces Soft"; src: url("../fonts/FrauncesSoft-Variable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+
+:root {
+  /* ---- Marca (tela) ---- */
+  --noite: #100448;
+  --indigo: #280eaa;
+  --azul-eletrico: #3723f7;
+  --roxo-profundo: #5515a0;
+  --roxo: #ac2fed;
+  --orquidea: #d973ff;
+  --lilas: #cb94ff;
+  --lavanda: #ae7bff;
+  --ciano: #15b0ff;
+  --aqua: #31f5ff;          /* só para brilho */
+  --lima: #cfd736;          /* destaques */
+  --pontilhado: #382c70;
+  --preto: #1a1a1a;
+  --branco: #ffffff;
+
+  /* ---- Signária ---- */
+  --pergaminho: #ebf5b8;
+  --ceu: #c7edfb;
+  --ceu-capa: #b6e8ff;
+  --rosa: #f799d1;
+  --rosa-claro: #f9c3e2;
+  --carvao: #444141;
+  --tinta: #231f20;
+  --noite-signaria: #223d3e;
+  --runa-pedra: #4b5028;
+  --runa-brilho: #74d0d8;
+  --runa-aura: #58c4c8;
+  --ambar: #f4b224;
+  --ouro: #f6c744;
+  --acerto: #42b23c;
+  --erro: #d22027;
+
+  /* ---- Tons de apoio do site (derivados, com contraste medido) ---- */
+  --orquidea-nevoa: #f7eefe;   /* fundo lúdico claro (teste grátis, jogos) */
+  --lilas-nevoa: #efe4ff;
+  --erro-texto: #b1102c;       /* 6,6:1 sobre branco */
+  --erro-texto-escuro: #ffb3c4;/* 9,7:1 sobre noite */
+
+  /* ---- Efeitos: profundidade é brilho, não sombra ---- */
+  --brilho-aqua: 0 0 16px 2px #31f5ff80;
+  --brilho-aqua-forte: 0 0 24px 5px #31f5ffa6;
+  --brilho-runa: 0 0 20px 6px #58c4c8b3;
+  --sombra-objeto: 0 16px 40px #00000059;
+
+  /* ---- Formas ---- */
+  --raio-pilula: 9999px;
+  --raio-cartao: 24px;
+  --raio-medio: 16px;
+  --raio-pequeno: 10px;
+  --chanfro: 28px;             /* canto a 45° das molduras HUD e portais */
+  --recorte-cartela: 14px;
+  --borda-cartela: 3px;
+  --borda-hud: 2px;
+
+  /* ---- Espaços ---- */
+  --e-1: 4px; --e-2: 8px; --e-3: 12px; --e-4: 16px; --e-5: 20px; --e-6: 24px;
+  --e-7: 32px; --e-8: 40px; --e-9: 48px; --e-10: 64px; --e-11: 96px;
+  --gutter: 16px;
+  --largura-max: 1200px;
+  --largura-texto: 40rem;
+  --secao-y: clamp(3.5rem, 2rem + 6vw, 7.5rem);
+
+  /* ---- Tipografia ---- */
+  --fonte-titulo: Presicav, "Archivo Expanded", Archivo, sans-serif;
+  --fonte-rotulo: Alfarn, Outfit, sans-serif;
+  --fonte-texto: Axiforma, Lexend, system-ui, sans-serif;
+  --fonte-signaria: Cooper, "Fraunces Soft", Fraunces, Georgia, serif;
+
+  --t-display: clamp(2.05rem, 1.35rem + 3.2vw, 3.75rem);
+  --t-h2: clamp(1.7rem, 1.25rem + 2vw, 2.75rem);
+  --t-h3: clamp(1.2rem, 1.05rem + .7vw, 1.55rem);
+  --t-sub: clamp(1.1rem, 1rem + .5vw, 1.375rem);
+  --t-corpo: clamp(1.0625rem, 1rem + .2vw, 1.125rem);
+  --t-pequeno: .9375rem;
+  --t-micro: .8125rem;
+  --t-cartela: clamp(1.05rem, .95rem + .45vw, 1.3rem);
+
+  /* ---- Movimento ---- */
+  --dur-rapida: 160ms;
+  --dur-media: 280ms;
+  --curva: cubic-bezier(.2, .8, .2, 1);
+  --curva-salto: cubic-bezier(.34, 1.4, .64, 1);
+
+  /* ---- Camadas ---- */
+  --z-personagem: 5;
+  --z-topo: 50;
+  --z-barra: 45;
+  --z-janela: 60;
+  --z-dialogo: 80;
+  --z-aviso: 90;
+
+  /* ---- Superfície padrão: clara ---- */
+  --fundo: var(--branco);
+  --superficie: var(--branco);
+  --texto: var(--preto);
+  --texto-suave: var(--carvao);
+  --destaque: var(--roxo);
+  --destaque-forte: var(--roxo-profundo);
+  --link: var(--roxo-profundo);
+  --traco: var(--indigo);
+  --foco: var(--roxo);
+  --campo-borda: #6b6878;
+  --campo-fundo: var(--branco);
+  --divisor: #e4e2ea;
+}
+
+@media (min-width: 600px) { :root { --gutter: 24px; } }
+@media (min-width: 1024px) { :root { --gutter: 40px; --chanfro: 36px; } }
+
+/* ---------- Superfícies (cada seção escolhe uma) ---------- */
+.sup-clara { --fundo: var(--branco); --texto: var(--preto); --texto-suave: var(--carvao); --destaque: var(--roxo); --link: var(--roxo-profundo); --traco: var(--indigo); --foco: var(--roxo); --campo-borda: #6b6878; --campo-fundo: var(--branco); --divisor: #e4e2ea; background-color: var(--fundo); color: var(--texto); }
+.sup-orquidea { --fundo: var(--orquidea-nevoa); --texto: var(--preto); --texto-suave: var(--carvao); --destaque: var(--roxo-profundo); --link: var(--roxo-profundo); --traco: var(--roxo-profundo); --foco: var(--roxo-profundo); --campo-borda: #6b6878; --campo-fundo: var(--branco); --divisor: #e3d3f3; background-color: var(--fundo); color: var(--texto); }
+.sup-ceu { --fundo: var(--ceu); --texto: var(--tinta); --texto-suave: var(--carvao); --destaque: var(--roxo-profundo); --link: var(--roxo-profundo); --traco: var(--carvao); --foco: var(--roxo-profundo); --campo-borda: var(--carvao); --campo-fundo: var(--branco); --divisor: #a9cfdd; background-color: var(--fundo); color: var(--texto); }
+.sup-noite, .sup-indigo, .sup-roxo-profundo, .sup-signaria-noite {
+  --texto: var(--branco); --texto-suave: var(--lilas); --destaque: var(--lima); --link: var(--aqua); --traco: var(--branco); --foco: var(--aqua);
+  --campo-borda: #b9a7e8; --campo-fundo: #0b0233; --divisor: #3a2a86;
+  background-color: var(--fundo); color: var(--texto);
+}
+.sup-noite { --fundo: var(--noite); }
+.sup-indigo { --fundo: var(--indigo); --campo-fundo: #1c0886; --divisor: #4a33c4; }
+.sup-roxo-profundo { --fundo: var(--roxo-profundo); --campo-fundo: #3f0d7a; --divisor: #7232bd; }
+.sup-signaria-noite { --fundo: var(--noite-signaria); --texto: var(--pergaminho); --texto-suave: #cfe6c4; --destaque: var(--runa-brilho); --link: var(--runa-brilho); --divisor: #3c5c5d; }

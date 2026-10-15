@@ -1,0 +1,34 @@
+[
+  {
+    "pasta": "premio-sebrae-startups-2026",
+    "titulo": "InclusiVR entre as 1.000 melhores startups do país",
+    "dataExibicao": "2026",
+    "resumo": "Fomos reconhecidos no Prêmio Sebrae Startups 2026.",
+    "capa": "assets/img/blog/premio-sebrae-startups-2026-640.webp",
+    "capaAlt": "Ilustração de Signária: Seu Zé, a Maga Aia e os animais do zoológico juntos, num dia de sol."
+  },
+  {
+    "pasta": "signaria-ia-finalista-tools-competition",
+    "titulo": "Signária IA é finalista da Tools Competition",
+    "dataExibicao": "2026",
+    "resumo": "Ficamos no top 8, entre mais de 1.400 propostas.",
+    "capa": "assets/img/blog/signaria-ia-finalista-tools-competition-640.webp",
+    "capaAlt": "Duas telas de conceito da Signária IA em celulares: a abertura com a Maga Aia e o mapa da trilha em Signária."
+  },
+  {
+    "pasta": "sinalizaacao-vr-aprovado-no-proac",
+    "titulo": "SinalizaAção VR aprovado no PROAC",
+    "dataExibicao": "2026",
+    "resumo": "O jogo de realidade virtual em Signária vai sair do papel.",
+    "capa": "assets/img/blog/sinalizaacao-vr-aprovado-no-proac-640.webp",
+    "capaAlt": "Ilustração de Signária: um castelo e casas no alto de uma colina, entre árvores, sob um céu turquesa."
+  },
+  {
+    "pasta": "lancamento-do-livro-sinalizaacao",
+    "titulo": "O livro SinalizaAção chegou!",
+    "dataExibicao": "10 de dezembro de 2025",
+    "resumo": "Lançamos o primeiro livro da Coletânea LIBROS, com leitura do Igor Bucioli.",
+    "capa": "assets/img/blog/lancamento-do-livro-sinalizaacao-640.webp",
+    "capaAlt": "O livro SinalizaAção: Animais em Voga, com cartas de runas e folhas tropicais ao redor, sobre um fundo de floresta."
+  }
+]
