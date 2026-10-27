@@ -2,6 +2,25 @@
 
 Status: **feito** · **parcial** (feito, com um detalhe pendente) · **depende da equipe** (o site está pronto para receber).
 
+## Pedido de 22/10/2026, 3ª rodada (PDF "Alterações do site" e vídeo do Igor)
+
+| Pedido | Onde e como | Status |
+| --- | --- | --- |
+| Remover as animações da Aia aparecendo no site | Aparições da Aia (e do Seu Zé) espiando saíram de todas as páginas, com os desenhos e o código (DECISOES W27) | feito |
+| Ao clicar nas abas, voltar ao topo | Página nova abre no topo, também ao clicar na aba da página atual e na prévia; voltar/avançar e links `#` como o navegador faz (W28) | feito |
+| Cartela: "Uma história construída por muitas mãos" | Topo do início, em caixa alta como as cartelas de Signária (W29) | feito |
+| Recado da Aia sem a ideia do segredo, mais objetivo | "Oi, eu sou a Aia. Aqui em Signária, a LIBRAS é nossa língua e fonte de magia. Quem aprende um sinal para se aproximar de alguém também ganha essa magia. Vamos sinalizar juntos?" (W30) | feito; revisão do Luciano e do Fauston |
+| Mover os textos para a cidade de Signária ficar visível (PC); no celular, um pouco de zoom | No computador, a cidade numa coluna sem texto por cima e a cartela e o recado na outra; no celular, a cidade mais de perto (W31) | feito |
+| "Signária precisa de você": vídeos e fotos atuais; GIFs do Espelho Mágico da Aia; manter o "Origem" | Nova parte "O projeto hoje" com duas fotos da São Paulo Innovation Week e espaço pronto para GIFs e vídeos pelo `config.js` (`midias.vr`); "Origem" mantido (W37) | parcial: GIFs e vídeos curtos da equipe |
+| Pedagogia: a base é comum (Análise do Comportamento); o jeito muda conforme o público e a mídia (retorno na hora no app, textura no livro) | "Nossa abordagem", em Quem somos: três princípios comuns e "Em cada produto, do jeito da mídia" (livro, Signária IA e VR) (W33) | feito |
+| Cultura de Acesso: poucas palavras, empresa de acessibilidade de São Paulo | Na abordagem e na lista de parceiros, sem aumentar o texto (W34) | feito |
+| Remover as animações do Seu Zé no fim da página | Palco do Seu Zé com o elefante retirado do rodapé de todas as páginas (W27) | feito |
+| Manter apenas a animação da abelha | Só a abelha voa; o topo do início ficou parado (a abertura volta com `recursos.aberturaTopo: true`); seguem só os movimentos dos jogos (W27) | feito |
+| "Um livro para tocar, ver e sinalizar" menor, com menos texto | Um parágrafo, uma linha de ícones, o preço uma vez e os atalhos numa linha (W32) | feito |
+| Trajetória: NIDUS no InovaUSP, não na FEA/USP | Quem somos, logos, página em inglês e kit de imprensa (W35) | feito |
+| Usar só a foto nova do Igor, no lugar das antigas | Livro, Quem somos, página em inglês e kit de imprensa; as antigas saíram (W36) | feito |
+| Vídeo do Igor com o livro: reproduzir, com som agradável e adequado; organizar a parte e tirar as repetições (3 anos, preço) | Player do navegador com MP4 e WebM, versão original cortada antes do convite da live de 23/03, capa enviada, trilha instrumental original de 40 s em volume confortável; bloco do livro sem repetições (W25, W26 e W32) | feito |
+
 ## Pedido de 22/10/2026, 2ª rodada (topo em holograma)
 
 | Pedido | Onde e como | Status |
@@ -11,7 +30,7 @@ Status: **feito** · **parcial** (feito, com um detalhe pendente) · **depende d
 | Tirar os 3 botões "Nossos produtos" | Saíram do topo (HTML, estilo e testes) (W22) | feito |
 | Botão "Livro SinalizaAção" no lugar de "Comprar o livro", com a mesma faixa preta da Black November | Leva à página do livro; o selo preto continua em cima do botão em novembro (W22) | feito |
 | Na página do livro, o botão de comprar leva direto à loja | Mantido, com as UTMs; teste automático confere (W22) | feito |
-| Recado da Aia mais curto, com o texto enviado | Texto da equipe com LIBRAS em caixa alta e "Vamos sinalizar juntos?" (W23) | feito; revisão do Luciano e do Fauston |
+| Recado da Aia mais curto, com o texto enviado | Texto da equipe com LIBRAS em caixa alta e "Vamos sinalizar juntos?" (W23) | substituído na 3ª rodada (W30) |
 
 ## Pedido de 22/10/2026 (Black November e página inicial)
 

@@ -10,7 +10,7 @@ Legenda: **[antes de publicar]** = precisa estar resolvido até **26/10/2026** (
 2. **[antes de publicar] Victor: autorização de imagem** das fotos reais: o público do pré-lançamento (galeria do início e post do lançamento), a equipe e os palestrantes, o estande e os visitantes da Feira da Diversidade (galeria e post) e a foto do VaiTec (com outras pessoas no palco). Sem autorização, a foto sai (README, item 6). Os vídeos com crianças já saíram do site.
 3. **[até 31/10] Maria e Victor: Black November na loja.** Configurar o cupom **IGOR** na loja: R$ 99,90 no livro de 1/11 às 0h a 30/11 às 23h59, um cupom por pedido; depois, de novo só frete grátis. Conferir se o frete grátis do IGOR vale para qualquer modalidade, porque o site diz, fora de novembro: "Use o cupom IGOR e ganhe frete grátis." (`livro.notaPreco` no `config.js`).
 4. **[até 31/10] Luciano e Victor: o marca-páginas.** O site diz, em novembro: "De presente: um marca-páginas exclusivo de Signária, assinado pelo Igor e pelo Luciano." Se o presente tiver limite (por exemplo, "enquanto durarem os marca-páginas"), escreva isso em `campanha.brinde` no `config.js`. Pelo Código de Defesa do Consumidor, a oferta anunciada vale.
-5. **[antes de publicar] Fauston: revisar os exemplos dos 5 parâmetros** na página da Signária IA, as descrições dos sinais nos textos alternativos (cartas, jogos e galeria dos animais) e o **Recado da Aia** curto (início). Estão marcados como provisórios.
+5. **[antes de publicar] Fauston: revisar os exemplos dos 5 parâmetros** na página da Signária IA, as descrições dos sinais nos textos alternativos (cartas, jogos e galeria dos animais) e o **Recado da Aia** (início, texto novo da 3ª rodada de 22/10). Estão marcados como provisórios.
 6. **[antes de publicar] Maria: cupom de 10% dos animais escondidos** (vale fora de novembro). Criar o cupom na loja (limite de 1 uso por CPF) e combinar quem confere os prints do WhatsApp (README, item 11). Em novembro, o mini-jogo leva ao cupom IGOR sozinho.
 7. **[antes de publicar] Maria: endereço dos formulários** (Formspree, Brevo ou outro). Sem ele, os formulários abrem o e-mail da pessoa, o que funciona, mas é menos prático.
 
@@ -27,18 +27,19 @@ Legenda: **[antes de publicar]** = precisa estar resolvido até **26/10/2026** (
 
 ## Luciano
 
-- [ ] Revisar com o Fauston o **Recado da Aia** (texto curto de 22/10): "Oi, eu sou a Aia. Aqui em Signária, a LIBRAS é nossa língua e fonte de magia. E tem um segredo: essa magia acende em qualquer pessoa que aprende um sinal para se aproximar de alguém. Vamos sinalizar juntos?"
+- [ ] Revisar com o Fauston o **Recado da Aia** (3ª rodada de 22/10, sem a ideia do segredo, como pedido): "Oi, eu sou a Aia. Aqui em Signária, a LIBRAS é nossa língua e fonte de magia. Quem aprende um sinal para se aproximar de alguém também ganha essa magia. Vamos sinalizar juntos?"
+- [ ] **Legenda do vídeo do Igor:** num trecho, a legenda (que já vem gravada na imagem) diz "usando tecnologia de Realidade Virtual", mas o livro usa realidade aumentada. O site não mexe na fala do Igor. Se quiserem corrigir, é preciso reeditar a legenda no arquivo original e trocar o vídeo (README, item 7).
+- [ ] Opcional: ligar de novo a **abertura do topo** do início (a mão se projeta e o Seu Zé e a Aia chegam): `recursos.aberturaTopo: true` no `config.js`. Hoje fica parada para que só a abelha se mexa, como pedido.
 - [ ] Confirmar as **datas exatas dos posts**: aprovação no PROAC, finalistas da Tools Competition e Prêmio Sebrae Startups (hoje aparecem só como "2026").
 - [ ] Opcional: **vídeo de boas-vindas em LIBRAS** no topo do início (com o Fauston). Entra pelo `videosLibras['boas-vindas']` no `config.js` (README, item 7).
 - [ ] Opcional: decidir se o botão **Comprar do menu** (em todas as páginas) continua indo direto para a loja ou também passa pela página do livro, como o botão do topo do início.
-- [ ] Opcional: decidir se o **palco do rodapé** ganha uma versão com recortes das ilustrações do Igor (hoje: o desenho articulado do primeiro site, com os braços corrigidos, como pedido).
 - [ ] **Foto corporativa da equipe** para Quem somos (pedido da ata). Hoje está a foto do pré-lançamento.
 
 ## Fauston
 
 - [ ] **[antes de publicar]** Revisar os **exemplos dos 5 parâmetros** (Signária IA): configuração de mão (letra A), ponto de articulação (URSO), movimento (ELEFANTE), orientação (IGUANA) e expressões não manuais (rosto da Aia).
 - [ ] **[antes de publicar]** Revisar as descrições dos sinais nos textos alternativos: `assets/js/jogos.js` (campo `altSinal`) e a galeria dos animais na página do app de AR.
-- [ ] **[antes de publicar]** Revisar o Recado da Aia curto (com o Luciano).
+- [ ] **[antes de publicar]** Revisar o Recado da Aia novo (com o Luciano).
 - [ ] Revisar a declaração de **Acessibilidade** com o Victor.
 - [ ] VLibras: continua desligado (a ata decidiu publicar sem o plugin de LIBRAS).
 
@@ -46,7 +47,7 @@ Legenda: **[antes de publicar]** = precisa estar resolvido até **26/10/2026** (
 
 - [ ] **[antes de publicar]** Publicar sem mexer na pasta `/app` do servidor e testar os dois endereços (README, passo 3).
 - [ ] Confirmar se o app de AR **envia ou guarda imagens da câmera** (para a Política de Privacidade).
-- [ ] **GIF leve** (até ~2 MB, poucos segundos) do SinalizaAção VR, se quiserem movimento no cartão "O que vem por aí".
+- [ ] **Vídeos e GIFs atuais do SinalizaAção VR** para "O projeto hoje" (página do VR): trechos curtos do Espelho Mágico da Aia e do jogo, de até 10 s e 3 MB cada. Entram pelo `config.js` (`midias.vr`, README, item 4), sem mexer no HTML. Os vídeos do VR que estão no Drive (pasta da São Paulo Innovation Week) têm de 50 a 450 MB e não puderam ser baixados por aqui: mandem os trechos já cortados (ou os arquivos direto na conversa) e eu converto. Só adultos nos vídeos.
 - [ ] Enviar a **formação** para a biografia, se quiser.
 - [ ] Quando os apps saírem nas lojas: colar os links em `app.lojas` no `config.js`.
 
@@ -61,7 +62,7 @@ Legenda: **[antes de publicar]** = precisa estar resolvido até **26/10/2026** (
 
 ## Victor
 
-- [ ] **[antes de publicar]** Autorizações de imagem (item 2 do topo).
+- [ ] **[antes de publicar]** Autorizações de imagem (item 2 do topo). Na página do VR entraram duas fotos da São Paulo Innovation Week (maio de 2026): o estande, sem pessoas, e o Victor com os óculos de realidade virtual. Confira as legendas.
 - [ ] **[até 31/10]** Redação da Black November: "de R$ 149,90 por R$ 99,90 com o cupom IGOR", o marca-páginas e o frete grátis fora de novembro (itens 3 e 4 do topo).
 - [ ] **[antes de publicar]** Revisar a **Política de Privacidade** (rascunho em `/privacidade/`): prazos de guarda, serviços usados, encarregado de dados (DPO) e o tratamento do **CPF** no resgate do cupom dos animais (o site não pede CPF; a conferência é feita pela equipe, fora do site).
 - [ ] **[antes de publicar]** Texto e logos obrigatórios de **crédito do PROAC/PNAB** na página do SinalizaAção VR, conforme o manual do edital.
@@ -99,6 +100,6 @@ Todos com legenda em português (arquivo `.vtt`), sem música obrigatória e sem
 > Abra inclusivr.com.br/app no celular ou no tablet. Não precisa instalar. Permita a câmera. Abra o livro numa página da direita e aponte o celular, a uns 30 centímetros. Uma página por vez. Quando o animal aparecer, toque no botão do intérprete para ver o sinal em LIBRAS.
 
 **4. Recado da Aia (início, ao lado do balão).**
-> Oi, eu sou a Aia. Aqui em Signária, a LIBRAS é nossa língua e fonte de magia. E tem um segredo: essa magia acende em qualquer pessoa que aprende um sinal para se aproximar de alguém. Vamos sinalizar juntos?
+> Oi, eu sou a Aia. Aqui em Signária, a LIBRAS é nossa língua e fonte de magia. Quem aprende um sinal para se aproximar de alguém também ganha essa magia. Vamos sinalizar juntos?
 
 Depois de gravar: colocar os arquivos em `assets/video/` e preencher `videosLibras` no `config.js` (README, item 7).

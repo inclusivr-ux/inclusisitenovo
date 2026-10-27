@@ -23,11 +23,11 @@ inclusivr-site/
 ├── assets/
 │   ├── css/                tokens.css (cores e fontes), base, componentes, páginas, impressão
 │   ├── js/config.js        (tudo o que a equipe muda sem programar)
-│   ├── js/                 main.js, formularios.js, animacoes.js (topo, abelha, animais), carrossel.js (galeria de fotos do início), personagens.js (Seu Zé e o elefante), jogos.js
+│   ├── js/                 main.js, formularios.js, animacoes.js (abelha, animais escondidos e a abertura do topo, desligada), carrossel.js (galeria de fotos do início), jogos.js
 │   ├── img/                imagens (WebP com reserva em JPG/PNG)
 │   ├── fonts/              fontes do site (licença OFL)
 │   ├── downloads/          PDF das cartas (com link) e kit de imprensa (sem link, só para a equipe)
-│   ├── video/              vídeo curto do Igor com o livro e o app, só carrega no clique
+│   ├── video/              vídeo do Igor apresentando o livro (MP4 e WebM), só carrega no clique
 │   └── vendor/             model-viewer 4.3.1 (3D e AR no navegador)
 └── sitemap.xml, robots.txt, site.webmanifest, .htaccess, favicon.ico
 ```
@@ -93,11 +93,10 @@ Abra `assets/js/config.js` num editor de texto (Bloco de Notas, VS Code). Regras
 | E-mail, WhatsApp, Instagram | bloco `contato` | `videochamadaLibras` mostra o canal de videochamada |
 | Formulários | bloco `formularios` | cole o endereço do serviço (veja abaixo) |
 | Vídeos em LIBRAS | bloco `videosLibras` | veja o item 7 |
-| Fotos e vídeos extras nas galerias | bloco `midias` | `{ tipo: 'video', youtube: 'ID', legenda: '...' }` |
+| Fotos e vídeos extras: galeria do app de AR (`'ar-do-livro'`) e "O projeto hoje" do SinalizaAção VR (`vr`, para os GIFs e vídeos do Espelho Mágico da Aia) | bloco `midias` | `vr: [ { tipo: 'video', src: 'assets/video/vr-maos.mp4', capa: 'assets/img/vr/vr-maos-capa.jpg', legenda: '...' } ]` (GIF entra como `tipo: 'imagem'`, com `alt`) |
 | Modelos 3D dos animais | `modelos3d` | `elefante: 'assets/modelos/elefante.glb'` |
-| Personagens que aparecem | `recursos.personagens` | `false` desliga |
-| Abelha voando | `recursos.abelha` | `false` desliga |
-| Palco do rodapé (Seu Zé e o elefante) | `recursos.palco` | `false` tira o palco |
+| Abelha voando (a única animação de personagem) | `recursos.abelha` | `false` desliga |
+| Abertura do topo do início (a mão se projeta e o Seu Zé e a Aia chegam) | `recursos.aberturaTopo` | hoje `false` (topo parado); `true` liga |
 | Ver os rótulos A CONFIRMAR | no navegador | abra qualquer página com `?rascunho=1` no fim do endereço |
 | Animais escondidos (10% de desconto; em novembro, cupom IGOR) | `recursos.animaisEscondidos` e `recompensaAnimais` | frase do rodapé e textos da janela do prêmio; veja o item 11 |
 | Tradutor VLibras | `recursos.vlibras` | decisão do Fauston |
@@ -125,16 +124,28 @@ O post aparece sozinho no blog e nas "Novidades" da página inicial. Para o Goog
 ## 6. Trocar imagens e fotos
 
 - **Mesmo nome, mesmo tamanho:** o jeito mais simples é substituir o arquivo por outro com o mesmo nome e as mesmas medidas.
-- **Fotos da equipe:** `assets/img/equipe/<nome>-400.jpg`, `-400.webp` e `-200.webp`, quadradas, com rosto e ombros centralizados e fundo índigo (como as atuais). A do Igor (`igor-bucioli-*`) é a nova, do encontro em São Paulo.
+- **Fotos da equipe:** `assets/img/equipe/<nome>-400.jpg`, `-400.webp` e `-200.webp`, quadradas, com rosto e ombros centralizados e fundo índigo (como as atuais). A do Igor (`igor-bucioli-*`) é a foto enviada em 22/10 (3ª rodada), usada como veio: só recortada em quadrado, sem trocar o fundo nem a cor. É a única foto dele no site (livro, Quem somos, página em inglês e kit de imprensa).
+- **Fotos do SinalizaAção VR ("O projeto hoje"):** `assets/img/vr/spiw-estande-*` e `spiw-victor-quest-*` (São Paulo Innovation Week), em 4:3 (`-480.webp`, `-960.webp` e `-960.jpg`). Para acrescentar GIFs, fotos ou vídeos curtos, use o bloco `midias.vr` do `config.js` (tabela do item 4).
 - **Galeria de fotos do início (Quem somos):** as fotos estão em `assets/img/galeria/`, em 3:2 (`<nome>-640.webp`, `-1200.webp` e `-960.jpg`). Para trocar uma foto, substitua os três arquivos com o mesmo nome. Para mudar a legenda ou o texto alternativo, abra o `index.html` e procure `carrossel__item`. Só fotos com autorização de imagem e, de preferência, sem crianças.
-- **Topo do início (mão da InclusiVR em holograma):** `assets/img/hero/` tem a mão 3D (`mao-holo-*`, render do topo do site anterior, com o brilho já na imagem) e os recortes do Seu Zé apontando (`seu-ze-aponta-*`, livro, p. 9) e da Maga Aia com a borboleta (`maga-aia-borboleta-*`, livro, p. 13). Para trocar, mantenha os nomes e as proporções. As órbitas são desenhadas no próprio HTML (procure `holo__orbitas`).
+- **Topo do início (mão da InclusiVR em holograma):** `assets/img/hero/` tem a mão 3D (`mao-holo-*`, render do topo do site anterior, com o brilho já na imagem) e os recortes do Seu Zé apontando (`seu-ze-aponta-*`, livro, p. 9) e da Maga Aia com a borboleta (`maga-aia-borboleta-*`, livro, p. 13). Para trocar, mantenha os nomes e as proporções. As órbitas são desenhadas no próprio HTML (procure `holo__orbitas`). O topo fica parado (veja o item 9).
+- **Cidade de Signária (início, "Esta é Signária"):** a cena do livro (`assets/img/cenas/cena-04-signaria-cidade-*`) fica numa coluna, sem nada por cima, e a cartela e o Recado da Aia ficam na outra (no computador). A cidade aparece inteira; só as folhas das pontas da cena ficam de fora, para a cidade aparecer maior. No celular, a cena ocupa a largura toda, um pouco mais de perto. O enquadramento está em `assets/css/paginas.css` (procure `.cena-signaria__cidade img`, valores `aspect-ratio` e `object-position`).
 - **Formatos:** use WebP para o site e JPG como reserva. Para converter, o [Squoosh](https://squoosh.app) é gratuito e roda no navegador.
 - **Ilustrações do Igor:** pode recortar, mas sem filtros de cor e sem espelhar personagens que estão sinalizando.
 - **Logos:** só os arquivos originais de `assets/img/marca/`. A versão do topo (mão inteira + "inclusiVR" ao lado) foi montada com os pixels dos PNGs originais, a pedido dos sócios, sem redesenhar nem recolorir (`inclusivr-branco-ciano-horizontal-*`). Quando o Aram mandar a versão horizontal oficial, é só substituir os arquivos com o mesmo nome.
 - **Logos de prêmios e parceiros:** `assets/img/logos/`. Para incluir um novo, use a versão para fundo escuro.
 - Toda imagem nova precisa de texto alternativo (`alt`) que descreva o que importa. Nas cartas e runas, descreva a mão do sinal (e peça a revisão do Fauston).
 
-## 7. Vídeos em LIBRAS
+## 7. Vídeos
+
+### O vídeo do Igor com o livro (início)
+
+- **Arquivos:** `assets/video/igor-apresenta-o-livro.mp4` (H.264 + AAC, toca em todos os navegadores, inclusive no iPhone) e `igor-apresenta-o-livro.webm` (VP9 + Opus, reserva), com a capa `assets/img/videos/igor-apresenta-o-livro-capa-720.jpg` (a foto enviada pela equipe). O site usa o player do próprio navegador: o vídeo só carrega quando a pessoa aperta o play, o som só sai nessa hora e dá para pausar, mudar o volume e ver em tela cheia.
+- **Edição:** é a versão original enviada em 22/10, cortada aos 39,8 s, antes do trecho que convidava para a live de lançamento de 23/03 (evento que já passou). O último quadro fica parado 1,2 s para fechar com calma.
+- **Música:** trilha instrumental original, composta para este vídeo (40 s, sem letra, em clima de conto de fadas: celesta, violão de náilon, cordas, flauta e percussão leve). Foi feita com o banco de sons livre GeneralUser GS, cuja licença permite usar o som em músicas, inclusive comerciais; não há música de terceiros. Volume: -16,5 LUFS, pico de -3,3 dB (nível confortável, próximo ao do YouTube). Os arquivos de trabalho (MIDI e WAV) estão em `documentos/trilha-do-video/`.
+- **Para trocar o vídeo:** mantenha os três nomes. O MP4 precisa ser H.264 com "faststart" (começa a tocar antes de baixar tudo). Exemplo com o ffmpeg: `ffmpeg -i novo.mp4 -c:v libx264 -profile:v main -crf 26 -c:a aac -b:a 128k -movflags +faststart igor-apresenta-o-livro.mp4`. Se não tiver o WebM, apague a linha do `.webm` no `index.html` (procure `igor-apresenta-o-livro.webm`).
+- **Legenda:** o vídeo é em LIBRAS, e o próprio vídeo já traz a legenda em português na imagem.
+
+### Vídeos em LIBRAS
 
 1. Grave o vídeo (roteiros no `PENDENCIAS.md`) e faça a legenda em português (arquivo `.vtt`).
 2. Coloque os arquivos em `assets/video/`.
@@ -156,15 +167,14 @@ A página em inglês (`en/index.html`) tem cabeçalho e rodapé próprios, em in
 
 ## 9. Animações
 
+- **Só a abelha** (pedido de 22/10, 3ª rodada): é a única animação de personagem do site. A Aia e o Seu Zé espiando, o palco do Seu Zé com o elefante no rodapé e a abertura do topo saíram.
 - **Regra:** toda animação que começa sozinha dura no máximo 5 segundos e para. Por isso o site não precisa de um botão geral de pausa (só a galeria de fotos tem o seu). Com a opção "reduzir movimento" do aparelho ligada, nada se mexe. Nenhuma animação passa por cima de texto.
-- **Arte do Igor:** as animações usam as ilustrações do livro (o Seu Zé e a Aia do topo, a abelha). Sem filtros de cor e sem espelhar quem está sinalizando.
-- **O holograma do topo** (início): a mão da InclusiVR se projeta de baixo para cima, as órbitas abrem (os satélites andam um pouco e param) e o Seu Zé e a Maga Aia chegam, em menos de 4 s, uma vez só. Depois, tudo fica parado. Passar o mouse ou tocar no desenho faz um brilho atravessar a mão (no máximo a cada 3 s). O código está em `assets/js/animacoes.js` (procure `holograma`) e o estilo em `assets/css/paginas.css` (procure `.holo`). O vídeo de boas-vindas em LIBRAS, quando existir, entra pelo `videosLibras['boas-vindas']`.
-- **Galeria de fotos** (Quem somos, no início): troca de foto a cada 6 s, só enquanto está na tela. Tem botão de pausar (exigência de acessibilidade para o que se move sozinho por mais de 5 s), para ao passar o mouse ou focar com o teclado e não troca sozinha com "reduzir movimento".
-- **A abelha** (no lugar do Seu Zé correndo no meio da página): voa de um lado ao outro só na faixa vazia acima do título de algumas seções, cerca de 4 s por voo, no máximo 3 voos por página.
-- **Aia e Seu Zé espiando** por cima de algumas seções: no máximo 4 s cada, no máximo 3 por página.
-- **Palco do rodapé** (mantido, como pedido): o Seu Zé e o elefante, desenhados em partes, em duas cenas de até ~4,8 s: "Pega-pega" e "Esconde-esconde". Os dois braços do Seu Zé aparecem e acompanham o corpo também ao repetir a cena. Os desenhos e as cenas estão em `assets/js/personagens.js`; as poses, no fim de `assets/css/componentes.css`.
-- **Cartas dos jogos:** verso de pedra com a marca entalhada em azul; ao começar e ao "Embaralhar de novo", as cartas se juntam no meio e voltam embaralhadas (~1,3 s).
-- As mãos dos personagens animados ficam no bolso ou segurando a rede: nenhum gesto vira sinal. Se um dia algum personagem for sinalizar, o sinal passa antes pelo Fauston.
+- **A abelha** (desenho do Igor, sem filtro e sem espelhar): voa de um lado ao outro só na faixa vazia acima do título de algumas seções, cerca de 4 s por voo, no máximo 3 voos por página. `recursos.abelha: false` desliga.
+- **O holograma do topo** (início): fica parado. Passar o mouse não faz nada. A abertura de antes (a mão se projeta de baixo para cima, as órbitas abrem e o Seu Zé e a Maga Aia chegam, em menos de 4 s, mais o brilho ao passar o mouse) continua no código e volta com `recursos.aberturaTopo: true` no `config.js`. O código está em `assets/js/animacoes.js` (procure `holograma`) e o estilo em `assets/css/paginas.css` (procure `.holo`). O vídeo de boas-vindas em LIBRAS, quando existir, entra pelo `videosLibras['boas-vindas']`.
+- **O que ainda se mexe, por ser parte de jogo ou de controle:** os animais escondidos dão uma tremidinha na primeira vez que aparecem (para ajudar quem procura); as cartas dos minijogos se juntam e voltam embaralhadas quando a pessoa clica em começar ou "Embaralhar de novo" (~1,3 s); a galeria de fotos de Quem somos troca de foto a cada 6 s, só enquanto está na tela, com botão de pausar (exigência de acessibilidade), e não troca sozinha com "reduzir movimento"; as faíscas aparecem quando a pessoa vence um jogo ou envia um formulário.
+- Se um dia algum personagem voltar a se mexer ou for sinalizar, o sinal passa antes pelo Fauston.
+
+**Ao trocar de aba, a página nova abre no topo.** Isso vale também para quem clica na aba da página em que já está e na prévia (dentro de um quadro). Voltar e avançar do navegador e links com `#` continuam como o navegador faz. O código está no `main.js` (procure `voltarAoTopo`).
 
 ## 10. Ao editar textos
 
@@ -184,12 +194,14 @@ A página em inglês (`en/index.html`) tem cabeçalho e rodapé próprios, em in
 
 ## 12. Kit de imprensa e "Salvar em PDF"
 
-Saíram das páginas, como pedido. O kit continua no servidor, sem link, para a equipe mandar quando alguém pedir: `assets/downloads/kit-imprensa-inclusivr.zip` (link direto: `inclusivr.com.br/assets/downloads/kit-imprensa-inclusivr.zip`). Em 22/10, o kit ganhou a foto nova do Igor e, no texto, o Crie Games (Sebrae) e os eventos (Web Summit Rio e Lisboa 2026). A folha de impressão (`assets/css/impressao.css`) continua valendo para quem imprimir uma página pelo navegador.
+Saíram das páginas, como pedido. O kit continua no servidor, sem link, para a equipe mandar quando alguém pedir: `assets/downloads/kit-imprensa-inclusivr.zip` (link direto: `inclusivr.com.br/assets/downloads/kit-imprensa-inclusivr.zip`). Em 22/10, o kit ganhou o Crie Games (Sebrae) e os eventos (Web Summit Rio e Lisboa 2026) no texto e, na 3ª rodada, a foto do Igor enviada pela equipe e o NIDUS no InovaUSP. A folha de impressão (`assets/css/impressao.css`) continua valendo para quem imprimir uma página pelo navegador.
 
 ## Créditos e licenças
 
 - Ilustrações: Igor de Campos Bucioli (todos os direitos reservados). Identidade visual: Aram. Diagramação do livro: Nina Nunes.
 - Fotos reais (galeria do início, blog e Quem somos): Drive da equipe. Confirme as autorizações de imagem antes de publicar (veja o `PENDENCIAS.md`).
+- Vídeo do Igor com o livro: Igor Bucioli. Música de fundo: trilha original feita para o vídeo, com o banco de sons GeneralUser GS v2.0.3 (S. Christian Collins; a licença permite o uso em músicas, inclusive comerciais). Detalhes em `documentos/trilha-do-video/LEIA-ME.md`.
+- Fotos da São Paulo Innovation Week (página do SinalizaAção VR): Drive da equipe.
 - Fontes: Archivo, Outfit, Lexend e Fraunces, licença SIL Open Font License (arquivos em `assets/fonts/`).
 - `model-viewer` 4.3.1, licença Apache 2.0 (em `assets/vendor/`).
 - Sem cookies e sem rastreadores por padrão.

@@ -1,6 +1,16 @@
 # Progresso
 
-Situação em 22/10/2026: versão com a Black November do briefing da Matraca e a página inicial nova (2ª rodada: topo com a mão da InclusiVR em holograma). Meta: publicar até 26/10; a campanha começa sozinha em 1/11.
+Situação em 22/10/2026: versão com a Black November do briefing da Matraca, a página inicial nova e as alterações do segundo PDF dos sócios (3ª rodada). Meta: publicar até 26/10; a campanha começa sozinha em 1/11.
+
+## Feito na 3ª rodada de 22/10 (PDF "Alterações do site" e vídeo do Igor)
+
+- Vídeo do Igor com o livro tocando no player do navegador (MP4 e WebM, só no play), versão original cortada antes do convite da live de 23/03, com a capa enviada e uma trilha instrumental original de 40 s, em volume confortável.
+- Só a abelha se mexe: saíram a Aia e o Seu Zé espiando e o palco do rodapé; o topo do início ficou parado.
+- Trocar de aba sempre leva ao topo (também ao clicar na aba atual e na prévia).
+- Início: cartela "Uma história construída por muitas mãos.", Recado da Aia sem o segredo, cidade de Signária sem texto por cima no computador (e mais de perto no celular), bloco do livro enxuto (sem a faixa etária e o preço repetidos).
+- Quem somos: pedagogia explicada por produto, Cultura de Acesso em poucas palavras, NIDUS no InovaUSP; foto do Igor enviada em todo o site e no kit de imprensa.
+- SinalizaAção VR: "O projeto hoje", com fotos da São Paulo Innovation Week e espaço para os GIFs e vídeos do Espelho Mágico da Aia (`midias.vr`).
+- Revisão: o `config.js` tinha o bloco `midias` repetido (corrigido); verificação estática sem problemas; axe-core sem problemas no computador, no celular, com movimento e com a campanha; nenhuma página com rolagem lateral; 103 testes de interação e 13 testes novos dos extras de mídia aprovados; o vídeo testado tocando com som depois do clique.
 
 ## Feito na 2ª rodada de 22/10 (topo em holograma)
 

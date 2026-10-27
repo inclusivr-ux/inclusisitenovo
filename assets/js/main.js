@@ -19,10 +19,42 @@
   try { params = new URLSearchParams(window.location.search); } catch (e) { params = { get: function () { return null; } }; }
 
   /* =========================================================================
-     Trocar de página = começar do topo (pedido da equipe: no celular a página
-     nova abria lá embaixo). Voltar/avançar e links com # continuam como antes.
+     Trocar de aba (página) = começar do topo. Pedido da equipe: em alguns
+     aparelhos a página nova abria no meio, e clicar na aba da página em que a
+     pessoa já está não subia (o navegador trata como "recarregar").
+     Voltar/avançar e links com # continuam como antes.
      ========================================================================= */
   (function voltarAoTopo() {
+    function topoJa() {
+      try { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); } catch (e) { window.scrollTo(0, 0); }
+      if (document.documentElement) document.documentElement.scrollTop = 0;
+      if (document.body) document.body.scrollTop = 0;
+      /* quando o site roda dentro de uma moldura (prévia), tenta subir também a página de fora */
+      if (window.parent !== window && document.documentElement.scrollIntoView) {
+        var raizEl = document.documentElement, antes = raizEl.style.scrollPaddingTop;
+        raizEl.style.scrollPaddingTop = '0px';
+        try { raizEl.scrollIntoView({ block: 'start', behavior: 'instant' }); } catch (e) { /* sem acesso: segue */ }
+        raizEl.style.scrollPaddingTop = antes;
+      }
+    }
+    IVR.topo = topoJa;
+    /* 1) clicar na aba da página atual: sobe até o topo, sem recarregar */
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+      var url;
+      try { url = new URL(a.href, window.location.href); } catch (er) { return; }
+      if (url.origin !== window.location.origin || url.hash) return;
+      var semIndex = function (u) { return u.pathname.replace(/index\.html$/, '') + u.search; };
+      if (semIndex(url) !== semIndex(window.location)) return;
+      e.preventDefault();
+      var suave = !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+      try { window.scrollTo({ top: 0, left: 0, behavior: suave ? 'smooth' : 'instant' }); } catch (er) { window.scrollTo(0, 0); }
+      var alvo = document.getElementById('conteudo') || document.querySelector('main');
+      if (alvo) { if (!alvo.hasAttribute('tabindex')) alvo.setAttribute('tabindex', '-1'); try { alvo.focus({ preventScroll: true }); } catch (er) { /* segue */ } }
+    });
+    /* 2) página nova: começa do topo (sem rolagem suave, para nada interromper) */
     if (window.location.hash) return;
     var tipo = '';
     try {
@@ -30,20 +62,15 @@
       tipo = nav ? nav.type : (performance.navigation && performance.navigation.type === 2 ? 'back_forward' : 'navigate');
     } catch (e) { tipo = 'navigate'; }
     if (tipo === 'back_forward' || tipo === 'reload') return;
-    function topo() {
-      window.scrollTo(0, 0);
-      /* quando o site roda dentro de uma moldura (prévia), sobe também a página de fora */
-      if (window.parent !== window && document.body && document.body.scrollIntoView) {
-        try { document.body.scrollIntoView({ block: 'start' }); } catch (e) { /* sem acesso: segue */ }
-      }
-    }
     var mexeu = false;
     ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) {
       window.addEventListener(ev, function () { mexeu = true; }, { once: true, passive: true });
     });
-    if (document.readyState !== 'loading') topo(); else document.addEventListener('DOMContentLoaded', topo);
-    /* se algo empurrou a página para baixo durante o carregamento (e a pessoa ainda não rolou), volta */
-    window.addEventListener('load', function () { if (!mexeu && window.scrollY > 0) topo(); });
+    var talvez = function () { if (!mexeu && (window.scrollY > 0 || window.parent !== window)) topoJa(); };
+    topoJa();
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', talvez);
+    window.addEventListener('load', function () { talvez(); setTimeout(talvez, 150); setTimeout(talvez, 600); });
+    window.addEventListener('pageshow', function (ev) { if (!ev.persisted) talvez(); });
   })();
 
   /* modo rascunho: rótulos rosa "A CONFIRMAR" para a revisão da equipe.
@@ -493,26 +520,59 @@
   });
 
   /* =========================================================================
-     Vídeos leves: só carregam quando a pessoa clica (sem som, sem tocar sozinho)
+     Vídeos: os controles são os do próprio navegador (funcionam também sem
+     JavaScript). Aqui só entra um botão grande de play por cima da capa.
+     Nada toca sozinho: o som só sai quando a pessoa aperta o play.
      ========================================================================= */
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest('[data-clipe]');
-    if (!a) return;
-    e.preventDefault();
-    var quadro = a.closest('.clipe__quadro');
-    if (!quadro) return;
-    var v = document.createElement('video');
-    v.src = a.getAttribute('data-clipe');
-    v.controls = true; v.playsInline = true; v.muted = true; v.preload = 'auto';
-    v.setAttribute('playsinline', '');
-    var leg = a.getAttribute('aria-label') || '';
-    v.setAttribute('aria-label', leg.replace('Assistir ao vídeo: ', 'Vídeo: '));
-    quadro.innerHTML = '';
-    quadro.appendChild(v);
-    quadro.classList.add('clipe__quadro--tocando');
-    var p = v.play();
-    if (p && p.catch) p.catch(function () { /* o navegador pediu um toque: os controles já estão à vista */ });
-    v.focus();
+  $$('[data-video]').forEach(function (v) {
+    var b = v.parentNode.querySelector('[data-video-play]');
+    if (!b) return;
+    v.removeAttribute('controls');
+    b.hidden = false;
+    var tocar = function () {
+      v.setAttribute('controls', '');
+      b.hidden = true;
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { /* o navegador pediu outro toque: os controles já estão à vista */ });
+    };
+    b.addEventListener('click', tocar);
+    v.addEventListener('click', function () { if (!v.hasAttribute('controls')) tocar(); });
+    v.addEventListener('play', function () {
+      b.hidden = true; v.setAttribute('controls', '');
+      /* um vídeo por vez */
+      $$('[data-video]').forEach(function (o) { if (o !== v && !o.paused) o.pause(); });
+    });
+    v.addEventListener('ended', function () { b.hidden = false; });
+  });
+
+  /* =========================================================================
+     Vídeos e imagens extras de uma seção (config.js, midias). Ex.: os GIFs e
+     vídeos curtos do "Espelho Mágico da Aia" na página do SinalizaAção VR.
+     ========================================================================= */
+  var MIDIAS = C.midias || {};
+  $$('[data-midias]').forEach(function (lista) {
+    var itens = MIDIAS[lista.getAttribute('data-midias')] || [];
+    itens.forEach(function (m) {
+      if (!m || !m.src) return;
+      var li = document.createElement('li');
+      var fig = document.createElement('figure');
+      if (m.tipo === 'video') {
+        var q = document.createElement('div'); q.className = 'clipe__quadro';
+        var v = document.createElement('video');
+        v.className = 'clipe__video'; v.controls = true; v.playsInline = true; v.preload = 'none';
+        v.setAttribute('playsinline', '');
+        if (m.capa) v.poster = raiz + m.capa;
+        v.src = raiz + m.src;
+        if (m.legenda) v.setAttribute('aria-label', 'Vídeo: ' + m.legenda);
+        q.appendChild(v); fig.appendChild(q);
+      } else {
+        var img = document.createElement('img');
+        img.src = raiz + m.src; img.alt = m.alt || ''; img.loading = 'lazy'; img.decoding = 'async';
+        fig.appendChild(img);
+      }
+      if (m.legenda) { var cap = document.createElement('figcaption'); cap.textContent = m.legenda; fig.appendChild(cap); }
+      li.appendChild(fig); lista.appendChild(li);
+    });
   });
 
   /* =========================================================================

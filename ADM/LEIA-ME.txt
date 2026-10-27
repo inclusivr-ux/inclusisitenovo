@@ -1,13 +1,15 @@
-SITE DA INCLUSIVR (versão de 22/10/2026, 2ª rodada: topo em holograma)
+SITE DA INCLUSIVR (versão de 22/10/2026, 3ª rodada: alterações do PDF 2 e vídeo do Igor)
 
 inclusivr-site/   O site. Envie o CONTEÚDO desta pasta para a raiz do domínio
                   (sem apagar a pasta /app do servidor, que é o app de AR).
 documentos/       Para a equipe, NÃO vai para o servidor:
-                  README.md      como ver, publicar e editar (config.js, fotos, posts)
-                  PENDENCIAS.md  o que falta enviar, confirmar ou decidir (comece pelo topo)
-                  DECISOES.md    o que foi decidido e por quê (W20 a W24 = esta rodada; W1 a W19 = 1ª rodada)
-                  CHECKLIST.md   onde cada pedido foi atendido
-                  PROGRESSO.md   resumo desta rodada e próximos passos
+                  README.md         como ver, publicar e editar (config.js, fotos, vídeo, posts)
+                  PENDENCIAS.md     o que falta enviar, confirmar ou decidir (comece pelo topo)
+                  DECISOES.md       o que foi decidido e por quê (W25 a W38 = esta rodada;
+                                    W20 a W24 = 2ª rodada; W1 a W19 = 1ª rodada)
+                  CHECKLIST.md      onde cada pedido foi atendido
+                  PROGRESSO.md      resumo das rodadas e próximos passos
+                  trilha-do-video/  a música do vídeo do Igor (WAV, MIDI e licença)
 
 Black November: começa sozinha em 1/11 às 0h e termina em 30/11 às 23h59.
 Para ver antes, abra qualquer página com ?campanha=previa no fim do endereço.

@@ -1,4 +1,18 @@
-Coloque aqui os vídeos em LIBRAS (.mp4) e as legendas em português (.vtt).
-Depois, informe o nome dos arquivos em assets/js/config.js, no bloco videosLibras.
-Exemplo:
-  'boas-vindas': { src: 'assets/video/boas-vindas.mp4', legendas: 'assets/video/boas-vindas.vtt', poster: '' },
+Vídeos do site.
+
+1) Vídeo do Igor apresentando o livro (página inicial)
+   igor-apresenta-o-livro.mp4   H.264 + AAC (toca em todos os navegadores)
+   igor-apresenta-o-livro.webm  VP9 + Opus (reserva)
+   Capa: assets/img/videos/igor-apresenta-o-livro-capa-720.jpg
+   Para trocar, mantenha os nomes dos três arquivos. O MP4 precisa ser H.264 com
+   "faststart" (começa a tocar antes de baixar tudo). Exemplo com o ffmpeg:
+     ffmpeg -i novo.mp4 -c:v libx264 -profile:v main -crf 26 -c:a aac -b:a 128k -movflags +faststart igor-apresenta-o-livro.mp4
+   Nada toca sozinho: o vídeo só carrega e o som só sai quando a pessoa aperta o play.
+
+2) Vídeos em LIBRAS (.mp4) com legenda em português (.vtt)
+   Coloque os arquivos aqui e informe os nomes em assets/js/config.js, no bloco videosLibras.
+   Exemplo:
+     'boas-vindas': { src: 'assets/video/boas-vindas.mp4', legendas: 'assets/video/boas-vindas.vtt', poster: '' },
+
+3) Vídeos curtos do SinalizaAção VR ("O projeto hoje")
+   Coloque o arquivo aqui e informe em assets/js/config.js, no bloco midias, lista vr.

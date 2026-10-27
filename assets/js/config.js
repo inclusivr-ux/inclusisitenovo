@@ -153,13 +153,17 @@ window.INCLUSIVR_CONFIG = {
     'recado-aia': null
   },
 
-  /* Fotos e vídeos extras, por galeria (somam-se aos do HTML).
-     Exemplo: 'ar-do-livro': [ { tipo: 'video', youtube: 'ID', legenda: 'O elefante saltando do livro' } ] */
+  /* Fotos e vídeos extras (somam-se aos que já estão nas páginas).
+     'ar-do-livro': galeria da página do app de AR (a foto amplia no clique).
+        Ex.: { tipo: 'video', youtube: 'ID', legenda: 'O elefante saltando do livro' }
+     'vr': "O projeto hoje", na página do SinalizaAção VR (GIFs e vídeos curtos feitos no
+        "Espelho Mágico da Aia", trechos do jogo). Prefira vídeo MP4 curto (até 10 s e 3 MB)
+        a GIF: fica mais leve e só toca quando a pessoa aperta o play. GIF entra como imagem.
+        Ex.: { tipo: 'video', src: 'assets/video/vr-maos.mp4', capa: 'assets/img/vr/vr-maos-capa.jpg', legenda: 'As mãos do jogador fazem o sinal.' }
+             { tipo: 'imagem', src: 'assets/img/vr/espelho-magico.gif', alt: 'O que a imagem mostra', legenda: 'Texto embaixo da imagem.' } */
   midias: {
     'ar-do-livro': [],
-    'signaria-ia': [],
-    'sinalizaacao-vr': [],
-    'jogos': []
+    vr: []
   },
 
   /* Modelos 3D dos animais (.glb). Com o arquivo, a galeria mostra o animal em 3D
@@ -170,12 +174,13 @@ window.INCLUSIVR_CONFIG = {
      RECURSOS OPCIONAIS
      --------------------------------------------------------------------------- */
   recursos: {
-    /* Aia e Seu Zé espiando por cima das seções de vez em quando. */
-    personagens: true,
-    /* A abelha do livro (desenho do Igor) passando voando por algumas seções. */
+    /* A abelha do livro (desenho do Igor) passando voando por algumas seções.
+       É a única animação de personagem do site (pedido da equipe em 22/10). */
     abelha: true,
-    /* Palco no alto do rodapé: Seu Zé e o elefante em duas cenas curtas. */
-    palco: true,
+    /* Abertura do topo da página inicial (a mão da InclusiVR se projeta e o Seu Zé
+       e a Aia chegam, em menos de 4 s) e o brilho ao passar o mouse. Desligada a
+       pedido da equipe: o topo fica parado. Para ligar de novo, troque por true. */
+    aberturaTopo: false,
     /* Mini-jogo: os 5 animais do livro escondidos pelo site. */
     animaisEscondidos: true,
     /* Prêmio de quem encontra os 5 animais. A pessoa tira um print da tela do

@@ -1,17 +1,16 @@
 /* =============================================================================
    InclusiVR — animações e magia por ação
-   - O holograma do topo da página inicial: a mão da InclusiVR se projeta de
-     baixo para cima, as órbitas abrem (os satélites andam um pouco e param) e o
-     Seu Zé e a Maga Aia chegam. Uma vez só, em menos de 4 s. Passar o mouse ou
-     tocar no desenho faz um brilho atravessar a mão.
+   - A abelha do livro é a única animação de personagem (pedido da equipe).
+   - O holograma do topo da página inicial fica parado. Com
+     recursos.aberturaTopo: true no config.js, volta a abertura (a mão se projeta,
+     as órbitas abrem e o Seu Zé e a Maga Aia chegam, em menos de 4 s) e o brilho
+     ao passar o mouse.
    - A abelha do livro (desenho do Igor) passa voando por algumas seções:
      cada voo dura até 5 s e são no máximo 3 por página.
-   - Aia e Seu Zé espiam por cima de algumas seções (até 4 s, um por vez).
    - Faíscas quadradas quando a pessoa age (formulário enviado, jogo vencido).
    - Mini-jogo: os 5 animais do livro escondidos pelo site. Quem acha os cinco
      ganha 10% de desconto (print da tela + 1 vez por CPF, conferido pela equipe).
      Durante a campanha (Black November), o prêmio leva ao cupom da campanha.
-   O palco do rodapé (Seu Zé e o elefante) fica em personagens.js.
    Toda animação que começa sozinha dura até 5 s e para. Tudo desliga com
    "reduzir movimento" do aparelho.
    ============================================================================= */
@@ -70,8 +69,10 @@
   /* entrada suave do texto do topo */
   requestAnimationFrame(function () { html.classList.add('pronto'); });
 
-  /* ---------- o holograma do topo da página inicial ---------- */
-  var holo = document.querySelector('[data-holo]');
+  /* ---------- o holograma do topo da página inicial ----------
+     Parado por padrão (só a abelha se mexe no site). A abertura e o brilho voltam
+     com recursos.aberturaTopo: true no config.js. */
+  var holo = R.aberturaTopo === true ? document.querySelector('[data-holo]') : null;
   if (holo) {
     var camadaH = holo.querySelector('.holo__faiscas');
     var sats = $$('[data-holo-sat]', holo);
@@ -193,53 +194,6 @@
     };
     document.addEventListener('inclusivr:movimento', function (e) { if (!e.detail.permitido && voando) { voando.remove(); voando = null; } });
     document.addEventListener('visibilitychange', function () { if (document.hidden && voando) { voando.remove(); voando = null; } });
-  }
-
-  /* ---------- Aia e Seu Zé espiando ---------- */
-  var pontos = $$('[data-aparicao]');
-  if (pontos.length && R.personagens !== false && 'IntersectionObserver' in window) {
-    var ativo = null, ultimo = 0, contagem = 0;
-    var INTERVALO_AP = 9000, MAXIMO = 3;
-    var visiveis = [];
-    var obs = new IntersectionObserver(function (ents) {
-      ents.forEach(function (en) {
-        var i = visiveis.indexOf(en.target);
-        if (en.isIntersecting && en.intersectionRatio >= .6) { if (i === -1) visiveis.push(en.target); tentar(); }
-        else if (i !== -1) visiveis.splice(i, 1);
-      });
-    }, { threshold: [0, .6, 1] });
-    pontos.forEach(function (p) { obs.observe(p); });
-    var tentar = function () {
-      if (ativo || !permitido() || contagem >= MAXIMO || !visiveis.length) return;
-      if (Date.now() - ultimo < INTERVALO_AP) return;
-      if (contagem > 0 && Math.random() < .3) { ultimo = Date.now() - INTERVALO_AP / 2; return; }
-      aparecer(visiveis[Math.floor(Math.random() * visiveis.length)]);
-    };
-    setInterval(tentar, 2500);
-    var aparecer = function (ponto) {
-      contagem++; ultimo = Date.now();
-      var tipo = ponto.getAttribute('data-aparicao');
-      var el = document.createElement('div');
-      el.className = 'aparicao' + (ponto.hasAttribute('data-espelhar') ? ' aparicao--espelhada' : '');
-      el.setAttribute('aria-hidden', 'true');
-      var entrar = function () { requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('entrando'); }); }); };
-      var dur = Math.round(aleatorio(2200, 3800));
-      var img = new Image();
-      img.alt = '';
-      img.decoding = 'async';
-      img.src = raiz + 'assets/img/personagens/' + tipo + '.svg';
-      el.appendChild(img);
-      ponto.appendChild(el);
-      ativo = el;
-      if (img.complete) entrar(); else img.addEventListener('load', entrar, { once: true });
-      setTimeout(function () {
-        el.classList.add('saindo');
-        setTimeout(function () { el.remove(); if (ativo === el) ativo = null; ultimo = Date.now(); }, 520);
-      }, dur);
-    };
-    document.addEventListener('inclusivr:movimento', function (e) {
-      if (!e.detail.permitido && ativo) { ativo.remove(); ativo = null; }
-    });
   }
 
   /* ---------- mini-jogo: os 5 animais escondidos ---------- */

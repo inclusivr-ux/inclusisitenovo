@@ -5,8 +5,8 @@
 @page { size: A4; margin: 16mm 14mm; }
 html, body { background: #fff !important; color: #1a1a1a !important; font-size: 10.5pt; }
 * { box-shadow: none !important; text-shadow: none !important; animation: none !important; transition: none !important; }
-.topo, .barra-compra, .pular-link, .palco, .hud, .faiscas, .faiscas-hover, .ponto-aparicao, .animal-escondido, .aviso, .janela-libras,
-.fechamento, .rodape nav, .rodape .palco, .nao-imprimir, .carrossel__controles, .galeria, .newsletter, .form, video, iframe, .aura, .lightbox, .tela-cheia, .botao-libras { display: none !important; }
+.topo, .barra-compra, .pular-link, .hud, .faiscas, .faiscas-hover, .animal-escondido, .aviso, .janela-libras,
+.fechamento, .rodape nav, .nao-imprimir, .carrossel__controles, .galeria, .newsletter, .form, video, iframe, .aura, .lightbox, .tela-cheia, .botao-libras { display: none !important; }
 .sup-noite, .sup-indigo, .sup-roxo-profundo, .sup-signaria-noite, .sup-ceu, .sup-orquidea, .rodape {
   background: #fff !important; color: #1a1a1a !important;
   --texto: #1a1a1a; --texto-suave: #444141; --destaque: #5515a0; --link: #1a1a1a; --divisor: #ccc;

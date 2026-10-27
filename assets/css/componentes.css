@@ -303,14 +303,6 @@ dialog { color: inherit; }
 .loja-app img { height: 52px; width: auto; }
 
 /* ---------- Aparições de Aia e Seu Zé (Q8) ---------- */
-.ponto-aparicao { position: absolute; z-index: var(--z-personagem); pointer-events: none; width: clamp(96px, 12vw, 132px); aspect-ratio: 1; overflow: hidden; }
-.aparicao { position: absolute; inset: 0; pointer-events: none; }
-.aparicao img { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; transform: translateY(102%); transition: transform 620ms var(--curva-salto); filter: drop-shadow(0 0 10px rgba(49, 245, 255, .25)); }
-.aparicao.entrando img { transform: translateY(0); }
-.aparicao.saindo img { transform: translateY(102%); transition: transform 480ms ease-in; }
-.aparicao--espelhada img { scale: -1 1; }
-.sem-movimento .ponto-aparicao { display: none !important; }
-@media (prefers-reduced-motion: reduce) { .ponto-aparicao { display: none !important; } }
 
 /* ---------- Animais escondidos (mini-jogo, ligado no config) ---------- */
 .animal-escondido {
@@ -403,8 +395,6 @@ dialog { color: inherit; }
 .cartao .campo__erro { color: var(--erro-texto); }
 .cartao .opcao input { accent-color: var(--roxo); }
 .cartao .form__estado--erro { box-shadow: inset 0 0 0 2px var(--erro-texto); }
-/* no celular, as aparições que espiam por cima ficariam perto do texto: só no computador */
-@media (max-width: 699px) { .ponto-aparicao { display: none !important; } }
 
 /* ==========================================================================
    Versão 4 (pedidos do PDF "Alterações do site", out. 2026)
@@ -436,6 +426,9 @@ dialog { color: inherit; }
 /* botões pequenos (cabeçalho e menu): só o nome da campanha, numa linha */
 .botao--sm .selo-campanha { top: -14px; font-size: .64rem; }
 .botao--sm .selo-campanha__oferta { display: none; }
+/* selo curto (só o nome da campanha) quando o preço já está logo acima do botão */
+.botao--selo-curto .selo-campanha { top: -16px; }
+.botao--selo-curto .selo-campanha__oferta { display: none; }
 .selo-campanha--texto { position: static; transform: none; box-shadow: 0 0 0 1.5px var(--lima); font-size: .66rem; margin-right: 4px; display: inline-flex; }
 .placa-campanha {
   position: absolute; z-index: 7; display: grid; gap: 6px; justify-items: center; text-align: center;
@@ -457,7 +450,9 @@ dialog { color: inherit; }
 .clipe__quadro { position: relative; overflow: hidden; border-radius: var(--raio-medio); background: var(--noite); box-shadow: 0 0 0 2px var(--tinta), var(--sombra-objeto); }
 .clipe__quadro picture, .clipe__quadro img, .clipe__quadro video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .clipe__quadro video { background: #000; object-fit: contain; }
-.clipe__play { position: absolute; inset: 0; display: grid; place-items: end center; padding-bottom: 18px; text-decoration: none; background: linear-gradient(180deg, rgba(16, 4, 72, 0) 55%, rgba(16, 4, 72, .55)); }
+.clipe__play { position: absolute; inset: 0; display: grid; place-items: end center; margin: 0; border: 0; padding: 0 0 18px; width: 100%; font: inherit; color: inherit; cursor: pointer; text-decoration: none; background: linear-gradient(180deg, rgba(16, 4, 72, 0) 55%, rgba(16, 4, 72, .55)); }
+.clipe__play[hidden] { display: none; }
+.clipe__quadro video.clipe__video { object-fit: cover; }
 .clipe__play span { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: var(--roxo); color: var(--branco); box-shadow: var(--brilho-aqua); transition: transform var(--dur-rapida); }
 .clipe__play svg { width: 26px; height: 26px; margin-left: 4px; }
 .clipe__play:hover span, .clipe__play:focus-visible span { transform: scale(1.08); }
@@ -494,7 +489,7 @@ ul.logos--eventos { margin-top: var(--e-6); gap: var(--e-3) var(--e-5); }
 @media (prefers-reduced-motion: reduce) { .voo-abelha { display: none; } }
 
 /* ---------- Mini-jogo dos bichinhos (alto do rodapé) ---------- */
-.caca { max-width: 760px; margin: 0 auto var(--e-6); display: grid; gap: var(--e-4); justify-items: center; text-align: center; }
+.caca { max-width: 760px; margin: 0 auto var(--e-9); padding-bottom: var(--e-7); border-bottom: 1px solid rgba(203, 148, 255, .22); display: grid; gap: var(--e-4); justify-items: center; text-align: center; }
 .caca__miolo { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--e-3) var(--e-5); }
 .caca__texto { max-width: 26rem; font-size: .9375rem; line-height: 1.45; color: var(--lilas); }
 .caca__texto strong { color: var(--lima); }
@@ -542,152 +537,3 @@ ul.logos--eventos { margin-top: var(--e-6); gap: var(--e-3) var(--e-5); }
 .insta__grade img, .insta__grade picture { display: block; width: 100%; height: 100%; object-fit: cover; }
 .insta__post { display: block; width: 100%; height: 100%; }
 .insta__post:focus-visible { outline: 3px solid var(--foco); outline-offset: 2px; }
-
-/* ---------- Palco do Seu Zé e do elefante (alto do rodapé) ----------
-   Personagens em SVG articulado (personagens.js). Cenas de até ~4,8 s que começam
-   quando o palco aparece e param sozinhas; o clique mostra a outra cena. */
-.palco { position: relative; max-width: 760px; margin: 0 auto var(--e-8); }
-.sem-js .palco { display: none; }
-.palco__janela {
-  position: relative; height: 140px; border-radius: 24px; overflow: hidden; isolation: isolate; cursor: pointer;
-  background: #c7edfb; box-shadow: 0 0 0 3px #382c70, 0 0 16px 2px rgba(49, 245, 255, .35);
-  -webkit-tap-highlight-color: transparent;
-}
-@media (min-width: 700px) { .palco__janela { height: 170px; } }
-.palco__cenario { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.palco__arvore { position: absolute; left: 68%; bottom: 9.5%; height: 84%; aspect-ratio: 80 / 160; transform: translateX(-50%); z-index: 3; pointer-events: none; }
-.palco__runa { position: absolute; left: 24%; bottom: 8%; height: 19%; aspect-ratio: 40 / 34; transform: translateX(-50%); z-index: 1; transition: filter .3s ease; pointer-events: none; }
-.palco__arvore svg, .palco__runa svg { display: block; width: 100%; height: 100%; }
-.palco__glifo { transition: fill .3s ease; }
-.palco__runa.acesa { filter: drop-shadow(0 0 6px rgba(88, 196, 200, .95)) drop-shadow(0 0 16px rgba(88, 196, 200, .75)); }
-.palco__runa.acesa .palco__glifo { fill: #c9fbf6; }
-.palco__repetir {
-  position: absolute; right: 10px; top: 10px; z-index: 6; width: 44px; height: 44px; padding: 0; border-radius: 50%;
-  display: grid; place-items: center; background: var(--branco); color: var(--noite); border: 3px solid #1a1a1a; cursor: pointer;
-  transition: box-shadow var(--dur-media), transform var(--dur-media);
-}
-.palco__repetir svg { width: 22px; height: 22px; }
-.palco__repetir:hover { box-shadow: 0 0 16px 2px rgba(49, 245, 255, .6); transform: rotate(-30deg); }
-.palco__repetir:focus-visible { outline: 3px solid var(--aqua); outline-offset: 3px; }
-.palco__repetir[hidden] { display: none; }
-.palco__poeira {
-  position: absolute; bottom: 8%; z-index: 5; width: var(--tam, 16px); height: var(--tam, 16px); border-radius: 50%;
-  background: #f3ead6; border: 2.5px solid #1a1a1a; pointer-events: none; opacity: 0;
-  animation: palco-poeira .55s ease-out forwards;
-}
-@keyframes palco-poeira {
-  0% { opacity: 1; transform: translate(-50%, 0) scale(.3); }
-  100% { opacity: 0; transform: translate(calc(-50% + var(--dx, -16px)), -14px) scale(1.25); }
-}
-
-/* atores: a posição na horizontal vem do JS; a pose, das classes */
-.ator { position: absolute; left: 0; bottom: 5%; pointer-events: none; will-change: transform; }
-.ator--ze { height: 80%; aspect-ratio: 270 / 330; z-index: 4; }
-.ator--ele { height: 66%; aspect-ratio: 280 / 200; bottom: 6.5%; z-index: 2; }
-.ator__vira { width: 100%; height: 100%; transition: transform .16s ease; }
-.ator--esq .ator__vira { transform: scaleX(-1); }
-.ator__balao {
-  position: absolute; left: 80%; top: -2%; min-width: 34px; padding: 1px 9px 3px; z-index: 1;
-  font-family: var(--fonte-rotulo); font-weight: 800; font-size: 1.5rem; line-height: 1.25; text-align: center; color: var(--noite);
-  background: var(--branco); border: 3px solid #1a1a1a; border-radius: 16px 16px 16px 4px; opacity: 0; transform: scale(0); transform-origin: 0 100%;
-}
-.ator--esq .ator__balao { left: auto; right: 80%; border-radius: 16px 16px 4px 16px; transform-origin: 100% 100%; }
-.ator__balao--on { animation: balao-pula .32s cubic-bezier(.3, 1.6, .6, 1) forwards; }
-@keyframes balao-pula { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
-
-/* o boneco */
-.rig { display: block; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(-3px 1px 0 #ae7bff); }
-.rig * { transform-box: view-box; }
-.rig-t { stroke: #1a1a1a; stroke-width: 5; stroke-linejoin: round; stroke-linecap: round; }
-.rig-f { stroke: #1a1a1a; stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; }
-.ze-perna--frente { transform-origin: 128px 252px; }
-.ze-perna--tras { transform-origin: 92px 252px; }
-.ze-braco--frente { transform-origin: 146px 178px; }
-.ze-braco--tras { transform-origin: 70px 184px; }
-.ze-braco--frente-livre { transform-origin: 150px 184px; }
-.ze-inclina, .ze-corpo { transform-origin: 112px 318px; }
-.ze-inclina { transition: transform .22s ease; }
-.ze-cabeca { transform-origin: 110px 160px; }
-.ze-chapeu { transform-origin: 110px 80px; }
-.ze-sobrancelhas { transition: transform .15s ease; }
-.ze-binoculo-peito { transform-origin: 110px 162px; }
-.anda .ze-perna--frente { animation: ze-passo .6s linear infinite; }
-.anda .ze-perna--tras { animation: ze-passo .6s linear -.3s infinite; }
-.anda .ze-corpo { animation: ze-sobe .3s ease-in-out infinite alternate; }
-.anda .ze-chapeu { animation: ze-chapeu .3s ease-in-out infinite alternate; }
-.anda .ze-binoculo-peito { animation: ze-balanca .6s ease-in-out infinite; }
-.anda .ze-braco--tras { animation: ze-braco .6s linear infinite; }
-.anda .ze-braco--frente-livre { animation: ze-braco .6s linear -.3s infinite; }
-.corre .ze-inclina { transform: rotate(9deg); }
-.corre .ze-perna--frente { animation: ze-corre .34s linear infinite; }
-.corre .ze-perna--tras { animation: ze-corre .34s linear -.17s infinite; }
-.corre .ze-corpo { animation: ze-sobe-forte .17s ease-in-out infinite alternate; }
-.corre .ze-chapeu { animation: ze-chapeu-forte .17s ease-in-out infinite alternate; }
-.corre .ze-braco--tras { animation: ze-braco-forte .34s linear infinite; }
-.corre .ze-braco--frente-livre { animation: ze-braco-forte .34s linear -.17s infinite; }
-.susto .ze-braco--tras, .susto .ze-braco--frente-livre { animation: ze-braco-susto .42s ease-out both; }
-.corre .ze-braco--frente { animation: ze-rede .34s ease-in-out infinite alternate; }
-.corre .ze-binoculo-peito { animation: ze-balanca .34s ease-in-out infinite; }
-.freia .ze-inclina { transform: rotate(-11deg); }
-.olha .ze-cabeca { animation: ze-olha .8s ease-in-out both; }
-.olha .ze-pupilas { animation: ze-pupila .8s ease-in-out both; }
-.susto .ze-corpo { animation: ze-pulo .42s cubic-bezier(.3, 1.4, .6, 1) both; }
-.susto .ze-chapeu { animation: ze-pula-chapeu .5s cubic-bezier(.3, 1.6, .6, 1) both; }
-.susto .ze-sobrancelhas { transform: translateY(-7px); }
-@keyframes ze-passo { 0%, 100% { transform: rotate(24deg); } 50% { transform: rotate(-24deg); } }
-@keyframes ze-corre { 0%, 100% { transform: rotate(38deg); } 50% { transform: rotate(-38deg); } }
-@keyframes ze-sobe { from { transform: translateY(0); } to { transform: translateY(-6px); } }
-@keyframes ze-sobe-forte { from { transform: translateY(0); } to { transform: translateY(-11px); } }
-@keyframes ze-chapeu { from { transform: rotate(-2deg); } to { transform: rotate(3deg) translateY(-2px); } }
-@keyframes ze-chapeu-forte { from { transform: rotate(-4deg) translateY(0); } to { transform: rotate(5deg) translateY(-7px); } }
-@keyframes ze-balanca { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
-@keyframes ze-braco { 0%, 100% { transform: rotate(-20deg); } 50% { transform: rotate(20deg); } }
-@keyframes ze-braco-forte { 0%, 100% { transform: rotate(-38deg); } 50% { transform: rotate(30deg); } }
-@keyframes ze-rede { from { transform: rotate(-8deg); } to { transform: rotate(6deg); } }
-@keyframes ze-braco-susto { 0% { transform: none; } 40% { transform: rotate(-14deg); } 100% { transform: none; } }
-@keyframes ze-olha { 0% { transform: none; } 25%, 42% { transform: translateX(-7px) rotate(-6deg); } 62%, 82% { transform: translateX(7px) rotate(6deg); } 100% { transform: none; } }
-@keyframes ze-pupila { 0% { transform: none; } 25%, 42% { transform: translateX(-6px); } 62%, 82% { transform: translateX(5px); } 100% { transform: none; } }
-@keyframes ze-pulo { 0% { transform: none; } 35% { transform: translateY(-20px) scaleY(1.04); } 100% { transform: none; } }
-@keyframes ze-pula-chapeu { 0% { transform: none; } 40% { transform: translateY(-30px) rotate(-10deg); } 100% { transform: none; } }
-
-.ele-pata--frente-perto { transform-origin: 173px 134px; }
-.ele-pata--frente-longe { transform-origin: 153px 132px; }
-.ele-pata--tras-perto { transform-origin: 97px 134px; }
-.ele-pata--tras-longe { transform-origin: 77px 132px; }
-.ele-orelha { transform-origin: 190px 58px; }
-.ele-tromba { transform-origin: 238px 96px; transition: transform .25s cubic-bezier(.3, 1.5, .6, 1); }
-.ele-rabo { transform-origin: 44px 104px; }
-.ele-corpo { transform-origin: 130px 188px; }
-.ele-cabeca { transform-origin: 200px 112px; }
-.ele-olho { transform-origin: 222px 72px; }
-.ele-pupila { transition: transform .2s ease; }
-.corre .ele-pata--frente-perto, .corre .ele-pata--tras-longe { animation: ele-passo .36s linear infinite; }
-.corre .ele-pata--frente-longe, .corre .ele-pata--tras-perto { animation: ele-passo .36s linear -.18s infinite; }
-.corre .ele-corpo { animation: ele-sobe .18s ease-in-out infinite alternate; }
-.corre .ele-orelha { animation: ele-orelha .36s ease-in-out infinite; }
-.corre .ele-tromba { animation: ele-tromba .72s ease-in-out infinite; }
-.corre .ele-rabo { animation: ele-rabo .36s ease-in-out infinite; }
-.corre .ele-cabeca { animation: ele-cabeca .36s ease-in-out infinite; }
-.anda .ele-pata--frente-perto, .anda .ele-pata--tras-longe { animation: ele-passo-leve .5s ease-in-out infinite; }
-.anda .ele-pata--frente-longe, .anda .ele-pata--tras-perto { animation: ele-passo-leve .5s ease-in-out -.25s infinite; }
-.anda .ele-corpo { animation: ele-pe-ante-pe .25s ease-in-out infinite alternate; }
-.freia .ele-corpo { animation: ele-freia .32s ease-out both; }
-.toca .ele-tromba { transform: rotate(-62deg); }
-.toca .ele-orelha { animation: ele-orelha .3s ease-in-out 2; }
-.abana .ele-rabo { animation: ele-rabo .2s ease-in-out 3; }
-.abana .ele-orelha { animation: ele-orelha-treme .15s ease-in-out 4; }
-.pisca .ele-olho { animation: ele-pisca .36s ease-in-out both; }
-.espia .ele-pupila { transform: translateX(-3.5px); }
-@keyframes ele-passo { 0%, 100% { transform: rotate(22deg); } 50% { transform: rotate(-22deg); } }
-@keyframes ele-passo-leve { 0%, 100% { transform: rotate(12deg); } 50% { transform: rotate(-12deg); } }
-@keyframes ele-sobe { from { transform: translateY(0); } to { transform: translateY(-7px); } }
-@keyframes ele-pe-ante-pe { from { transform: translateY(3px) scaleY(.97); } to { transform: translateY(-3px); } }
-@keyframes ele-freia { 0% { transform: none; } 40% { transform: scale(1.06, .9); } 100% { transform: none; } }
-@keyframes ele-orelha { 0%, 100% { transform: rotate(-16deg); } 50% { transform: rotate(8deg); } }
-@keyframes ele-orelha-treme { 0%, 100% { transform: none; } 50% { transform: rotate(-9deg); } }
-@keyframes ele-tromba { 0%, 100% { transform: rotate(-12deg); } 50% { transform: rotate(10deg); } }
-@keyframes ele-rabo { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(16deg); } }
-@keyframes ele-cabeca { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(3deg); } }
-@keyframes ele-pisca { 0%, 100% { transform: none; } 50% { transform: scaleY(.1); } }
-@media (prefers-reduced-motion: reduce) { .palco__poeira { display: none; } .ator__balao--on { animation: none; opacity: 1; transform: none; } }
-/* ---------- fim do palco ---------- */
