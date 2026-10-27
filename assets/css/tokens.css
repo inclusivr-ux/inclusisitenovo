@@ -59,8 +59,8 @@
 
   /* ---- Formas ---- */
   --raio-pilula: 9999px;
-  --raio-cartao: 24px;
-  --raio-medio: 16px;
+  --raio-cartao: 14px;         /* cartões menos arredondados (pedido da equipe: fugir do "estilo bolha") */
+  --raio-medio: 10px;
   --raio-pequeno: 10px;
   --chanfro: 28px;             /* canto a 45° das molduras HUD e portais */
   --recorte-cartela: 14px;

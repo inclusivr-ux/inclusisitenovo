@@ -33,9 +33,11 @@
   <circle cx="122" cy="186" r="5" fill="#8a5a2b" stroke="#1a1a1a" stroke-width="2.5"/>
   <!-- pescoço -->
   <path class="f" d="M97 146h26v22c-8 6-18 6-26 0z" fill="#f5c9a0"/>
-  <!-- orelha pontuda (élfica) -->
+  <!-- orelhas pontudas (élficas), as duas -->
   <path class="f" d="M145 102c8-6 21-13 32-15-4 11-13 24-23 30-4 2-8 0-9-4z" fill="#fedbb6"/>
   <path d="M151 105c6-4 13-8 18-9" fill="none" stroke="#f0a99a" stroke-width="3" stroke-linecap="round"/>
+  <path class="f" d="M75 102c-8-6-21-13-32-15 4 11 13 24 23 30 4 2 8 0 9-4z" fill="#fedbb6"/>
+  <path d="M69 105c-6-4-13-8-18-9" fill="none" stroke="#f0a99a" stroke-width="3" stroke-linecap="round"/>
   <!-- rosto -->
   <path class="t" d="M74 106c0-28 16-46 36-46s36 18 36 46c0 26-16 44-36 44s-36-18-36-44z" fill="#fedbb6"/>
   <ellipse cx="88" cy="127" rx="8" ry="5" fill="#f6b0a8"/>

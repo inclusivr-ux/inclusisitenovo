@@ -1,7 +1,7 @@
 /* =============================================================================
    InclusiVR — comportamento geral do site (JavaScript puro, sem dependências)
    O site funciona sem JavaScript: aqui só entram melhorias (links da loja com
-   UTM, menu no celular, faixa de campanha, vídeos em LIBRAS, galeria etc.).
+   UTM, menu no celular, campanha, vídeos em LIBRAS, galeria etc.).
    ============================================================================= */
 (function () {
   'use strict';
@@ -17,6 +17,34 @@
 
   var params;
   try { params = new URLSearchParams(window.location.search); } catch (e) { params = { get: function () { return null; } }; }
+
+  /* =========================================================================
+     Trocar de página = começar do topo (pedido da equipe: no celular a página
+     nova abria lá embaixo). Voltar/avançar e links com # continuam como antes.
+     ========================================================================= */
+  (function voltarAoTopo() {
+    if (window.location.hash) return;
+    var tipo = '';
+    try {
+      var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+      tipo = nav ? nav.type : (performance.navigation && performance.navigation.type === 2 ? 'back_forward' : 'navigate');
+    } catch (e) { tipo = 'navigate'; }
+    if (tipo === 'back_forward' || tipo === 'reload') return;
+    function topo() {
+      window.scrollTo(0, 0);
+      /* quando o site roda dentro de uma moldura (prévia), sobe também a página de fora */
+      if (window.parent !== window && document.body && document.body.scrollIntoView) {
+        try { document.body.scrollIntoView({ block: 'start' }); } catch (e) { /* sem acesso: segue */ }
+      }
+    }
+    var mexeu = false;
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) {
+      window.addEventListener(ev, function () { mexeu = true; }, { once: true, passive: true });
+    });
+    if (document.readyState !== 'loading') topo(); else document.addEventListener('DOMContentLoaded', topo);
+    /* se algo empurrou a página para baixo durante o carregamento (e a pessoa ainda não rolou), volta */
+    window.addEventListener('load', function () { if (!mexeu && window.scrollY > 0) topo(); });
+  })();
 
   /* modo rascunho: rótulos rosa "A CONFIRMAR" para a revisão da equipe.
      Desligado no site publicado; para ver os rótulos, abra qualquer página com ?rascunho=1 no fim do endereço. */
@@ -171,32 +199,57 @@
 
   /* preço */
   var L = C.livro || {};
-  var preco = (IVR.campanhaAtiva && C.campanha && C.campanha.preco) ? C.campanha.preco : (L.preco || {});
+  var camp = IVR.campanhaAtiva ? (C.campanha || {}) : null;
+  var preco = (camp && camp.preco) ? camp.preco : (L.preco || {});
   $$('[data-preco-bloco]').forEach(function (el) { el.hidden = !L.mostrarPreco; });
   $$('[data-preco-por]').forEach(function (el) { if (preco.por) el.textContent = preco.por; });
-  $$('[data-preco-de]').forEach(function (el) { if (preco.de) el.textContent = preco.de; el.hidden = !preco.de || preco.de === preco.por; });
-  $$('[data-preco-nota]').forEach(function (el) { if (L.notaPreco) el.textContent = L.notaPreco; });
+  $$('[data-preco-de]').forEach(function (el) {
+    if (preco.de) el.textContent = preco.de;
+    var esconder = !preco.de || preco.de === preco.por;
+    el.hidden = esconder;
+    /* sem "de", some também o rótulo "De"/"por" lido pelo leitor de tela */
+    var envolve = el.closest('.preco__de'); if (envolve) envolve.hidden = esconder;
+    var bloco = el.closest('[data-preco-bloco]');
+    var rotulo = bloco && bloco.querySelector('.preco__por .visualmente-oculto'); if (rotulo) rotulo.hidden = esconder;
+  });
+  $$('[data-preco-nota]').forEach(function (el) { var n = (camp && camp.notaPreco) || L.notaPreco; if (n) el.textContent = n; });
   $$('[data-idade]').forEach(function (el) { if (L.idade) el.textContent = L.idade; });
 
-  /* faixa de campanha */
-  var faixa = $('.faixa-campanha');
-  if (faixa && IVR.campanhaAtiva) {
-    var c = C.campanha;
-    var chave = 'inclusivr:faixa-fechada:' + c.id;
-    if (guarda.ler(chave) !== '1' || params.get('campanha') === 'previa') {
-      var texto = faixa.querySelector('.faixa-campanha__texto');
-      var link = c.link === 'loja' || c.link === 'carrinho' ? IVR.linkLoja(c.link, 'faixa-campanha') : c.link;
-      texto.innerHTML = '';
-      var s = document.createElement('span'); s.textContent = c.texto + ' ';
-      texto.appendChild(s);
-      if (c.cupom) { var cu = document.createElement('strong'); cu.textContent = 'Cupom: ' + c.cupom + ' '; texto.appendChild(cu); }
-      if (link) { var a = document.createElement('a'); a.href = link; a.textContent = c.textoLink || 'Ver oferta'; texto.appendChild(a); }
-      faixa.hidden = false;
-      faixa.querySelector('.faixa-campanha__fechar').addEventListener('click', function () {
-        faixa.hidden = true; guarda.gravar(chave, '1');
-      });
-    }
+  /* arte temporária da campanha: selo nos botões de compra, placa sobre a arte do livro
+     e o bloco do cupom (com o marca-páginas de presente) perto do preço */
+  function comCupom(el, texto, cupom) {
+    /* "{cupom}" no texto do config vira o código em destaque */
+    el.textContent = '';
+    String(texto).split('{cupom}').forEach(function (parte, i) {
+      if (i > 0) { var b = document.createElement('strong'); b.className = 'cupom'; b.textContent = cupom || ''; el.appendChild(b); }
+      if (parte) el.appendChild(document.createTextNode(parte));
+    });
   }
+  IVR.comCupom = comCupom;
+  if (camp) {
+    html.classList.add('campanha-ativa');
+    $$('[data-campanha-nome]').forEach(function (el) { if (camp.nome) el.textContent = camp.nome; });
+    $$('[data-campanha-preco]').forEach(function (el) { if (preco.por) el.textContent = preco.por; });
+    $$('[data-campanha-cupom]').forEach(function (el) { if (camp.cupom) el.textContent = camp.cupom; });
+    $$('[data-campanha-com-cupom]').forEach(function (el) { el.hidden = !camp.cupom; });
+    $$('[data-campanha-chamada]').forEach(function (el) { if (camp.chamada) comCupom(el, camp.chamada, camp.cupom); });
+    $$('[data-campanha-artista]').forEach(function (el) { if (camp.cupomHistoria) comCupom(el, camp.cupomHistoria, camp.cupom); else el.hidden = true; });
+    $$('[data-campanha-brinde]').forEach(function (el) {
+      var t = el.querySelector('[data-campanha-brinde-texto]');
+      if (camp.brinde && t) t.textContent = camp.brinde; else el.hidden = true;
+    });
+    $$('[data-campanha-selo], [data-campanha-placa], [data-campanha-bloco]').forEach(function (el) { el.hidden = false; });
+  }
+
+  /* Natal: a frase das datas de corte da entrega aparece perto do preço quando a equipe preencher o config */
+  (function () {
+    var N = C.natal || {};
+    if (!N.texto) return;
+    var agora = Date.now(), ini = Date.parse(N.inicio || ''), fim = Date.parse(N.fim || '');
+    var noPeriodo = (isNaN(ini) || agora >= ini) && (isNaN(fim) || agora <= fim);
+    if (!noPeriodo && params.get('campanha') !== 'previa') return;
+    $$('[data-natal]').forEach(function (el) { el.textContent = N.texto; el.hidden = false; });
+  })();
 
   /* =========================================================================
      Contato e redes vindos do config
@@ -215,9 +268,16 @@
     if (K.videochamadaLibras) { el.hidden = false; var a = el.querySelector('a'); if (a) a.href = K.videochamadaLibras; }
     else el.hidden = true;
   });
-  $$('[data-beneficio-newsletter]').forEach(function (el) {
-    if (C.beneficioNewsletter) { el.hidden = false; var t = el.querySelector('[data-valor]') || el; t.textContent = C.beneficioNewsletter; }
-    else el.hidden = true;
+  /* assuntos do WhatsApp com mensagem pronta */
+  $$('[data-wa]').forEach(function (a) {
+    var msg = (K.whatsappAssuntos || {})[a.getAttribute('data-wa')] || K.whatsappMensagem || '';
+    if (K.whatsapp) a.href = 'https://wa.me/' + K.whatsapp + (msg ? '?text=' + encodeURIComponent(msg) : '');
+  });
+  /* outras redes: só aparecem com o link preenchido */
+  $$('[data-rede]').forEach(function (el) {
+    var url = K[el.getAttribute('data-rede')];
+    var a = el.tagName === 'A' ? el : el.querySelector('a');
+    if (url && a) { a.href = url; el.hidden = false; } else el.hidden = true;
   });
 
   /* =========================================================================
@@ -433,32 +493,46 @@
   });
 
   /* =========================================================================
-     Marcadores de AR: ver em tela cheia para escanear
+     Vídeos leves: só carregam quando a pessoa clica (sem som, sem tocar sozinho)
      ========================================================================= */
-  var telaCheia = null, telaGatilho = null;
   document.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-tela-cheia]');
-    if (!b || typeof HTMLDialogElement === 'undefined') return;
+    var a = e.target.closest('[data-clipe]');
+    if (!a) return;
     e.preventDefault();
-    if (!telaCheia) {
-      telaCheia = document.createElement('dialog');
-      telaCheia.className = 'tela-cheia';
-      telaCheia.setAttribute('aria-label', 'Imagem em tela cheia para escanear com o app');
-      telaCheia.innerHTML = '<div class="tela-cheia__miolo"><div class="tela-cheia__topo"><p class="tela-cheia__dica">Aumente o brilho da tela. Aponte o app para a imagem, a uns 30 cm.</p>' +
-        '<button type="button" class="icone-botao" aria-label="Fechar tela cheia">' + ICONES.fechar + '</button></div><div class="tela-cheia__imagem"><img alt=""></div></div>';
-      document.body.appendChild(telaCheia);
-      telaCheia.querySelector('button').addEventListener('click', function () { telaCheia.close(); });
-      telaCheia.addEventListener('close', function () {
-        if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
-        if (telaGatilho) telaGatilho.focus();
-      });
-    }
-    telaGatilho = b;
-    var img = telaCheia.querySelector('img');
-    img.src = b.getAttribute('data-tela-cheia');
-    img.alt = b.getAttribute('data-alt') || '';
-    telaCheia.showModal();
-    if (telaCheia.requestFullscreen) telaCheia.requestFullscreen().catch(function () {});
+    var quadro = a.closest('.clipe__quadro');
+    if (!quadro) return;
+    var v = document.createElement('video');
+    v.src = a.getAttribute('data-clipe');
+    v.controls = true; v.playsInline = true; v.muted = true; v.preload = 'auto';
+    v.setAttribute('playsinline', '');
+    var leg = a.getAttribute('aria-label') || '';
+    v.setAttribute('aria-label', leg.replace('Assistir ao vídeo: ', 'Vídeo: '));
+    quadro.innerHTML = '';
+    quadro.appendChild(v);
+    quadro.classList.add('clipe__quadro--tocando');
+    var p = v.play();
+    if (p && p.catch) p.catch(function () { /* o navegador pediu um toque: os controles já estão à vista */ });
+    v.focus();
+  });
+
+  /* =========================================================================
+     Últimos posts do Instagram (lista manual no config; sem lista, fica o convite)
+     ========================================================================= */
+  $$('[data-instagram-posts]').forEach(function (lista) {
+    var posts = C.instagramPosts || [];
+    if (!posts.length) return;
+    lista.innerHTML = '';
+    posts.slice(0, 6).forEach(function (p) {
+      if (!p || !p.imagem || !p.link) return;
+      var li = document.createElement('li');
+      li.innerHTML = '<a class="insta__post" href=""><img alt="" loading="lazy" decoding="async" width="400" height="400"><span class="visualmente-oculto"></span></a>';
+      li.querySelector('a').href = p.link;
+      li.querySelector('img').src = (/^https?:/.test(p.imagem) ? '' : raiz) + p.imagem;
+      li.querySelector('.visualmente-oculto').textContent = 'Post no Instagram: ' + (p.texto || 'abrir no Instagram');
+      lista.appendChild(li);
+    });
+    var box = lista.closest('[data-instagram]');
+    if (box) box.classList.add('insta--posts');
   });
 
   /* =========================================================================
@@ -470,15 +544,18 @@
     fetch(raiz + 'blog/posts.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : Promise.reject(); }).then(function (posts) {
       if (!Array.isArray(posts) || !posts.length) return;
       lista.innerHTML = '';
-      posts.slice(0, qtd).forEach(function (p) {
+      var destaque = lista.classList.contains('posts--blog') || lista.classList.contains('posts--destaque');
+      posts.slice(0, qtd).forEach(function (p, i) {
         var li = document.createElement('li');
         var url = IVR.urlInterna('blog/' + p.pasta + '/');
         var nivel = lista.getAttribute('data-nivel') === 'h2' ? 'h2' : 'h3';
         li.innerHTML = '<article class="post-cartao"><img alt="" loading="lazy" decoding="async" width="640" height="360">' +
           '<div class="post-cartao__miolo"><p class="data"></p><' + nivel + '><a></a></' + nivel + '><p class="resumo"></p></div></article>';
         var img = li.querySelector('img');
-        img.src = raiz + p.capa;
-        img.alt = p.capaAlt || '';
+        /* o primeiro cartão é maior: usa a capa grande */
+        img.src = raiz + (i === 0 && destaque ? String(p.capa).replace(/-640\.webp$/, '-1280.webp') : p.capa);
+        img.alt = '';
+        if (p.capaFoco) img.style.objectPosition = p.capaFoco;
         li.querySelector('.data').textContent = p.dataExibicao || '';
         var a = li.querySelector(nivel + ' a'); a.href = url; a.textContent = p.titulo;
         li.querySelector('.resumo').textContent = p.resumo || '';
@@ -517,7 +594,8 @@
       xr = w - Math.min(150, w * 0.12);
       d.push('M' + (x0 - y1 - 2) + ' -2L' + x0 + ' ' + y1 + 'L' + xr + ' ' + y1 + 'L' + (w + 2) + ' ' + (y1 + (w + 2 - xr)));
     }
-    if ((tipo === 'hero' || tipo === 'base') && !estreito) {
+    /* a linha da esquerda só aparece quando sobra margem ao lado do texto (no tablet ela encostava no texto) */
+    if ((tipo === 'hero' && w >= 1000) || (tipo === 'base' && !estreito)) {
       bx = Math.max(14, Math.min(30, w * 0.022));
       var yIni = h * 0.58, yFim = h - Math.min(90, h * 0.12);
       d.push('M-2 ' + (yIni - bx - 2) + 'L' + bx + ' ' + yIni + 'L' + bx + ' ' + yFim + 'L' + (bx + (h + 2 - yFim)) + ' ' + (h + 2));

@@ -5,7 +5,16 @@
     "dataExibicao": "2026",
     "resumo": "Fomos reconhecidos no Prêmio Sebrae Startups 2026.",
     "capa": "assets/img/blog/premio-sebrae-startups-2026-640.webp",
-    "capaAlt": "Ilustração de Signária: Seu Zé, a Maga Aia e os animais do zoológico juntos, num dia de sol."
+    "capaAlt": "Ilustração de Signária: a Maga Aia faz magia com as mãos na praça da cidade, com um brilho azul no ar."
+  },
+  {
+    "pasta": "inclusivr-na-feira-da-diversidade-2026",
+    "titulo": "A InclusiVR na Feira da Diversidade",
+    "dataExibicao": "Junho de 2026",
+    "resumo": "Levamos o livro SinalizaAção e a demonstração de realidade virtual para o público.",
+    "capa": "assets/img/blog/feira-da-diversidade-2026-640.webp",
+    "capaAlt": "Uma visitante com óculos de realidade virtual experimenta a demonstração no estande da InclusiVR, ao lado de uma mesa roxa com o livro e um notebook.",
+    "capaFoco": "22% 50%"
   },
   {
     "pasta": "signaria-ia-finalista-tools-competition",
@@ -29,6 +38,6 @@
     "dataExibicao": "10 de dezembro de 2025",
     "resumo": "Lançamos o primeiro livro da Coletânea LIBROS, com leitura do Igor Bucioli.",
     "capa": "assets/img/blog/lancamento-do-livro-sinalizaacao-640.webp",
-    "capaAlt": "O livro SinalizaAção: Animais em Voga, com cartas de runas e folhas tropicais ao redor, sobre um fundo de floresta."
+    "capaAlt": "O livro SinalizaAção: Animais em Voga sobre uma mesa branca, com a Maga Aia na capa."
   }
 ]

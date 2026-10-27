@@ -8,11 +8,11 @@
        2. "Esconde-esconde": o elefante se esconde atrás de uma árvore fininha.
      A cena começa quando o palco aparece na tela e para sozinha. Um clique no
      palco (ou o botão redondo) mostra a outra cena.
-   - As mãos ficam no bolso ou segurando a rede: nenhum gesto vira sinal.
+   - Os dois braços ficam sempre à vista e acompanham o corpo; as mãos ficam\n     soltas ou segurando a rede: nenhum gesto vira sinal.
    - Com "reduzir movimento" ligado no aparelho, o palco mostra uma cena parada.
    - Para tirar o palco do site: recursos.palco = false no config.js.
    - IVR.personagens.ze('bolso' | 'rede') e IVR.personagens.elefante() devolvem o
-     SVG para outras animações (a travessia do Seu Zé no celular usa).
+     SVG para outras animações.
    ============================================================================= */
 (function () {
   'use strict';
@@ -53,13 +53,17 @@
     '<circle cx="101.5" cy="210" r="4.5" fill="#74d0d8" stroke="#1a1a1a" stroke-width="2"/>',
     '<circle cx="118.5" cy="210" r="4.5" fill="#74d0d8" stroke="#1a1a1a" stroke-width="2"/>',
     '</g>',
-    '<g class="ze-bracos-bolso">',
-    '<path d="M76 180 82 226" stroke="#1a1a1a" stroke-width="22" stroke-linecap="round"/>',
-    '<path d="M76 180 82 226" stroke="#6f6b14" stroke-width="14" stroke-linecap="round"/>',
-    '<path class="rig-f" d="M68 228q15-7 28 0l-2 11q-12-4-24 0z" fill="#7e2410"/>',
-    '<path d="M144 180 138 226" stroke="#1a1a1a" stroke-width="22" stroke-linecap="round"/>',
-    '<path d="M144 180 138 226" stroke="#7b7716" stroke-width="14" stroke-linecap="round"/>',
-    '<path class="rig-f" d="M124 228q15-7 28 0l-2 11q-12-4-24 0z" fill="#7e2410"/>',
+    '<g class="ze-braco ze-braco--tras">',
+    '<path d="M70 184 56 228" stroke="#1a1a1a" stroke-width="22" stroke-linecap="round"/>',
+    '<path d="M70 184 56 228" stroke="#5f5c12" stroke-width="14" stroke-linecap="round"/>',
+    '<circle cx="55" cy="236" r="9" fill="#fedbb6" stroke="#1a1a1a" stroke-width="4"/>',
+    '<path d="M51 234q4 3 8 0" fill="none" stroke="#1a1a1a" stroke-width="2" opacity=".4" stroke-linecap="round"/>',
+    '</g>',
+    '<g class="ze-braco ze-braco--frente-livre">',
+    '<path d="M150 184 164 228" stroke="#1a1a1a" stroke-width="22" stroke-linecap="round"/>',
+    '<path d="M150 184 164 228" stroke="#7b7716" stroke-width="14" stroke-linecap="round"/>',
+    '<circle cx="165" cy="236" r="9.5" fill="#fedbb6" stroke="#1a1a1a" stroke-width="4"/>',
+    '<path d="M161 234q4 3 8 0" fill="none" stroke="#1a1a1a" stroke-width="2" opacity=".4" stroke-linecap="round"/>',
     '</g>',
     '<g class="ze-cabeca">',
     '<path class="rig-f" d="M62 92c-10 6-12 22-4 34 4 6 10 8 14 6l6-36z" fill="#f6f2ea"/>',
@@ -127,11 +131,6 @@
     '<path class="rig-t" d="M112 300c0-6 5-9 13-9 13 0 23 6 23 14 0 6-6 9-18 9h-12c-5 0-7-4-6-14z" fill="#5a3417"/>',
     '<path d="M115 309h31" stroke="#3a210d" stroke-width="3" stroke-linecap="round"/>',
     '</g>',
-    '<g class="ze-braco ze-braco--tras">',
-    '<path d="M74 178 64 216" stroke="#1a1a1a" stroke-width="22" stroke-linecap="round"/>',
-    '<path d="M74 178 64 216" stroke="#5f5c12" stroke-width="14" stroke-linecap="round"/>',
-    '<circle cx="63" cy="224" r="9" fill="#e9c29c" stroke="#1a1a1a" stroke-width="4"/>',
-    '</g>',
     '<g class="ze-tronco">',
     '<path class="rig-t" d="M62 206c0-30 20-46 48-46s48 16 48 46v8H62z" fill="#7b7716"/>',
     '<path class="rig-t" d="M58 206h104l4 50c1 14-21 20-56 20s-57-6-56-20z" fill="#9b2c12"/>',
@@ -140,6 +139,12 @@
     '<rect x="98" y="192" width="24" height="14" rx="3" fill="#7e2410" stroke="#1a1a1a" stroke-width="3"/>',
     '<circle cx="88" cy="190" r="4.5" fill="#f6c744" stroke="#1a1a1a" stroke-width="2.5"/>',
     '<circle cx="132" cy="190" r="4.5" fill="#f6c744" stroke="#1a1a1a" stroke-width="2.5"/>',
+    '</g>',
+    '<g class="ze-braco ze-braco--tras">',
+    '<path d="M70 184 56 228" stroke="#1a1a1a" stroke-width="22" stroke-linecap="round"/>',
+    '<path d="M70 184 56 228" stroke="#5f5c12" stroke-width="14" stroke-linecap="round"/>',
+    '<circle cx="55" cy="236" r="9" fill="#fedbb6" stroke="#1a1a1a" stroke-width="4"/>',
+    '<path d="M51 234q4 3 8 0" fill="none" stroke="#1a1a1a" stroke-width="2" opacity=".4" stroke-linecap="round"/>',
     '</g>',
     '<g class="ze-cabeca">',
     '<path class="rig-f" d="M62 92c-10 6-12 22-4 34 4 6 10 8 14 6l6-36z" fill="#f6f2ea"/>',

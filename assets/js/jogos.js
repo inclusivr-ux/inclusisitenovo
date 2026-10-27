@@ -1,5 +1,5 @@
 /* =============================================================================
-   InclusiVR — minijogos grátis com as cartas do livro (página /app/jogos/)
+   InclusiVR — minijogos grátis com as cartas do livro (página /apps/jogos/)
    1. Memória das runas   2. Qual é o sinal?   3. As vogais fugiram!
    Usa só os sinais que já estão nas cartas do livro (vogais e 5 animais).
    Jogável com toque, mouse e teclado. Retorno com palavra + ícone (nunca só cor).
@@ -58,7 +58,8 @@
 
   var ICONE_ISSO = '<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><circle cx="20" cy="12" r="5"/><circle cx="12" cy="20" r="5"/><circle cx="20" cy="20" r="5"/><path d="M20 25c1.5 2.5 3.5 3.5 6 3.5"/></svg>';
   var ICONE_QUASE = '<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M25 16a9 9 0 1 1-3-6.7"/><path d="M23 4v6h-6"/></svg>';
-  var RUNA_VERSO = '<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="15" y="9" width="11" height="11" rx="1" transform="rotate(45 20.5 14.5)" fill="currentColor"/><rect x="8" y="23" width="7" height="7" rx="1" transform="rotate(45 11.5 26.5)" fill="currentColor" opacity=".75"/><rect x="25" y="25" width="5" height="5" rx="1" transform="rotate(45 27.5 27.5)" fill="currentColor" opacity=".6"/></svg>';
+  /* verso das cartas: o logo da InclusiVR entalhado em pedra, aceso com a magia da LIBRAS */
+  var VERSO = '<img alt="" src="' + raiz + 'assets/img/cartas/verso-pedra-300.webp" width="300" height="440" decoding="async">';
 
   function retorno(el, tipo, texto) {
     el.className = 'jogo__retorno' + (tipo ? ' jogo__retorno--' + tipo : '');
@@ -115,13 +116,31 @@
         b.className = 'carta-jogo';
         b.setAttribute('aria-pressed', 'false');
         b.setAttribute('data-i', i);
-        b.innerHTML = '<span class="carta-jogo__miolo"><span class="carta-jogo__face carta-jogo__verso">' + RUNA_VERSO + '</span>' +
+        b.innerHTML = '<span class="carta-jogo__miolo"><span class="carta-jogo__face carta-jogo__verso">' + VERSO + '</span>' +
           '<span class="carta-jogo__face carta-jogo__frente"><img alt="" src="' + c.src + '" width="300" height="440" loading="lazy" decoding="async"></span></span>';
         b.setAttribute('aria-label', rotulo(i));
         tab.appendChild(b);
       });
       placar();
       retorno(elRet, '', 'Vire duas cartas. Forme o par: a letra ou o animal com o seu sinal.');
+      embaralhando();
+    }
+    /* as cartas se juntam no meio da mesa e voltam embaralhadas (até ~1,3 s) */
+    function embaralhando() {
+      if (!permitido() || typeof tab.animate !== 'function') return;
+      var rt = tab.getBoundingClientRect();
+      var cx = rt.left + rt.width / 2, cy = rt.top + rt.height / 2;
+      Array.prototype.forEach.call(tab.children, function (b, k) {
+        var r = b.getBoundingClientRect();
+        var dx = cx - (r.left + r.width / 2), dy = cy - (r.top + r.height / 2);
+        var giro = (Math.random() * 24 - 12).toFixed(1);
+        b.animate([
+          { transform: 'translate(0, 0) rotate(0deg)' },
+          { transform: 'translate(' + dx.toFixed(0) + 'px, ' + dy.toFixed(0) + 'px) rotate(' + giro + 'deg)', offset: .42 },
+          { transform: 'translate(' + (dx * .9).toFixed(0) + 'px, ' + (dy * .9).toFixed(0) + 'px) rotate(' + (-giro) + 'deg)', offset: .56 },
+          { transform: 'translate(0, 0) rotate(0deg)' }
+        ], { duration: 1100, delay: k * 18, easing: 'cubic-bezier(.45, 0, .25, 1)' });
+      });
     }
     function virar(i) {
       var c = cartas[i], b = tab.children[i];
@@ -294,7 +313,7 @@
     raizJogo.innerHTML =
       '<div class="jogo vogais">' +
       '<div class="jogo__topo"><p class="jogo__placar">Palavra <span data-num>1</span> de <span data-total>5</span></p>' +
-      '<label class="opcao"><input type="checkbox" data-letras> Mostrar a letra embaixo de cada sinal</label></div>' +
+      '<label class="opcao" data-ajuda hidden><input type="checkbox" data-letras> Mostrar a letra embaixo de cada sinal</label></div>' +
       '<div class="qual__pergunta"><div class="vogais__cena"><img alt="" width="480" height="360" data-cena></div>' +
       '<div><p class="jogo__dica" tabindex="-1" data-enunciado>As vogais fugiram da palavra! Escolha o sinal da vogal que falta.</p>' +
       '<p class="vogais__palavra" data-palavra></p></div></div>' +
@@ -307,6 +326,16 @@
     var elRet = raizJogo.querySelector('[data-retorno]'), elAn = raizJogo.querySelector('[data-anuncio]');
     var btProx = raizJogo.querySelector('[data-proxima]'), btDeNovo = raizJogo.querySelector('[data-reiniciar]');
     var chkLetras = raizJogo.querySelector('[data-letras]');
+    var elAjuda = raizJogo.querySelector('[data-ajuda]');
+    /* a ajuda (mostrar a letra) só aparece depois de alguns erros: sem isso, fica fácil demais */
+    var ERROS_PARA_AJUDA = 3, erros = 0;
+    function contarErro() {
+      erros++;
+      if (erros >= ERROS_PARA_AJUDA && elAjuda.hidden) {
+        elAjuda.hidden = false;
+        anunciar(elAn, 'Precisa de uma ajuda? Agora você pode mostrar a letra embaixo de cada sinal.');
+      }
+    }
     VOGAIS.forEach(function (v) {
       var c = POR_ID[v.toLowerCase()];
       var b = document.createElement('button');
@@ -324,7 +353,12 @@
         b.setAttribute('aria-label', (chkLetras.checked ? 'Letra ' + b.getAttribute('data-letra') + '. ' : '') + c.altSinal.replace('Carta de sinal: ', 'Sinal: '));
       });
     });
-    function iniciar() { lista = embaralhar(PALAVRAS); p = 0; btDeNovo.hidden = true; palavra(false); }
+    function iniciar() {
+      lista = embaralhar(PALAVRAS); p = 0; btDeNovo.hidden = true;
+      erros = 0; elAjuda.hidden = true;
+      if (chkLetras.checked) { chkLetras.checked = false; chkLetras.dispatchEvent(new Event('change')); }
+      palavra(false);
+    }
     function desenhar() {
       var w = lista[p].palavra;
       elPal.innerHTML = '';
@@ -385,6 +419,7 @@
         var quase = 'QUASE! Esse é o sinal da letra ' + letra + '. Aqui falta outra vogal.';
         retorno(elRet, 'quase', quase);
         anunciar(elAn, quase);
+        contarErro();
       }
     });
     btProx.addEventListener('click', function () { p++; palavra(true); });
