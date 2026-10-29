@@ -141,6 +141,104 @@
     document.addEventListener('inclusivr:movimento', function (e) { if (!e.detail.permitido) { concluirHolo(); pararSats(); holo.classList.remove('holo--brilha'); } });
   }
 
+  /* ---------- as esferas giram nas órbitas ao passar o mouse sobre o logo (pedido de 28/10) ----------
+     Só enquanto o mouse está sobre a área do logo (no celular, um toque faz girar por 2 s).
+     Cada esfera passa por trás da mão na metade de cima da órbita e pela frente na de baixo.
+     Ao sair, elas desaceleram e voltam ao lugar de sempre. Com "reduzir movimento", nada gira.
+     recursos.orbitasNoMouse: false desliga. */
+  var holoGiro = R.orbitasNoMouse !== false ? document.querySelector('[data-holo]') : null;
+  var palcoGiro = holoGiro && holoGiro.querySelector('.holo__palco');
+  if (palcoGiro && window.requestAnimationFrame) {
+    var svgAtras = holoGiro.querySelector('.holo__orbitas--atras');
+    var svgFrente = holoGiro.querySelector('.holo__orbitas--frente');
+    var VELOCIDADE = { a: 64, b: 50, c: 78 };   /* graus por segundo, um pouco diferentes para parecer natural */
+    var esferas = $$('[data-holo-sat]', holoGiro).map(function (g) {
+      var anel = g.parentNode.querySelector('.holo__anel');
+      var letra = anel && /holo__anel--([abc])/.exec(anel.getAttribute('class') || '');
+      letra = letra ? letra[1] : 'a';
+      var grupoDe = function (svg) { var p = svg && svg.querySelector('.holo__anel--' + letra); return p ? p.parentNode : null; };
+      return {
+        g: g, grupoAtras: grupoDe(svgAtras), grupoFrente: grupoDe(svgFrente),
+        cx: +g.getAttribute('data-cx'), cy: +g.getAttribute('data-cy'), rx: +g.getAttribute('data-rx'), ry: +g.getAttribute('data-ry'),
+        repouso: +g.getAttribute('data-ate'), ang: +g.getAttribute('data-ate'), w: VELOCIDADE[letra] || 60
+      };
+    });
+    var colocar = function (e) {
+      var t = e.ang * Math.PI / 180;
+      var x = e.cx + e.rx * Math.cos(t), y = e.cy + e.ry * Math.sin(t);
+      e.g.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ')');
+      /* metade de cima da órbita (seno negativo) fica atrás da mão; a de baixo, na frente */
+      var destino = Math.sin(t) < 0 ? e.grupoAtras : e.grupoFrente;
+      if (destino && e.g.parentNode !== destino) destino.appendChild(e.g);
+    };
+    var estado = 'parado', ritmo = 0, ultimo = 0, quadroGiro = 0, fimToque = 0, assentar = null;
+    var passoGiro = function (agora) {
+      var dt = ultimo ? Math.min(.05, (agora - ultimo) / 1000) : 0;
+      ultimo = agora;
+      if (estado === 'girando') {
+        ritmo = Math.min(1, ritmo + dt * 2.2);   /* acelera em menos de meio segundo */
+        if (fimToque && agora > fimToque) { fimToque = 0; soltar(); }
+        esferas.forEach(function (e) { e.ang = (e.ang + e.w * ritmo * dt) % 360; colocar(e); });
+      } else if (estado === 'assentando' && assentar) {
+        var k = Math.min(1, (agora - assentar.t0) / assentar.dur);
+        var suave = 1 - Math.pow(1 - k, 3);
+        esferas.forEach(function (e, i) { e.ang = (assentar.de[i] + assentar.falta[i] * suave) % 360; colocar(e); });
+        if (k >= 1) { estado = 'parado'; assentar = null; holoGiro.classList.remove('holo--girando'); }
+      }
+      if (estado !== 'parado') quadroGiro = requestAnimationFrame(passoGiro);
+      else { ultimo = 0; quadroGiro = 0; }
+    };
+    var podeGirar = function () {
+      return permitido() && !holoGiro.classList.contains('holo--prep') && !holoGiro.classList.contains('holo--ativo');
+    };
+    var girar = function () {
+      if (!podeGirar()) return;
+      estado = 'girando';
+      holoGiro.classList.add('holo--girando');
+      if (!quadroGiro) quadroGiro = requestAnimationFrame(passoGiro);
+    };
+    var soltar = function () {
+      if (estado !== 'girando') return;
+      /* segue em frente até o lugar de repouso de cada esfera, desacelerando */
+      var de = [], falta = [], maior = 0;
+      esferas.forEach(function (e) {
+        var f = ((e.repouso - e.ang) % 360 + 360) % 360;
+        if (f < 40) f += 360;   /* sem freada brusca: dá mais uma volta curta */
+        de.push(e.ang); falta.push(f);
+        maior = Math.max(maior, f / e.w);
+      });
+      estado = 'assentando';
+      assentar = { t0: performance.now(), dur: Math.min(2600, Math.max(900, maior * 1000 * 1.6)), de: de, falta: falta };
+      if (!quadroGiro) quadroGiro = requestAnimationFrame(passoGiro);
+    };
+    palcoGiro.addEventListener('pointerenter', function (ev) { if (ev.pointerType !== 'touch') girar(); });
+    palcoGiro.addEventListener('pointerleave', function (ev) { if (ev.pointerType !== 'touch') soltar(); });
+    palcoGiro.addEventListener('pointerup', function (ev) {
+      if (ev.pointerType !== 'touch') return;
+      girar();
+      fimToque = performance.now() + 2000;
+    });
+    document.addEventListener('inclusivr:movimento', function (e) {
+      if (e.detail.permitido) return;
+      cancelAnimationFrame(quadroGiro); quadroGiro = 0; ultimo = 0; estado = 'parado'; assentar = null;
+      holoGiro.classList.remove('holo--girando');
+      esferas.forEach(function (es) { es.ang = es.repouso; colocar(es); });
+    });
+  }
+
+  /* ---------- cartas grátis (página do livro): o leque abre e fecha uma vez quando aparece ----------
+     Ajuda a mostrar que as cartas são interativas (no computador, abrem também ao passar o mouse). Menos de 1,5 s. */
+  $$('[data-leque]').forEach(function (leque) {
+    if (!permitido()) return;
+    quandoVisivel(leque, .6, function () {
+      if (!permitido()) return;
+      setTimeout(function () {
+        leque.classList.add('leque--chama');
+        setTimeout(function () { leque.classList.remove('leque--chama'); }, 900);
+      }, 350);
+    });
+  });
+
   /* ---------- a abelha do livro voando ---------- */
   var faixas = $$('[data-abelha]');
   if (faixas.length && R.abelha !== false && 'IntersectionObserver' in window) {

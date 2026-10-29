@@ -1,6 +1,7 @@
 [
   {
     "pasta": "premio-sebrae-startups-2026",
+    "data": "2026",
     "titulo": "InclusiVR entre as 1.000 melhores startups do país",
     "dataExibicao": "2026",
     "resumo": "Fomos reconhecidos no Prêmio Sebrae Startups 2026.",
@@ -9,6 +10,7 @@
   },
   {
     "pasta": "inclusivr-na-feira-da-diversidade-2026",
+    "data": "2026-06",
     "titulo": "A InclusiVR na Feira da Diversidade",
     "dataExibicao": "Junho de 2026",
     "resumo": "Levamos o livro SinalizaAção e a demonstração de realidade virtual para o público.",
@@ -18,6 +20,7 @@
   },
   {
     "pasta": "signaria-ia-finalista-tools-competition",
+    "data": "2026-04",
     "titulo": "Signária IA é finalista da Tools Competition",
     "dataExibicao": "2026",
     "resumo": "Ficamos no top 8, entre mais de 1.400 propostas.",
@@ -26,6 +29,7 @@
   },
   {
     "pasta": "sinalizaacao-vr-aprovado-no-proac",
+    "data": "2026-01",
     "titulo": "SinalizaAção VR aprovado no PROAC",
     "dataExibicao": "2026",
     "resumo": "O jogo de realidade virtual em Signária vai sair do papel.",
@@ -34,6 +38,7 @@
   },
   {
     "pasta": "lancamento-do-livro-sinalizaacao",
+    "data": "2025-12-10",
     "titulo": "O livro SinalizaAção chegou!",
     "dataExibicao": "10 de dezembro de 2025",
     "resumo": "Lançamos o primeiro livro da Coletânea LIBROS, com leitura do Igor Bucioli.",

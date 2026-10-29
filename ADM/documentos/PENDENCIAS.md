@@ -4,13 +4,31 @@ O que a equipe precisa enviar, confirmar ou decidir. O site publicado não mostr
 
 Legenda: **[antes de publicar]** = precisa estar resolvido até **26/10/2026** (data da ata; o site sai sem o plugin de LIBRAS). **[até 31/10]** = antes de a Black November começar sozinha, em 1/11 às 0h.
 
+## Rodada de 28/10/2026 (plano de alterações da reunião): o que a equipe precisa enviar ou decidir
+
+Detalhes de cada item no `RELATORIO_DE_ALTERACOES_INCLUSIVR.md` (seção 7). Os textos novos aparecem com o rótulo rosa em `?rascunho=1`.
+
+- [ ] **P1 · Luciano: frase nova da página do livro.** A frase "Será que a magia da LIBRAS vai trazer todo mundo de volta?" continua no site (bloco "Uma história de busca"), porque a reunião pediu para trocá-la, mas não definiu a frase nova. Mandem a frase aprovada.
+- [ ] **P2 · Igor: os dois links do Instagram** (perfil de influenciador e perfil de ilustrador). Hoje o site usa um só, `instagram.com/igorbucioli` (página do livro e bloco do livro no início). Com os dois links, eles entram nos mesmos lugares.
+- [ ] **P3 · Luciano: referência da animação das cartas A, E e I** (vídeo curto, GIF ou gravação de tela). Enquanto isso, as cartas da área de download abrem em leque ao passar o mouse (e uma vez quando aparecem na tela), a mesma mecânica do leque de cartas da versão de 15/10 do site. Se a animação lembrada for outra, a troca é só no CSS.
+- [x] **P4 · Arquivos da Pasta Exemplo:** todos chegaram. "IA.wepm" é o `IA.webp` (a tela do mapa, igual à que o site já tinha). A `IA.png` foi usada só como referência; a composição foi montada com a `aia-3d-380.webp` e a `IA.webp`.
+- [ ] **P5 · Fauston: as 10 cartas.** O site diz "5 vogais (A, E, I, O e U) e 5 animais (abelha, elefante, iguana, onça e urso)", que é o que o PDF das cartas já traz. Confirmem a lista e se o PDF serve para as duas formas de brincar (ele tem as regras dos dois jogos sem celular e o endereço dos minijogos online).
+- [ ] **P6 · Luciano e Victor: fatos da história e dos posts.** Conferir a linha do tempo de Quem somos (2023 a 2026), os textos ampliados do blog (descrição do Prêmio Sebrae Startups, da Tools Competition, trilha K-12, do PROAC/PNAB, a história do PROAC 2024 e as atividades com escolas e associações de surdos no post do VR) e as datas exatas dos posts. A ordem do blog usa as datas aproximadas da memória da empresa (PROAC no início de 2026, Tools em abril e maio de 2026); com as datas exatas, é só preencher o campo `data` no `blog/posts.json`.
+- [ ] **P7 e P8 · cada integrante: nome público e biografia.** Arquivo `BIOGRAFIAS_PARA_REVISAO.md`, uma parte para cada um. Falta a formação do JLeo.
+- [ ] **P9 · Luciano: textos novos de "O problema" e "Nossa abordagem"** (Quem somos). Estão no ar como proposta, sem estatística, com os quatro pilares e a comunidade surda. Aprovem ou mandem a redação final. O mesmo texto foi usado na página em inglês (`/en/`).
+- [ ] **P10 · Victor: botões principais.** Confirmar textos e destinos: "Livro SinalizaAção" (topo do início, leva à página do livro), "Comprar o livro" e "Comprar agora" (loja, com UTM), "Falar com a equipe" nos cards de públicos (contato, com o perfil já marcado: família, escola ou investidor), "Quero ser parceiro" (contato, perfil parceria), "Abrir a realidade aumentada" (`inclusivr.com.br/app`) e "Jogar os minijogos" (`/apps/jogos/`).
+- [ ] **Parceiros (Quem somos):** a reunião pediu para manter Igor Bucioli, Cultura de Acesso e a Associação dos Surdos de Ribeirão Preto e tirar a EMEBS Anne Sullivan. A EMEBS Helen Keller e a Associação de Surdos de São Paulo continuam, porque não houve pedido para tirá-las. Confirmem se ficam.
+- [ ] **Tradução para o inglês:** revisar os textos em inglês (`assets/js/traducao-en.js`), principalmente as biografias, a política de privacidade e os posts. Página nova ou texto novo precisa de uma linha nova no dicionário; o que não estiver lá continua em português.
+- [ ] **Sugestão (texto anterior a esta rodada):** na página dos jogos, "Quero receber um aviso por e-mail quando os novos jogos lançar." tem um erro de concordância. Sugestão: "quando os novos jogos forem lançados". Não foi mudado porque não estava no plano. Se mudarem, troquem também a linha correspondente no `assets/js/traducao-en.js`.
+- [ ] **Seu Zé com o livro (topo do início):** a imagem foi montada com o desenho do Igor (Seu Zé segurando as runas com as duas mãos, cena 10 do livro) e a capa do livro no lugar das runas. Se o Igor quiser redesenhar o Seu Zé segurando o livro, o arquivo novo entra com o mesmo nome (`assets/img/hero/seu-ze-livro-*`).
+
 ## As 7 mais importantes
 
 1. **[antes de publicar] JLeo: publicar sem apagar a pasta `/app` do servidor** (é o app de AR) e testar no celular `inclusivr.com.br/app` e `inclusivr.com.br/apps/` (README, passo 3). Envie só o conteúdo da pasta `inclusivr-site`; a pasta `documentos/` não vai para o servidor.
 2. **[antes de publicar] Victor: autorização de imagem** das fotos reais: o público do pré-lançamento (galeria do início e post do lançamento), a equipe e os palestrantes, o estande e os visitantes da Feira da Diversidade (galeria e post) e a foto do VaiTec (com outras pessoas no palco). Sem autorização, a foto sai (README, item 6). Os vídeos com crianças já saíram do site.
 3. **[até 31/10] Maria e Victor: Black November na loja.** Configurar o cupom **IGOR** na loja: R$ 99,90 no livro de 1/11 às 0h a 30/11 às 23h59, um cupom por pedido; depois, de novo só frete grátis. Conferir se o frete grátis do IGOR vale para qualquer modalidade, porque o site diz, fora de novembro: "Use o cupom IGOR e ganhe frete grátis." (`livro.notaPreco` no `config.js`).
 4. **[até 31/10] Luciano e Victor: o marca-páginas.** O site diz, em novembro: "De presente: um marca-páginas exclusivo de Signária, assinado pelo Igor e pelo Luciano." Se o presente tiver limite (por exemplo, "enquanto durarem os marca-páginas"), escreva isso em `campanha.brinde` no `config.js`. Pelo Código de Defesa do Consumidor, a oferta anunciada vale.
-5. **[antes de publicar] Fauston: revisar os exemplos dos 5 parâmetros** na página da Signária IA, as descrições dos sinais nos textos alternativos (cartas, jogos e galeria dos animais) e o **Recado da Aia** (início, texto novo da 3ª rodada de 22/10). Estão marcados como provisórios.
+5. **[antes de publicar] Fauston: revisar os exemplos dos 5 parâmetros** na página da Signária IA e as descrições dos sinais nos textos alternativos (cartas, jogos e galeria dos animais). Estão marcados como provisórios. (O Recado da Aia saiu do início na rodada de 28/10, item 7 do plano, e não precisa mais de revisão.)
 6. **[antes de publicar] Maria: cupom de 10% dos animais escondidos** (vale fora de novembro). Criar o cupom na loja (limite de 1 uso por CPF) e combinar quem confere os prints do WhatsApp (README, item 11). Em novembro, o mini-jogo leva ao cupom IGOR sozinho.
 7. **[antes de publicar] Maria: endereço dos formulários** (Formspree, Brevo ou outro). Sem ele, os formulários abrem o e-mail da pessoa, o que funciona, mas é menos prático.
 
@@ -27,7 +45,7 @@ Legenda: **[antes de publicar]** = precisa estar resolvido até **26/10/2026** (
 
 ## Luciano
 
-- [ ] Revisar com o Fauston o **Recado da Aia** (3ª rodada de 22/10, sem a ideia do segredo, como pedido): "Oi, eu sou a Aia. Aqui em Signária, a LIBRAS é nossa língua e fonte de magia. Quem aprende um sinal para se aproximar de alguém também ganha essa magia. Vamos sinalizar juntos?"
+- [x] ~~Revisar com o Fauston o **Recado da Aia**~~: não se aplica mais. O recado saiu do início na rodada de 28/10 (item 7 do plano: "remover o texto da Aia"). Texto guardado para um possível retorno: "Oi, eu sou a Aia. Aqui em Signária, a LIBRAS é nossa língua e fonte de magia. Quem aprende um sinal para se aproximar de alguém também ganha essa magia. Vamos sinalizar juntos?"
 - [ ] **Legenda do vídeo do Igor:** num trecho, a legenda (que já vem gravada na imagem) diz "usando tecnologia de Realidade Virtual", mas o livro usa realidade aumentada. O site não mexe na fala do Igor. Se quiserem corrigir, é preciso reeditar a legenda no arquivo original e trocar o vídeo (README, item 7).
 - [ ] Opcional: ligar de novo a **abertura do topo** do início (a mão se projeta e o Seu Zé e a Aia chegam): `recursos.aberturaTopo: true` no `config.js`. Hoje fica parada para que só a abelha se mexa, como pedido.
 - [ ] Confirmar as **datas exatas dos posts**: aprovação no PROAC, finalistas da Tools Competition e Prêmio Sebrae Startups (hoje aparecem só como "2026").
@@ -39,7 +57,7 @@ Legenda: **[antes de publicar]** = precisa estar resolvido até **26/10/2026** (
 
 - [ ] **[antes de publicar]** Revisar os **exemplos dos 5 parâmetros** (Signária IA): configuração de mão (letra A), ponto de articulação (URSO), movimento (ELEFANTE), orientação (IGUANA) e expressões não manuais (rosto da Aia).
 - [ ] **[antes de publicar]** Revisar as descrições dos sinais nos textos alternativos: `assets/js/jogos.js` (campo `altSinal`) e a galeria dos animais na página do app de AR.
-- [ ] **[antes de publicar]** Revisar o Recado da Aia novo (com o Luciano).
+- [x] ~~Revisar o Recado da Aia novo (com o Luciano)~~: o recado saiu do início em 28/10.
 - [ ] Revisar a declaração de **Acessibilidade** com o Victor.
 - [ ] VLibras: continua desligado (a ata decidiu publicar sem o plugin de LIBRAS).
 
@@ -99,7 +117,7 @@ Todos com legenda em português (arquivo `.vtt`), sem música obrigatória e sem
 **3. Passo a passo do app (página do app de AR).**
 > Abra inclusivr.com.br/app no celular ou no tablet. Não precisa instalar. Permita a câmera. Abra o livro numa página da direita e aponte o celular, a uns 30 centímetros. Uma página por vez. Quando o animal aparecer, toque no botão do intérprete para ver o sinal em LIBRAS.
 
-**4. Recado da Aia (início, ao lado do balão).**
+**4. Recado da Aia (saiu do início em 28/10; só grave se o recado voltar).**
 > Oi, eu sou a Aia. Aqui em Signária, a LIBRAS é nossa língua e fonte de magia. Quem aprende um sinal para se aproximar de alguém também ganha essa magia. Vamos sinalizar juntos?
 
 Depois de gravar: colocar os arquivos em `assets/video/` e preencher `videosLibras` no `config.js` (README, item 7).

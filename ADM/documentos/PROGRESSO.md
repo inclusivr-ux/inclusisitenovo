@@ -1,6 +1,16 @@
 # Progresso
 
-Situação em 22/10/2026: versão com a Black November do briefing da Matraca, a página inicial nova e as alterações do segundo PDF dos sócios (3ª rodada). Meta: publicar até 26/10; a campanha começa sozinha em 1/11.
+Situação em 29/10/2026: versão com o plano de alterações da reunião de 28/10 (4ª rodada), sobre a Black November do briefing da Matraca e as rodadas anteriores. A campanha começa sozinha em 1/11.
+
+## Feito na 4ª rodada (plano da reunião de 28/10, entregue em 29/10)
+
+- Botão EN que só traduz: todas as páginas trocam para o inglês no lugar, com o mesmo layout e o botão Comprar; a escolha vale para as próximas páginas.
+- Início: caixa da Black November abaixo do "Livro SinalizaAção", Seu Zé segurando o livro com as duas mãos, esferas do logo girando no mouse, cabelo da Aia corrigido, livro antes de Signária, atributos em cards, Signária só com a cidade e a cartela, "Próximos lançamentos" com o vídeo do VR (leve, sem som, com pausa) e a composição da Signária IA, "Para quem" com uma imagem e três cards iguais, logos e galeria revistos, margens revistas, títulos sem ponto final.
+- Livro: oferta da Black November padronizada, sem "Livro 1", composição de 15/10 de volta, cartas com as duas formas de brincar (app primeiro) e leque animado nas cartas.
+- App: duas funções com links separados, "abre no navegador", sem a lista de outros apps, capturas reais dos minijogos; página dos jogos com a escolha por cartões.
+- Quem somos: problema sem estatística, quatro pilares, linha do tempo 2023 a 2026, parceiros revistos com a chamada para parcerias, "Conheça nosso time" com nomes públicos e a foto nova do JLeo, públicos atendidos no lugar do modelo de negócio (sem SaaS). As mesmas decisões na página `/en/`.
+- Blog: cinco posts ampliados, ordem por data e paginação pronta.
+- Documentos: relatório da rodada (com capturas do computador e do celular), `BIOGRAFIAS_PARA_REVISAO.md`, pendências P1 a P10, decisões W39 a W60 e checklist. Kit de imprensa com a foto nova do JLeo.
 
 ## Feito na 3ª rodada de 22/10 (PDF "Alterações do site" e vídeo do Igor)
 

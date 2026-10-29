@@ -2,6 +2,53 @@
 
 Status: **feito** · **parcial** (feito, com um detalhe pendente) · **depende da equipe** (o site está pronto para receber).
 
+## Plano de alterações da reunião de 28/10/2026 (4ª rodada)
+
+| Pedido | Onde e como | Status |
+| --- | --- | --- |
+| 1. EN só traduz, sem mudar o layout | Botão EN troca os textos da página no lugar e vira PT; dicionário `traducao-en.js`; escolha lembrada; `?lang=en` (DECISOES W39) | feito; revisão do inglês pela equipe |
+| 2. Comprar visível em todos os idiomas | O cabeçalho é o mesmo no inglês ("Buy"); teste automático confere o botão em todas as páginas | feito |
+| 3. Caixa Black November abaixo do "Livro SinalizaAção" | Caixa preta com borda lima (BlackExemplo) logo abaixo do botão, em novembro e em `?campanha=previa` (W40) | feito |
+| 4 e A. Seu Zé segurando o livro com as duas mãos, sem apontar | Desenho do Igor da cena 10 (as duas mãos) com a capa do livro no lugar das runas (W41) | feito; se o Igor quiser, desenho próprio com o mesmo nome |
+| 5. Esferas do logo girando no mouse | Giram nas órbitas no hover (2 s no toque) e voltam ao lugar (W42) | feito |
+| 6. Anomalia no cabelo da Aia | Mancha vermelha retirada, sem mexer no resto da arte (W43) | feito |
+| 7 e C. Signária sem o texto da Aia, cidade em destaque, sem botão | Cidade na largura do bloco, só a cartela; Recado da Aia saiu (W44) | feito |
+| 8. Atributos do livro em cards | Quatro cards iguais com ícone, nome e uma linha (W44) | feito |
+| 9. "Próximos lançamentos" | Sobretítulo do bloco; selo do VR "Em breve" (W44) | feito |
+| 10. Composição da Aia (IA.png) com aia3d.webp e IA.webp | Aia 3D + tela do mapa, no desenho da capa da Signária IA (W45) | feito |
+| 11. Vídeo do VR leve no lugar da imagem | MP4 592 KB e WebM 471 KB (antes 1,6 MB), sem som, só na tela, com pausa (W46) | feito |
+| 12. Livro antes de Signária | Ordem do início invertida (W44) | feito |
+| 13. Margens no computador e no celular | Margem do celular 20 px; linha dos logos no conteúdo; botões longos quebram a linha; 19 páginas sem rolagem lateral em 10 larguras (W49) | feito |
+| 14, 16 e 17. Cards de públicos iguais, uma imagem só, links de contato | Praça de Signária + três cards iguais com "Falar com a equipe" (perfil marcado no contato) (W47) | feito |
+| 15. Títulos sem ponto final | 58 títulos e o slogan, em todas as páginas (W50) | feito |
+| B. Livro em destaque | O bloco do livro sobe para logo depois do topo, com os cards de atributos e a oferta (W44) | feito |
+| D. Sem a imagem do jogo do gato | Não entrou (o 7 Gatinhos continua fora do site) | feito |
+| E. Galeria maior e logos certos | Galeria mais larga; logos em placas iguais; Sebrae na versão clara (W48) | feito |
+| 18. Oferta Black November na página do livro | R$ 149,90 riscado, R$ 99,90 e o cupom IGOR em destaque, igual ao início (W51) | feito |
+| 19. Sem "Livro 1 da coletânea" | Saiu da página do livro e do bloco do livro no início (W51) | feito |
+| F. Composição anterior do livro | A montagem de 15/10 (livro aberto, celular e elefante 3D) voltou ao topo da página do livro; arquivos recuperados do histórico (W51) | feito |
+| 20 a 23. Cartas: com o aplicativo primeiro, depois sem celular; 10 cartas e 5 animais | Seção "Cartas para imprimir e brincar" com os dois jeitos, link para os jogos e o PDF (W52) | feito; confirmar a lista das cartas (P5) |
+| 24. Faixa divisória da seção de cartas | A faixa solta virou uma seção integrada (W52) | feito |
+| 25 e G. Animação nos cards de download | Leque das cartas A, E e I no mouse e no foco (interpretação) (W53) | parcial: referência da animação (P3) |
+| 26. Sem "Outros apps da InclusiVR" | Lista retirada da página do app (W54) | feito |
+| 27 a 29. Duas funções, abre no navegador, links separados | Dois cards: realidade aumentada (`/app`) e minijogos (`/apps/jogos/`); aviso "Abre direto no navegador" (W54) | feito |
+| 30. Imagens reais dos minijogos, mais convidativos | Capturas reais dos três jogos; escolha por cartões com a tela de cada jogo (W54) | feito |
+| 31. O problema sem estatística | Texto novo (W55) | feito; aprovação (P9) |
+| 32 e 33. Nossa abordagem com os quatro pilares e a comunidade surda | Tecnologia, brincar, história e inclusão feita com a comunidade surda (W55 e W58) | feito; aprovação (P9) |
+| 34. Sem o trecho de 2023 e o parágrafo seguinte | Retirados (W55) | feito |
+| 35 e 36. Imagem da Signária IA; título e imagem como link, sem "Conhecer" | Cards de produtos clicáveis (W55) | feito |
+| 37 e 38. Nossa história sem subtítulos; marcos 2023 a 2026 | Linha do tempo nova (W55) | feito; conferir fatos (P6) |
+| 39 a 41. Sem Anne Sullivan; parceiros mantidos; "Venha ser parceiro" | Lista e chamada com link para o contato (W55) | feito; confirmar Helen Keller e ASSP |
+| 42 a 45. "Conheça nosso time", alinhamento, nomes, bio da Maria | Título sem subtítulo; fotos e nomes centralizados, biografias à esquerda; nomes públicos; "experiência na área de pesquisa" (W55) | feito; nomes a confirmar (P7) |
+| 46. Revisão individual das biografias | `BIOGRAFIAS_PARA_REVISAO.md`, uma parte por pessoa | depende da equipe (P8) |
+| 47. Sem a seção repetida de parceiros/ilustrador | Seção do Igor retirada; ele segue nos parceiros e na abordagem (W55) | feito |
+| 48 e 49. Públicos no lugar de modelos de negócio, sem SaaS | "Para quem a InclusiVR trabalha": famílias, escolas, empresas e governos (W55) | feito |
+| 50. Posts com mais contexto | Cinco posts reescritos (W57) | feito; conferir fatos (P6) |
+| 51. Visual do blog mantido | Mesmo formato e links | feito |
+| 52 e 53. Ordem por data; paginação depois | Campo `data`; botão "Ver publicações mais antigas" com mais de 9 posts (W57) | feito |
+
+Pendências P1 a P10: `PENDENCIAS.md`, no topo. Relatório completo: `RELATORIO_DE_ALTERACOES_INCLUSIVR.md`.
+
 ## Pedido de 22/10/2026, 3ª rodada (PDF "Alterações do site" e vídeo do Igor)
 
 | Pedido | Onde e como | Status |

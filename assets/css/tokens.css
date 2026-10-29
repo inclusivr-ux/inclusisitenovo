@@ -70,7 +70,7 @@
   /* ---- Espaços ---- */
   --e-1: 4px; --e-2: 8px; --e-3: 12px; --e-4: 16px; --e-5: 20px; --e-6: 24px;
   --e-7: 32px; --e-8: 40px; --e-9: 48px; --e-10: 64px; --e-11: 96px;
-  --gutter: 16px;
+  --gutter: 20px;            /* margem lateral no celular (revisada em 28/10: nada encosta na borda) */
   --largura-max: 1200px;
   --largura-texto: 40rem;
   --secao-y: clamp(3.5rem, 2rem + 6vw, 7.5rem);

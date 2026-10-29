@@ -31,11 +31,13 @@
 <link rel="stylesheet" href="../../assets/css/componentes.css">
 <link rel="stylesheet" href="../../assets/css/paginas.css">
 <link rel="stylesheet" href="../../assets/css/impressao.css" media="print">
+<script src="../../assets/js/idioma.js"></script>
 <script src="../../assets/js/config.js" defer></script>
 <script src="../../assets/js/main.js" defer></script>
 <script src="../../assets/js/formularios.js" defer></script>
 <script src="../../assets/js/animacoes.js" defer></script>
 <script src="../../assets/js/jogos.js" defer></script>
+<script src="../../assets/js/traducao.js" defer></script>
 
 </head>
 <body>
@@ -63,7 +65,7 @@
       <nav class="migalha" aria-label="Você está aqui"><ol><li><a href="../../">Início</a></li><li><a href="../../apps/">App</a></li><li><span aria-current="page">Jogos</span></li></ol></nav>
       <p class="abertura__status"><span class="status status--disponivel">Minijogos grátis</span> <span class="status status--em-breve">Jogos completos em breve</span></p>
       <h1 id="titulo-pagina">Jogos</h1>
-      <p class="lead">Três minijogos grátis com as cartas do livro. Jogue no celular ou no computador, sem instalar.</p>
+      <p class="lead">Três minijogos grátis com as cartas do livro. Eles abrem no navegador do celular, do tablet ou do computador, sem instalar.</p>
       <div class="acoes"><a class="botao botao--ciano" href="#jogar">Jogar agora</a></div>
       
     </div>
@@ -73,10 +75,10 @@
   </div>
 </section><section class="secao sup-orquidea" id="jogar" aria-labelledby="titulo-jogar">
   <div class="container">
-    <div class="cabeca-secao"><p class="sobretitulo">Minijogos</p><h2 id="titulo-jogar">Jogue com as cartas.</h2><p>Use o toque, o mouse ou o teclado. Se errar, tente de novo: não tem castigo.</p></div>
+    <div class="cabeca-secao"><p class="sobretitulo">Minijogos</p><h2 id="titulo-jogar">Jogue com as cartas</h2><p>Use o toque, o mouse ou o teclado. Se errar, tente de novo: não tem castigo.</p></div>
     <div class="abas" data-abas>
-      <div class="abas__lista" role="tablist" aria-label="Minijogos"><button type="button" role="tab" class="abas__aba" id="aba-memoria" aria-controls="jogo-memoria" aria-selected="true">Memória das runas</button><button type="button" role="tab" class="abas__aba" id="aba-qual" aria-controls="jogo-qual" aria-selected="false" tabindex="-1">Qual é o sinal?</button><button type="button" role="tab" class="abas__aba" id="aba-vogais" aria-controls="jogo-vogais" aria-selected="false" tabindex="-1">As vogais fugiram!</button></div>
-      <div class="jogos-palco"><div role="tabpanel" class="jogo-painel" id="jogo-memoria" aria-labelledby="aba-memoria" tabindex="0">
+      <div class="abas__lista jogos-abas" role="tablist" aria-label="Minijogos"><button type="button" role="tab" class="jogos-aba" id="aba-memoria" aria-controls="jogo-memoria" aria-selected="true"><span class="jogos-aba__imagem"><picture><source type="image/webp" srcset="../../assets/img/jogos/jogo-memoria-640.webp 640w"><img src="../../assets/img/jogos/jogo-memoria-640.jpg" alt="" width="640" height="360" decoding="async"></picture></span><span class="jogos-aba__nome">Memória das runas</span><span class="jogos-aba__dica">Forme os pares</span></button><button type="button" role="tab" class="jogos-aba" id="aba-qual" aria-controls="jogo-qual" aria-selected="false" tabindex="-1"><span class="jogos-aba__imagem"><picture><source type="image/webp" srcset="../../assets/img/jogos/jogo-qual-640.webp 640w"><img src="../../assets/img/jogos/jogo-qual-640.jpg" alt="" width="640" height="360" decoding="async"></picture></span><span class="jogos-aba__nome">Qual é o sinal?</span><span class="jogos-aba__dica">Ache o sinal certo</span></button><button type="button" role="tab" class="jogos-aba" id="aba-vogais" aria-controls="jogo-vogais" aria-selected="false" tabindex="-1"><span class="jogos-aba__imagem"><picture><source type="image/webp" srcset="../../assets/img/jogos/jogo-vogais-640.webp 640w"><img src="../../assets/img/jogos/jogo-vogais-640.jpg" alt="" width="640" height="360" decoding="async"></picture></span><span class="jogos-aba__nome">As vogais fugiram!</span><span class="jogos-aba__dica">Complete a palavra</span></button></div>
+      <div class="jogos-palco jogos-mesa"><div role="tabpanel" class="jogo-painel" id="jogo-memoria" aria-labelledby="aba-memoria" tabindex="0">
   <h3 class="jogo-painel__titulo">Memória das runas</h3>
   <p class="jogo__dica">Forme pares: a letra ou o animal com o sinal certo.</p>
   <div data-jogo="memoria"><p class="vaga">Para jogar, ative o JavaScript do navegador.</p></div>
@@ -96,7 +98,7 @@
   <div class="container vem__grade">
     <div class="prosa">
       <p class="sobretitulo">Em desenvolvimento</p>
-      <h2 id="titulo-vem">Novos jogos de Signária.</h2>
+      <h2 id="titulo-vem">Novos jogos de Signária</h2>
       <p>Estamos criando novos jogos no mundo de Signária. Deixe seu e-mail e avisamos quando chegarem.</p>
       <figure class="vem__jogo"><div class="portal " style="aspect-ratio: 16 / 7; --c: 18px"><div class="portal__moldura"><picture><source type="image/webp" srcset="../../assets/img/cenas/cena-09-runas-noite-1024.webp 1024w, ../../assets/img/cenas/cena-09-runas-noite-2000.webp 2000w" sizes="(min-width: 900px) 520px, 92vw"><img src="../../assets/img/cenas/cena-09-runas-noite-1280.jpg" alt="As runas mágicas de LIBRAS brilham em azul na noite de Signária." width="2000" height="1000" loading="lazy" decoding="async"></picture></div></div></figure>
     </div>
@@ -114,7 +116,7 @@
   <svg class="hud hud--fraco" data-hud="canto" aria-hidden="true"></svg>
   <div class="container fechamento__grade">
     <div>
-      <h2 id="fechamento-titulo">Fale com a gente.</h2>
+      <h2 id="fechamento-titulo">Fale com a gente</h2>
       <p>Escreva do jeito que preferir. Respondemos sempre por texto: e-mail, WhatsApp ou Instagram.</p>
       <div class="acoes"><a class="botao botao--ciano" href="../../contato/?perfil=familia">Escrever para a gente</a></div>
     </div>
@@ -141,7 +143,7 @@
       <div class="rodape__marca">
         <img class="marca-escura" src="../../assets/img/marca/inclusivr-branco-ciano-240.webp" width="240" height="334" alt="InclusiVR" loading="lazy">
         <img class="marca-clara" src="../../assets/img/marca/inclusivr-roxo-240.webp" width="240" height="334" alt="InclusiVR" loading="lazy" hidden>
-        <p class="rodape__frase">Conectando mundos por meio das línguas de sinais e tecnologia.</p>
+        <p class="rodape__frase">Conectando mundos por meio das línguas de sinais e tecnologia</p>
       </div>
       <nav aria-label="Rodapé: site">
         <h2>Site</h2>
