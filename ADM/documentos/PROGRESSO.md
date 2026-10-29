@@ -10,6 +10,7 @@ Situação em 29/10/2026: versão com o plano de alterações da reunião de 28/
 - App: duas funções com links separados, "abre no navegador", sem a lista de outros apps, capturas reais dos minijogos; página dos jogos com a escolha por cartões.
 - Quem somos: problema sem estatística, quatro pilares, linha do tempo 2023 a 2026, parceiros revistos com a chamada para parcerias, "Conheça nosso time" com nomes públicos e a foto nova do JLeo, públicos atendidos no lugar do modelo de negócio (sem SaaS). As mesmas decisões na página `/en/`.
 - Blog: cinco posts ampliados, ordem por data e paginação pronta.
+- Logos novos (29/10, depois da entrega): VaiTec novo, e Crie Games, Web Summit Rio e Web Summit Lisboa como logos, no início e em Quem somos.
 - Documentos: relatório da rodada (com capturas do computador e do celular), `BIOGRAFIAS_PARA_REVISAO.md`, pendências P1 a P10, decisões W39 a W60 e checklist. Kit de imprensa com a foto nova do JLeo.
 
 ## Feito na 3ª rodada de 22/10 (PDF "Alterações do site" e vídeo do Igor)

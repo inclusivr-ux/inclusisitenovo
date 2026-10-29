@@ -960,7 +960,10 @@
     "Privacidade | InclusiVR": "Privacy | InclusiVR",
     /* ---- Ajustes e textos acrescentados depois ---- */
     "Inclusão feita com a comunidade surda": "Inclusion built with the deaf community",
-    "Acessibilidade e inclusão começam na criação. A comunidade surda participa da criação e da inovação: as ilustrações são do artista surdo Igor Bucioli, e a Cultura de Acesso acompanha os produtos com a consultoria de profissionais surdos e de diferentes áreas.": "Accessibility and inclusion start with how we create. The deaf community takes part in creation and innovation: the illustrations are by deaf artist Igor Bucioli, and Cultura de Acesso supports our products with advice from deaf professionals and experts from different fields."
+    "Acessibilidade e inclusão começam na criação. A comunidade surda participa da criação e da inovação: as ilustrações são do artista surdo Igor Bucioli, e a Cultura de Acesso acompanha os produtos com a consultoria de profissionais surdos e de diferentes áreas.": "Accessibility and inclusion start with how we create. The deaf community takes part in creation and innovation: the illustrations are by deaf artist Igor Bucioli, and Cultura de Acesso supports our products with advice from deaf professionals and experts from different fields.",
+    "Crie Games, programa do Sebrae": "Crie Games, a Sebrae program",
+    "Web Summit Rio 2026": "Web Summit Rio 2026",
+    "Web Summit Lisboa 2026": "Web Summit Lisbon 2026"
   };
 
   /* ---- Textos montados pelos scripts do site (jogos, animais escondidos, formulários, galeria) ---- */

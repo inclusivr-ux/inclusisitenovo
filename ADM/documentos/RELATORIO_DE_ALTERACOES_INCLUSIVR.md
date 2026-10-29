@@ -11,6 +11,7 @@ Base do trabalho: o PDF "Plano de Alterações do Site InclusiVR" (53 itens nume
 - **Textos novos que dependem de aprovação** (O problema, Nossa abordagem, linha do tempo, biografias e posts) estão no ar como proposta e marcados com um rótulo rosa, que só aparece com `?rascunho=1` no fim do endereço.
 - **Testes:** nenhum problema nas 19 páginas, em 10 larguras de tela, em português e em inglês. Nenhuma violação de acessibilidade no axe-core. Os testes de interação passaram (detalhes na seção 6).
 - **O que a equipe precisa fazer agora:** seção 7 (pendências) e o topo do `PENDENCIAS.md`.
+- **Atualização de 29/10 (logos novos):** os quatro logos enviados depois da entrega (VaiTec, Crie Games, Web Summit Rio e Web Summit Lisboa) já estão no início e em Quem somos (seção 1.8).
 
 Como ver o site no computador: abra a pasta do site com um servidor local (por exemplo, `python3 -m http.server` na pasta do site) e acesse `http://localhost:8000`. Atalhos úteis no fim de qualquer endereço:
 
@@ -24,7 +25,7 @@ O trabalho está no branch `claude/bold-curie-l6853n` do repositório (nenhum pu
 
 ## 1. Alterações realizadas
 
-As decisões citadas (W39 a W60) estão explicadas no `DECISOES.md`. A coluna "Status" segue a legenda do `CHECKLIST.md`.
+As decisões citadas (W39 a W61) estão explicadas no `DECISOES.md`. A coluna "Status" segue a legenda do `CHECKLIST.md`.
 
 ### 1.1 Menu e navegação (todas as páginas)
 
@@ -52,7 +53,7 @@ As decisões citadas (W39 a W60) estão explicadas no `DECISOES.md`. A coluna "S
 | 15. Títulos sem ponto final | Em todo o site (seção 1.7). | feito |
 | B. Livro em destaque | O bloco do livro é o primeiro depois do topo, com os cards de atributos, o preço (a caixa preta da Black November em novembro) e os botões. | feito |
 | D. Sem a imagem do jogo do gato | Não entrou. O 7 Gatinhos continua fora do site. | feito |
-| E. Galeria maior e logos certos | Galeria mais larga. Cada logo fica numa placa do mesmo tamanho, sobre o fundo escuro. O Sebrae Startups (azul, que sumia no fundo noite) entrou na versão branca. Os outros já estavam na versão para fundo escuro. | feito |
+| E. Galeria maior e logos certos | Galeria mais larga. Cada logo fica numa placa do mesmo tamanho, sobre o fundo escuro. O Sebrae Startups (azul, que sumia no fundo noite) entrou na versão branca. Os outros já estavam na versão para fundo escuro. Em 29/10, entraram os quatro logos novos da Pasta Exemplo (seção 1.8). | feito |
 
 ### 1.3 Página do livro (`sinalizaacao/`)
 
@@ -114,6 +115,19 @@ As decisões citadas (W39 a W60) estão explicadas no `DECISOES.md`. A coluna "S
 - **Página em inglês antiga (`/en/`):** continua no ar, porque o link já foi divulgado (Web Summit). Ela recebeu as decisões que tocam nela: nomes públicos, "The problem" sem a estatística e "Who we serve" no lugar de "Business model", sem SaaS (W56).
 - **Kit de imprensa** (`assets/downloads/kit-imprensa-inclusivr.zip`, sem link no site): a foto do JLeo foi trocada pela nova. Os textos do kit não mudaram.
 
+### 1.8 Logos novos (enviados em 29/10, depois da entrega)
+
+A equipe enviou quatro logos para a Pasta Exemplo (`Exemplo/2910 8h19/`). Eles entraram no bloco "Prêmios, parcerias e eventos" do início e na seção "Feito por muitas mãos" de Quem somos:
+
+| Logo enviado | O que foi feito |
+| --- | --- |
+| Aceleração VaiTec | Substitui o logo antigo, que era pequeno (147 × 77 px) e ficava borrado em telas de alta resolução. O arquivo novo veio na versão para fundo claro (roxo e verde-água). No fundo escuro, o roxo quase some, por isso o roxo virou branco e o verde-água ficou, como na versão para fundo escuro que o site já usava. |
+| Web Summit Rio | Era só texto ("Web Summit Rio · 2026"); virou logo. Veio na versão para fundo claro (texto azul-marinho): o texto virou branco e a marca laranja ficou, como na versão do Web Summit para fundo escuro. |
+| Web Summit Lisboa | Era só texto; virou logo, como veio (já é a versão para fundo escuro). |
+| Crie Games | Era só texto ("Crie Games · Sebrae"); virou logo, como veio (branco). |
+
+Agora são oito logos em placas iguais: 4 por linha a partir de 768 px e 2 por linha em telas menores. A linha de nomes em texto saiu. Os arquivos têm nomes novos, para que ninguém veja o logo antigo guardado no navegador (as imagens ficam guardadas por um mês). Os textos alternativos são "Crie Games, programa do Sebrae", "Web Summit Rio 2026" e "Web Summit Lisboa 2026", com tradução no modo inglês. Os originais continuam na Pasta Exemplo.
+
 ---
 
 ## 2. Arquivos modificados, criados e removidos
@@ -161,6 +175,8 @@ As decisões citadas (W39 a W60) estão explicadas no `DECISOES.md`. A coluna "S
 | `assets/video/sinalizaacao-vr-trecho.mp4` e `.webm` | Novos: vídeo do VR otimizado (578 KB e 460 KB) |
 | `assets/img/equipe/jose-leonardo-martins-200.webp`, `-400.jpg`, `-400.webp` | Modificados: foto nova do JLeo |
 | `assets/downloads/kit-imprensa-inclusivr.zip` | Modificado: foto nova do JLeo no kit |
+| `assets/img/logos/vaitec-aceleracao.webp`, `crie-games.webp`, `web-summit-rio.webp` e `web-summit-lisboa.webp` | Novos (29/10): os logos enviados, na versão para fundo escuro |
+| `assets/img/logos/vaitec.webp` | Removido (29/10): o logo antigo do VaiTec |
 
 ### Documentos da equipe (pasta `ADM/`, não vai para o servidor)
 
@@ -170,7 +186,7 @@ As decisões citadas (W39 a W60) estão explicadas no `DECISOES.md`. A coluna "S
 | `ADM/documentos/capturas-28-10/` (44 imagens) | Novas: capturas de tela do computador e do celular (anexo) |
 | `ADM/documentos/BIOGRAFIAS_PARA_REVISAO.md` | Novo: biografias para cada um revisar a sua (P8) |
 | `ADM/documentos/PENDENCIAS.md` | Pendências da rodada no topo (P1 a P10 e outras) |
-| `ADM/documentos/DECISOES.md` | Decisões W39 a W60 |
+| `ADM/documentos/DECISOES.md` | Decisões W39 a W61 |
 | `ADM/documentos/CHECKLIST.md` | Tabela da rodada de 28/10 |
 | `ADM/documentos/README.md` | Como mexer no idioma, no vídeo, no blog e nas novas opções do `config.js` |
 | `ADM/documentos/PROGRESSO.md` e `ADM/LEIA-ME.txt` | Resumo da 4ª rodada |
@@ -205,6 +221,7 @@ Onde o plano não definia o resultado exato, a escolha foi a mais segura para os
 | D20 | Imagem do minijogo no celular (página do app) | No recorte deitado do celular, a imagem mostra as duas fileiras de cartas inteiras, sem a frase do jogo cortada ao meio. | Tinha uma linha de texto cortada pela metade no topo da imagem. |
 | D21 | "SignáriaIA" nos itens 7 e C | Lido como o bloco da cidade de Signária ("ESTA É SIGNÁRIA"), porque os dois itens falam da imagem da cidade e do texto da Aia, que ficavam nesse bloco. O card do produto Signária IA não mudou por causa desses itens. | É o único bloco com a cidade e o balão da Aia. |
 | D22 | Grafias do plano | O plano escreve "Livro Sinalização", "Página Sinalização" e "Igor Bucholi". O site manteve os nomes oficiais: SinalizaAção e Igor Bucioli. | Regra de escrita da marca. |
+| D23 | Logos novos para fundo claro (29/10) | O VaiTec e o Web Summit Rio vieram na versão para fundo claro. Nas placas escuras do site, a parte roxa ou azul-marinho virou branca e as cores da marca ficaram (verde-água e laranja). O desenho dos logos não mudou. | É o que o item E pede (a versão certa para cada fundo), e as duas marcas têm versões assim para fundo escuro. Se a equipe conseguir as versões oficiais para fundo escuro, elas entram no lugar. |
 
 Uma observação fora do escopo, sem alteração: na página dos jogos, o texto já existente "Quero receber um aviso por e-mail quando os novos jogos lançar." tem um erro de concordância. Sugestão: "quando os novos jogos forem lançados". Está nas pendências, para a equipe decidir.
 
@@ -313,6 +330,15 @@ Os cinco posts mantêm o título, a foto e o começo. O que mudou em cada um:
 | `SinalizacaoVR.mp4` (1,6 MB, 784 × 480, 16,7 s, áudio mudo) | Otimizado, sem a trilha muda, com uma imagem de capa | Início ("O que vem por aí", card do VR) e página do SinalizaAção VR ("O projeto hoje") | `assets/video/sinalizaacao-vr-trecho.mp4` (578 KB), `.webm` (460 KB) e `assets/img/vr/sinalizaacao-vr-trecho-capa-784.jpg` (38 KB) |
 | `Nova Imagem para JLEO.jpeg` | Foto nova do JLeo, recortada no mesmo enquadramento das outras | Quem somos (equipe), página `/en/` e kit de imprensa | `assets/img/equipe/jose-leonardo-martins-200.webp`, `-400.jpg` e `-400.webp`; `fotos-equipe/jose-leonardo-martins.png` no kit |
 
+Logos enviados em 29/10 (`Exemplo/2910 8h19/`):
+
+| Arquivo | Como foi usado | Onde aparece | Arquivo no site |
+| --- | --- | --- | --- |
+| `Logo Aceleração VAI TEC Puramente Transparente.png` | Recortado, com o roxo trocado por branco para o fundo escuro (D23) | Início e Quem somos (logos) | `assets/img/logos/vaitec-aceleracao.webp` (436 × 200 px, 25 KB) |
+| `Logo Web Summit Rio em fundo transparente.png` | Recortado (a imagem tinha muita borda vazia), com o texto azul-marinho trocado por branco (D23) | Os mesmos lugares | `assets/img/logos/web-summit-rio.webp` (950 × 200 px, 29 KB) |
+| `WebSummit_Lisbon_transparente.png` | Recortado, sem mudar as cores | Os mesmos lugares | `assets/img/logos/web-summit-lisboa.webp` (326 × 200 px, 16 KB) |
+| `logo_crie_games.png` | Sem mudar as cores | Os mesmos lugares | `assets/img/logos/crie-games.webp` (316 × 200 px, 7 KB) |
+
 A Pasta Exemplo continua no repositório, sem mudanças. Ela **não** deve ir para o servidor (README, seção 2).
 
 ---
@@ -335,6 +361,7 @@ Todos os testes abaixo foram executados nesta rodada, num navegador Chromium aut
 | Vídeo do VR | Toca sozinho e sem som quando aparece na tela (rolando com a roda do mouse, saltando para ele e centralizando) e pausa ao sair da tela. Com "reduzir movimento", fica parado até o clique. | Aprovado |
 | Checagens finais (15) | Os cards de públicos e o "Quero ser parceiro" abrem o contato com o perfil certo marcado. A caixa da Black November fica escondida hoje (29/10) e aparece na prévia, abaixo do botão. O leque das cartas anima ao aparecer e abre no mouse. Não há "Livro 1" nas páginas alteradas. O Comprar leva à mesma loja em PT e EN. Nenhum erro de JavaScript. | 15 de 15 aprovadas |
 | Revisão visual | As 22 seções alteradas, no computador (1440 px) e no celular (390 px), em capturas, todas revistas (anexo). A revisão achou dois detalhes, já corrigidos: a frase do minijogo cortada no card do app, no celular (D20), e a barra fixa de compra por cima das capturas (só nas capturas, não no site). | Aprovado depois das correções |
+| Logos novos (29/10) | Início e Quem somos em 6 larguras (320 a 1440 px): oito placas iguais, 4 por linha a partir de 768 px e 2 em telas menores, sem rolagem lateral e sem logo espremido. Depois, o teste geral de novo (19 páginas × 10 larguras em português; as duas páginas em inglês), os textos alternativos no modo inglês e o axe-core nas duas páginas, em PT e EN, nos 3 modos. As capturas 06 e 16 do anexo foram refeitas. | Nenhum problema |
 
 **O que não foi testado:**
 

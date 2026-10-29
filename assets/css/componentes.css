@@ -468,25 +468,26 @@ dialog { color: inherit; }
 .clipes { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e-5); grid-template-columns: repeat(auto-fit, minmax(min(44%, 200px), 1fr)); max-width: 1040px; }
 @media (min-width: 600px) { .clipes:has(> :nth-child(4):last-child) { grid-template-columns: repeat(4, 1fr); } }
 
-/* ---------- Logos de prêmios e parceiros (fundo escuro) ----------
-   Cada logo numa placa do mesmo tamanho, na versão certa para o fundo escuro (pedido de 28/10):
-   VaiTec, ProAC, USP e NIDUS como vieram (são as versões para fundo escuro); o Sebrae Startups,
-   azul, some no fundo noite, por isso entra na versão clara (branca), como pede a regra de uso. */
-ul.logos { list-style: none; margin: 0 auto; padding: 0; display: grid; gap: var(--e-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 148px), 1fr)); max-width: 1000px; }
+/* ---------- Logos de prêmios, parcerias e eventos (fundo escuro) ----------
+   Oito logos em placas iguais, cada um na versão para fundo escuro (pedidos de 28 e 29/10).
+   ProAC, USP, NIDUS, Web Summit Lisboa e Crie Games já vieram assim. O VaiTec e o Web Summit Rio
+   vieram na versão para fundo claro: o texto roxo ou azul-marinho virou branco, e as cores da marca
+   (verde-água e laranja) ficaram. O Sebrae Startups, azul, fica branco pelo filtro abaixo.
+   4 por linha a partir de 768 px; 2 em telas menores. */
+ul.logos { list-style: none; margin: 0 auto; padding: 0; display: grid; gap: var(--e-3); grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1000px; }
+@media (min-width: 768px) { ul.logos { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .logos__item { display: grid; place-items: center; min-height: 104px; padding: var(--e-4) var(--e-5); border-radius: var(--raio-cartao); background: rgba(255, 255, 255, .045); box-shadow: inset 0 0 0 1px rgba(203, 148, 255, .28); }
 .logos__item img { height: calc(44px * var(--k, 1)); width: auto; max-width: 100%; object-fit: contain; }
-@media (max-width: 599px) { .logos { grid-template-columns: repeat(2, minmax(0, 1fr)); } .logos__item { min-height: 92px; } .logos__item img { height: calc(38px * var(--k, 1)); } }
-.logos__item--vaitec { --k: 1.08; }
+@media (max-width: 599px) { .logos__item { min-height: 92px; } .logos__item img { height: calc(38px * var(--k, 1)); } }
+.logos__item--vaitec { --k: 1.15; }
 .logos__item--proac { --k: 1.05; }
 .logos__item--usp { --k: .98; }
 .logos__item--nidus { --k: .95; }
 .logos__item--sebrae { --k: 1.45; }
 .logos__item--sebrae img { filter: brightness(0) invert(1); }
-/* programas e eventos sem logo: só o nome, numa segunda linha */
-ul.logos--eventos { margin-top: var(--e-4); display: flex; flex-wrap: wrap; justify-content: center; gap: var(--e-3) var(--e-4); max-width: none; }
-.logos__item--texto { display: grid; justify-items: center; gap: 3px; min-height: 0; padding: 10px 18px 9px; border-radius: var(--raio-medio); background: transparent; box-shadow: inset 0 0 0 1.5px rgba(203, 148, 255, .45); text-align: center; line-height: 1.1; }
-.logos__nome { font-family: var(--fonte-rotulo); font-weight: 800; font-size: 1rem; letter-spacing: .02em; color: var(--branco); white-space: nowrap; }
-.logos__detalhe { font-family: var(--fonte-rotulo); font-weight: 700; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--lilas); }
+.logos__item--crie { --k: 1.3; }
+.logos__item--rio { --k: .72; }
+.logos__item--lisboa { --k: 1.25; }
 
 /* ---------- Vídeo curto que toca sozinho, sem som (só enquanto está na tela), com pausa ---------- */
 .video-auto { position: relative; overflow: hidden; background: #0c0a2a; }

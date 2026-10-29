@@ -8,7 +8,7 @@ documentos/       Para a equipe, NÃO vai para o servidor:
                   RELATORIO_DE_ALTERACOES_INCLUSIVR.md  o que mudou na 4ª rodada, item por item,
                                     com textos, testes, capturas e pendências
                   BIOGRAFIAS_PARA_REVISAO.md  cada integrante confere a própria biografia
-                  DECISOES.md       o que foi decidido e por quê (W39 a W60 = 4ª rodada;
+                  DECISOES.md       o que foi decidido e por quê (W39 a W61 = 4ª rodada;
                                     W25 a W38 = 3ª; W20 a W24 = 2ª; W1 a W19 = 1ª)
                   CHECKLIST.md      onde cada pedido foi atendido
                   PROGRESSO.md      resumo das rodadas e próximos passos

@@ -140,7 +140,7 @@ O post aparece sozinho no blog e nas "Novidades" da página inicial. Quando houv
 - **Formatos:** use WebP para o site e JPG como reserva. Para converter, o [Squoosh](https://squoosh.app) é gratuito e roda no navegador.
 - **Ilustrações do Igor:** pode recortar, mas sem filtros de cor e sem espelhar personagens que estão sinalizando.
 - **Logos:** só os arquivos originais de `assets/img/marca/`. A versão do topo (mão inteira + "inclusiVR" ao lado) foi montada com os pixels dos PNGs originais, a pedido dos sócios, sem redesenhar nem recolorir (`inclusivr-branco-ciano-horizontal-*`). Quando o Aram mandar a versão horizontal oficial, é só substituir os arquivos com o mesmo nome.
-- **Logos de prêmios e parceiros:** `assets/img/logos/`. Para incluir um novo, use a versão para fundo escuro.
+- **Logos de prêmios, parcerias e eventos:** `assets/img/logos/` (oito hoje: VaiTec, ProAC, USP, NIDUS, Sebrae Startups, Crie Games, Web Summit Rio e Web Summit Lisboa). Eles aparecem no início ("Prêmios, parcerias e eventos") e em Quem somos ("Feito por muitas mãos"), em placas escuras. Para incluir ou trocar um logo: use a versão para fundo escuro, em WebP com fundo transparente e cerca de 200 px de altura, com um **nome de arquivo novo** (o navegador guarda as imagens por um mês); acrescente a linha nas duas páginas, com o texto alternativo; ajuste o tamanho com `--k` em `assets/css/componentes.css`; e acrescente o texto alternativo em inglês no `assets/js/traducao-en.js`.
 - Toda imagem nova precisa de texto alternativo (`alt`) que descreva o que importa. Nas cartas e runas, descreva a mão do sinal (e peça a revisão do Fauston).
 
 ## 7. Vídeos

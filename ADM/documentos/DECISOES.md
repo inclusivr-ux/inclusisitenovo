@@ -28,6 +28,7 @@ W57. **Blog:** os cinco posts ganharam contexto (o que é cada programa ou event
 W58. **Quatro pilares coerentes:** o 4º quadro de "O que move a InclusiVR" junta "acessibilidade e inclusão" com a participação da comunidade surda ("Inclusão feita com a comunidade surda"). Assim, os quatro quadros correspondem aos quatro pilares citados no texto de abertura (itens 32 e 33).
 W59. **Termos do inglês:** os nomes do universo ficam como estão (SinalizaAção, Signária, Maga Aia, Seu Zé, LIBRAS, InclusiNews e o título do livro); "Signária IA" vira "Signaria AI" e "Coletânea LIBROS" vira "LIBROS Collection". Na página do app de AR, os animais aparecem com o nome em português entre parênteses ("Bee (abelha)"), porque a letra de cada animal vem do nome em português.
 W60. **Kit de imprensa:** a foto nova do JLeo também foi para o kit (como a do Igor na 3ª rodada). Os textos do kit não mudaram.
+W61. **Logos novos (29/10):** os quatro logos enviados depois da entrega entraram no início e em Quem somos, em placas iguais (4 por linha a partir de 768 px, 2 em telas menores); a linha de nomes em texto saiu. O VaiTec e o Web Summit Rio vieram na versão para fundo claro: nas placas escuras, o roxo e o azul-marinho viraram branco e as cores da marca (verde-água e laranja) ficaram, como nas versões para fundo escuro dessas marcas. Web Summit Lisboa e Crie Games entraram como vieram. Os arquivos têm nomes novos, para o navegador não mostrar o logo antigo guardado.
 
 ## Versão de 22/10/2026, 3ª rodada: PDF "Alterações do site" (2) e o vídeo do Igor
 

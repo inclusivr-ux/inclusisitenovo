@@ -24,6 +24,7 @@ Status: **feito** · **parcial** (feito, com um detalhe pendente) · **depende d
 | B. Livro em destaque | O bloco do livro sobe para logo depois do topo, com os cards de atributos e a oferta (W44) | feito |
 | D. Sem a imagem do jogo do gato | Não entrou (o 7 Gatinhos continua fora do site) | feito |
 | E. Galeria maior e logos certos | Galeria mais larga; logos em placas iguais; Sebrae na versão clara (W48) | feito |
+| Logos novos da Pasta Exemplo (29/10) | VaiTec novo, e Crie Games, Web Summit Rio e Web Summit Lisboa como logos (antes só texto), no início e em Quem somos, na versão para fundo escuro (W61) | feito |
 | 18. Oferta Black November na página do livro | R$ 149,90 riscado, R$ 99,90 e o cupom IGOR em destaque, igual ao início (W51) | feito |
 | 19. Sem "Livro 1 da coletânea" | Saiu da página do livro e do bloco do livro no início (W51) | feito |
 | F. Composição anterior do livro | A montagem de 15/10 (livro aberto, celular e elefante 3D) voltou ao topo da página do livro; arquivos recuperados do histórico (W51) | feito |
