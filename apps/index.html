@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>App de AR e jogos | InclusiVR</title>
-<meta name="description" content="Abra o app de realidade aumentada do livro SinalizaAção no navegador, sem instalar. Conheça também a Signária IA, o SinalizaAção VR e os jogos.">
+<meta name="description" content="O app do livro SinalizaAção abre no navegador, sem instalar: veja o livro em realidade aumentada e jogue os minijogos com as cartas do livro.">
 <link rel="canonical" href="https://inclusivr.com.br/apps/">
 <link rel="alternate" hreflang="pt-BR" href="https://inclusivr.com.br/">
 <link rel="alternate" hreflang="en" href="https://inclusivr.com.br/en/">
@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="InclusiVR">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="App de AR e jogos | InclusiVR">
-<meta property="og:description" content="Abra o app de realidade aumentada do livro SinalizaAção no navegador, sem instalar. Conheça também a Signária IA, o SinalizaAção VR e os jogos.">
+<meta property="og:description" content="O app do livro SinalizaAção abre no navegador, sem instalar: veja o livro em realidade aumentada e jogue os minijogos com as cartas do livro.">
 <meta property="og:url" content="https://inclusivr.com.br/apps/">
 <meta property="og:image" content="https://inclusivr.com.br/assets/img/og/og-app.jpg">
 <meta property="og:image:width" content="1200">
@@ -31,10 +31,12 @@
 <link rel="stylesheet" href="../assets/css/componentes.css">
 <link rel="stylesheet" href="../assets/css/paginas.css">
 <link rel="stylesheet" href="../assets/css/impressao.css" media="print">
+<script src="../assets/js/idioma.js"></script>
 <script src="../assets/js/config.js" defer></script>
 <script src="../assets/js/main.js" defer></script>
 <script src="../assets/js/formularios.js" defer></script>
 <script src="../assets/js/animacoes.js" defer></script>
+<script src="../assets/js/traducao.js" defer></script>
 
 </head>
 <body>
@@ -60,11 +62,10 @@
   <div class="container">
     <div class="app-topo__cabeca">
       <div class="app-topo__abrir">
-        <p class="sobretitulo">App de AR do livro</p>
+        <p class="sobretitulo">App do livro SinalizaAção</p>
         <h1 id="titulo-app">Chegou pelo livro?</h1>
-        <p class="lead">O app de realidade aumentada abre no navegador. Não precisa instalar.</p>
-        <a class="botao botao--roxo botao--grande" data-app-ar href="https://inclusivr.com.br/app"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 8.5h3l1.6-2.5h6.8L17 8.5h3v10H4z"/><circle cx="12" cy="13.2" r="3.4"/></svg>Abrir o app de AR</a>
-        <p class="micro">Funciona no celular, no tablet e no notebook ou computador com câmera. <a href="ar-do-livro/#problemas">Não funcionou? Veja as dicas</a>.</p>
+        <p class="lead">O app tem duas funções: ver o livro em realidade aumentada e jogar os minijogos com as cartas.</p>
+        <p class="app-topo__navegador"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 8.5h17M6.5 6.5h.01M9 6.5h.01"/></svg><span><strong>Abre direto no navegador.</strong> Não precisa instalar nada: funciona no celular, no tablet e no computador.</span></p>
         <div class="libras-vaga" data-libras="app-passo-a-passo"></div>
       </div>
       <div class="app-topo__qr"><div class="qr-caixa">
@@ -72,8 +73,35 @@
   <p>Escaneie o QR Code e experimente.<span class="micro">Ele abre inclusivr.com.br/app no seu celular.</span></p>
 </div></div>
     </div>
-    <h2 class="visualmente-oculto">Como usar o app em 3 passos</h2>
-    <ol class="passos passos--3 app-topo__passos" role="list">
+    <h2 class="visualmente-oculto">As duas funções do app</h2>
+    <ul class="funcoes" role="list">
+      <li class="funcao">
+        <a class="funcao__imagem" data-app-ar href="https://inclusivr.com.br/app" tabindex="-1" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/app-real/ar-elefante-360.webp 360w, ../assets/img/app-real/ar-elefante-600.webp 600w" sizes="(min-width: 900px) 260px, 60vw"><img src="../assets/img/app-real/ar-elefante-600.jpg" alt="" width="600" height="840" fetchpriority="high" decoding="async"></picture></a>
+        <div class="funcao__texto">
+          <p class="funcao__rotulo"><span class="selo-pagina" aria-hidden="true">1</span>Realidade aumentada</p>
+          <h3>Veja o livro ganhar vida</h3>
+          <p>Aponte a câmera para uma página da direita do livro: o animal aparece em 3D, e o intérprete mostra o sinal em LIBRAS.</p>
+          <div class="acoes"><a class="botao botao--roxo" data-app-ar href="https://inclusivr.com.br/app"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 8.5h3l1.6-2.5h6.8L17 8.5h3v10H4z"/><circle cx="12" cy="13.2" r="3.4"/></svg>Abrir a realidade aumentada</a></div>
+          <p class="micro"><a href="ar-do-livro/">Como usar</a> · <a href="ar-do-livro/#problemas">Não funcionou? Veja as dicas</a></p>
+        </div>
+      </li>
+      <li class="funcao">
+        <a class="funcao__imagem funcao__imagem--jogo" href="jogos/#jogar" tabindex="-1" aria-hidden="true"><picture><source type="image/webp" srcset="../assets/img/jogos/jogo-memoria-retrato-360.webp 360w, ../assets/img/jogos/jogo-memoria-retrato-600.webp 600w" sizes="(min-width: 900px) 260px, 60vw"><img src="../assets/img/jogos/jogo-memoria-retrato-600.jpg" alt="" width="600" height="800" decoding="async"></picture></a>
+        <div class="funcao__texto">
+          <p class="funcao__rotulo"><span class="selo-pagina" aria-hidden="true">2</span>Minijogos</p>
+          <h3>Jogue com as cartas do livro</h3>
+          <p>Três jogos grátis com as letras, os animais e os sinais das cartas. Não precisa do livro para jogar.</p>
+          <div class="acoes"><a class="botao botao--ciano" href="jogos/#jogar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 8h10a4 4 0 0 1 4 4v2.5a2.5 2.5 0 0 1-4.6 1.3L15 14H9l-1.4 1.8A2.5 2.5 0 0 1 3 14.5V12a4 4 0 0 1 4-4z"/><path d="M8 10.5v3M6.5 12h3M15.5 11.5h.01M17.5 12.8h.01"/></svg>Jogar os minijogos</a></div>
+          <p class="micro"><a href="#minijogos">Conheça os três jogos</a></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section><section class="secao sup-indigo" aria-labelledby="titulo-passos">
+  <button type="button" class="animal-escondido" data-animal-escondido="urso" aria-label="Um animal escondido! Ative para encontrar." style="right:3%; color: var(--lima)"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="14" cy="11" r="4"/><circle cx="34" cy="11" r="4"/><path d="M12 22c0-8 5-12 12-12s12 4 12 12c0 6-5 10-12 10s-12-4-12-10z"/><ellipse cx="24" cy="25" rx="5" ry="3.6"/><path d="M22.4 23.5h3.2l-1.6 1.6z" fill="currentColor"/><circle cx="19.5" cy="19.5" r="1.3" fill="currentColor"/><circle cx="28.5" cy="19.5" r="1.3" fill="currentColor"/><path d="M15 30c-3 3-4 8-2 12h22c2-4 1-9-2-12"/><path d="M19 42v-5M29 42v-5"/></svg></button>
+  <div class="container">
+    <div class="cabeca-secao"><p class="sobretitulo">Realidade aumentada</p><h2 id="titulo-passos">Como usar a realidade aumentada</h2><p>Três passos, com o livro aberto na sua frente.</p></div>
+    <ol class="passos passos--3" role="list">
       <li class="passo passo--foto">
   <div class="passo__foto"><picture><source type="image/webp" srcset="../assets/img/app-real/ar-apontar-360.webp 360w, ../assets/img/app-real/ar-apontar-600.webp 600w" sizes="(min-width: 760px) 260px, 70vw"><img src="../assets/img/app-real/ar-apontar-600.jpg" alt="Uma mão segura o celular sobre o livro aberto; na tela, o app mostra a página." width="600" height="840" loading="lazy" decoding="async"></picture></div>
   <div class="passo__topo"><span class="selo-pagina" aria-hidden="true">1</span><h3><span class="visualmente-oculto">Passo 1: </span>Aponte para a página</h3></div>
@@ -91,48 +119,30 @@
 </li>
     </ol>
     <p class="micro app-topo__nota">Imagens reais do app atual. Uma nova versão está a caminho.</p>
+    <div class="acoes app-passos__acoes"><a class="botao botao--roxo" data-app-ar href="https://inclusivr.com.br/app"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 8.5h3l1.6-2.5h6.8L17 8.5h3v10H4z"/><circle cx="12" cy="13.2" r="3.4"/></svg>Abrir a realidade aumentada</a><a class="link-forte" href="ar-do-livro/">Ver o passo a passo completo</a></div>
   </div>
-</section><section class="secao sup-roxo-profundo" aria-labelledby="titulo-apps">
-  <button type="button" class="animal-escondido" data-animal-escondido="urso" aria-label="Um animal escondido! Ative para encontrar." style="right:3%; color: var(--lima)"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="14" cy="11" r="4"/><circle cx="34" cy="11" r="4"/><path d="M12 22c0-8 5-12 12-12s12 4 12 12c0 6-5 10-12 10s-12-4-12-10z"/><ellipse cx="24" cy="25" rx="5" ry="3.6"/><path d="M22.4 23.5h3.2l-1.6 1.6z" fill="currentColor"/><circle cx="19.5" cy="19.5" r="1.3" fill="currentColor"/><circle cx="28.5" cy="19.5" r="1.3" fill="currentColor"/><path d="M15 30c-3 3-4 8-2 12h22c2-4 1-9-2-12"/><path d="M19 42v-5M29 42v-5"/></svg></button>
+</section><section class="secao sup-orquidea" id="minijogos" aria-labelledby="titulo-minijogos">
   <div class="container">
-    <div class="cabeca-secao"><p class="sobretitulo">Apps e jogos</p><h2 id="titulo-apps">Os apps da InclusiVR.</h2><p>Toque em um app para ver os detalhes.</p></div>
-    <ul class="apps" role="list">
-      <li class="app-item magia">
-  <span class="faiscas-hover" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-  <div class="app-item__imagem app-item__imagem--foto"><picture><source type="image/webp" srcset="../assets/img/app-real/ar-elefante-perto-360.webp 360w, ../assets/img/app-real/ar-elefante-perto-600.webp 600w" sizes="(min-width: 1024px) 280px, 90vw"><img src="../assets/img/app-real/ar-elefante-perto-600.jpg" alt="" width="600" height="840" loading="lazy" decoding="async"></picture></div>
-  <div class="app-item__miolo">
-    <div><span class="status status--disponivel">Disponível</span></div>
-    <h3><a href="ar-do-livro/">App de AR do livro</a></h3>
-    <p>Aponte o celular para o livro e veja o animal em 3D, com o sinal em LIBRAS.</p>
-  </div>
-</li>
-      <li class="app-item magia">
-  <span class="faiscas-hover" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-  <div class="app-item__imagem app-item__imagem--foto app-item__imagem--topo"><picture><source type="image/webp" srcset="../assets/img/signaria-ia/app-mapa-390.webp 390w, ../assets/img/signaria-ia/app-mapa-780.webp 780w" sizes="(min-width: 1024px) 280px, 90vw"><img src="../assets/img/signaria-ia/app-mapa-390.jpg" alt="" width="780" height="1688" loading="lazy" decoding="async"></picture></div>
-  <div class="app-item__miolo">
-    <div><span class="status status--em-breve">Em breve</span></div>
-    <h3><a href="signaria-ia/">Signária IA</a></h3>
-    <p>Pratique sinais com a câmera e receba correção na hora.</p>
-  </div>
-</li>
-      <li class="app-item magia">
-  <span class="faiscas-hover" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-  <div class="app-item__imagem app-item__imagem--foto app-item__imagem--vr"><picture><source type="image/webp" srcset="../assets/img/vr/logo-sinalizaacao-vr-400.webp 400w, ../assets/img/vr/logo-sinalizaacao-vr-800.webp 800w" sizes="(min-width: 1024px) 280px, 90vw"><img src="../assets/img/vr/logo-sinalizaacao-vr-800.jpg" alt="" width="800" height="800" loading="lazy" decoding="async"></picture></div>
-  <div class="app-item__miolo">
-    <div><span class="status status--em-breve">Em breve</span></div>
-    <h3><a href="sinalizaacao-vr/">SinalizaAção VR</a></h3>
-    <p>Entre em Signária e sinalize com as próprias mãos, no Meta Quest.</p>
-  </div>
-</li>
-      <li class="app-item magia">
-  <span class="faiscas-hover" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-  <div class="app-item__imagem app-item__imagem--cartas"><img src="../assets/img/cartas/verso-pedra-300.webp" alt="" width="300" height="440" loading="lazy" decoding="async"></div>
-  <div class="app-item__miolo">
-    <div><span class="status status--disponivel">Minijogos grátis</span></div>
-    <h3><a href="jogos/">Jogos</a></h3>
-    <p>Três minijogos grátis com as cartas do livro. Jogue agora, no navegador.</p>
-  </div>
-</li>
+    <div class="cabeca-secao"><p class="sobretitulo">Minijogos</p><h2 id="titulo-minijogos">Três jogos com as cartas do livro</h2><p>Para jogar sozinho ou em família, no toque, no mouse ou no teclado. Se errar, é só tentar de novo.</p></div>
+    <ul class="jogos-lista" role="list">
+      <li class="jogo-cartao">
+        <div class="jogo-cartao__imagem"><picture><source type="image/webp" srcset="../assets/img/jogos/jogo-memoria-640.webp 640w, ../assets/img/jogos/jogo-memoria-1100.webp 1100w" sizes="(min-width: 1000px) 360px, 92vw"><img src="../assets/img/jogos/jogo-memoria-640.jpg" alt="Tela do jogo Memória das runas: cartas de pedra viradas, com pares de letras e sinais já encontrados." width="1100" height="619" loading="lazy" decoding="async"></picture></div>
+        <h3><a href="jogos/#jogo-memoria">Memória das runas</a></h3>
+        <p>Vire as cartas de pedra e forme pares: a letra ou o animal com o sinal certo.</p>
+        <span class="jogo-cartao__jogar" aria-hidden="true">Jogar</span>
+      </li>
+      <li class="jogo-cartao">
+        <div class="jogo-cartao__imagem"><picture><source type="image/webp" srcset="../assets/img/jogos/jogo-qual-640.webp 640w, ../assets/img/jogos/jogo-qual-1100.webp 1100w" sizes="(min-width: 1000px) 360px, 92vw"><img src="../assets/img/jogos/jogo-qual-640.jpg" alt="Tela do jogo Qual é o sinal?: a carta da letra E e três cartas de sinal para escolher." width="1100" height="619" loading="lazy" decoding="async"></picture></div>
+        <h3><a href="jogos/#jogo-qual">Qual é o sinal?</a></h3>
+        <p>Aparece uma letra ou um animal. Descubra qual das três cartas tem o sinal certo.</p>
+        <span class="jogo-cartao__jogar" aria-hidden="true">Jogar</span>
+      </li>
+      <li class="jogo-cartao">
+        <div class="jogo-cartao__imagem"><picture><source type="image/webp" srcset="../assets/img/jogos/jogo-vogais-640.webp 640w, ../assets/img/jogos/jogo-vogais-1100.webp 1100w" sizes="(min-width: 1000px) 360px, 92vw"><img src="../assets/img/jogos/jogo-vogais-640.jpg" alt="Tela do jogo As vogais fugiram!: a palavra ONÇA sem as vogais e as cartas de sinal das vogais para completar." width="1100" height="619" loading="lazy" decoding="async"></picture></div>
+        <h3><a href="jogos/#jogo-vogais">As vogais fugiram!</a></h3>
+        <p>As vogais sumiram do nome do animal. Traga cada uma de volta com o sinal certo.</p>
+        <span class="jogo-cartao__jogar" aria-hidden="true">Jogar</span>
+      </li>
     </ul>
   </div>
 </section><section class="secao secao--compacta sup-clara" aria-labelledby="titulo-comprar">
@@ -151,7 +161,7 @@
   <svg class="hud hud--fraco" data-hud="canto" aria-hidden="true"></svg>
   <div class="container fechamento__grade">
     <div>
-      <h2 id="fechamento-titulo">Fale com a gente.</h2>
+      <h2 id="fechamento-titulo">Fale com a gente</h2>
       <p>Escreva do jeito que preferir. Respondemos sempre por texto: e-mail, WhatsApp ou Instagram.</p>
       <div class="acoes"><a class="botao botao--ciano" href="../contato/?perfil=familia">Escrever para a gente</a></div>
     </div>
@@ -181,7 +191,7 @@
       <div class="rodape__marca">
         <img class="marca-escura" src="../assets/img/marca/inclusivr-branco-ciano-240.webp" width="240" height="334" alt="InclusiVR" loading="lazy">
         <img class="marca-clara" src="../assets/img/marca/inclusivr-roxo-240.webp" width="240" height="334" alt="InclusiVR" loading="lazy" hidden>
-        <p class="rodape__frase">Conectando mundos por meio das línguas de sinais e tecnologia.</p>
+        <p class="rodape__frase">Conectando mundos por meio das línguas de sinais e tecnologia</p>
       </div>
       <nav aria-label="Rodapé: site">
         <h2>Site</h2>

@@ -429,6 +429,12 @@ dialog { color: inherit; }
 /* selo curto (só o nome da campanha) quando o preço já está logo acima do botão */
 .botao--selo-curto .selo-campanha { top: -16px; }
 .botao--selo-curto .selo-campanha__oferta { display: none; }
+/* caixa logo abaixo do botão (topo do início, pedido de 28/10; mesmo visual da referência BlackExemplo) */
+.botao--selo-abaixo .selo-campanha { top: calc(100% - 12px); right: -8px; font-size: .74rem; padding: .48em .78em .44em; }
+.botao--selo-abaixo .selo-campanha__oferta { font-size: .84rem; }
+.botao--selo-abaixo .selo-campanha__oferta [data-campanha-preco] { font-size: .95rem; }
+.campanha-ativa .botao--selo-abaixo { margin-bottom: 34px; }
+.campanha-ativa .acoes:has(> .botao--selo-abaixo) { align-items: flex-start; }
 .selo-campanha--texto { position: static; transform: none; box-shadow: 0 0 0 1.5px var(--lima); font-size: .66rem; margin-right: 4px; display: inline-flex; }
 .placa-campanha {
   position: absolute; z-index: 7; display: grid; gap: 6px; justify-items: center; text-align: center;
@@ -440,9 +446,9 @@ dialog { color: inherit; }
 .placa-campanha::before { left: 10px; } .placa-campanha::after { right: 10px; }
 .placa-campanha__nome { font-family: var(--fonte-titulo); font-weight: 800; font-size: clamp(1.15rem, .95rem + .9vw, 1.6rem); line-height: 1; letter-spacing: .02em; text-transform: uppercase; color: var(--lima); }
 .placa-campanha__precos { display: flex; align-items: baseline; gap: 10px; font-family: var(--fonte-rotulo); font-weight: 800; line-height: 1; }
-.placa-campanha__precos s { font-size: 1rem; color: #c9c4d6; text-decoration-thickness: 2px; text-decoration-color: var(--erro); }
+.placa-campanha__precos s { font-size: 1.125rem; color: #e4def0; text-decoration-thickness: 2px; text-decoration-color: var(--lima); }
 .placa-campanha__precos strong { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.3rem); color: var(--branco); }
-.placa-campanha__cupom { font-family: var(--fonte-rotulo); font-weight: 700; font-size: .85rem; letter-spacing: .02em; color: #ddd6ec; }
+.placa-campanha__cupom { font-family: var(--fonte-rotulo); font-weight: 700; font-size: .95rem; letter-spacing: .02em; color: #e4def0; }
 .placa-campanha__cupom strong { color: var(--lima); letter-spacing: .06em; }
 
 /* ---------- Vídeos leves (carregam no clique) ---------- */
@@ -462,21 +468,36 @@ dialog { color: inherit; }
 .clipes { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e-5); grid-template-columns: repeat(auto-fit, minmax(min(44%, 200px), 1fr)); max-width: 1040px; }
 @media (min-width: 600px) { .clipes:has(> :nth-child(4):last-child) { grid-template-columns: repeat(4, 1fr); } }
 
-/* ---------- Logos de prêmios e parceiros (versões para fundo escuro) ---------- */
-.logos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--e-6) clamp(1.5rem, 1rem + 3vw, 3.5rem); }
-.logos__item img { height: calc(48px * var(--k, 1)); width: auto; }
-@media (max-width: 599px) { .logos__item img { height: calc(38px * var(--k, 1)); } }
-.logos__item--vaitec { --k: 1.05; }
+/* ---------- Logos de prêmios e parceiros (fundo escuro) ----------
+   Cada logo numa placa do mesmo tamanho, na versão certa para o fundo escuro (pedido de 28/10):
+   VaiTec, ProAC, USP e NIDUS como vieram (são as versões para fundo escuro); o Sebrae Startups,
+   azul, some no fundo noite, por isso entra na versão clara (branca), como pede a regra de uso. */
+ul.logos { list-style: none; margin: 0 auto; padding: 0; display: grid; gap: var(--e-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 148px), 1fr)); max-width: 1000px; }
+.logos__item { display: grid; place-items: center; min-height: 104px; padding: var(--e-4) var(--e-5); border-radius: var(--raio-cartao); background: rgba(255, 255, 255, .045); box-shadow: inset 0 0 0 1px rgba(203, 148, 255, .28); }
+.logos__item img { height: calc(44px * var(--k, 1)); width: auto; max-width: 100%; object-fit: contain; }
+@media (max-width: 599px) { .logos { grid-template-columns: repeat(2, minmax(0, 1fr)); } .logos__item { min-height: 92px; } .logos__item img { height: calc(38px * var(--k, 1)); } }
+.logos__item--vaitec { --k: 1.08; }
 .logos__item--proac { --k: 1.05; }
-.logos__item--usp { --k: .95; }
-.logos__item--nidus { --k: .9; }
-.logos__item--sebrae { --k: 1.55; }
-.logos__item--nidus img { filter: brightness(0) invert(1); opacity: .92; }
+.logos__item--usp { --k: .98; }
+.logos__item--nidus { --k: .95; }
+.logos__item--sebrae { --k: 1.45; }
+.logos__item--sebrae img { filter: brightness(0) invert(1); }
 /* programas e eventos sem logo: só o nome, numa segunda linha */
-ul.logos--eventos { margin-top: var(--e-6); gap: var(--e-3) var(--e-5); }
-.logos__item--texto { display: grid; justify-items: center; gap: 3px; padding: 9px 16px 8px; border-radius: var(--raio-medio); box-shadow: inset 0 0 0 1.5px rgba(203, 148, 255, .45); text-align: center; line-height: 1.1; }
+ul.logos--eventos { margin-top: var(--e-4); display: flex; flex-wrap: wrap; justify-content: center; gap: var(--e-3) var(--e-4); max-width: none; }
+.logos__item--texto { display: grid; justify-items: center; gap: 3px; min-height: 0; padding: 10px 18px 9px; border-radius: var(--raio-medio); background: transparent; box-shadow: inset 0 0 0 1.5px rgba(203, 148, 255, .45); text-align: center; line-height: 1.1; }
 .logos__nome { font-family: var(--fonte-rotulo); font-weight: 800; font-size: 1rem; letter-spacing: .02em; color: var(--branco); white-space: nowrap; }
 .logos__detalhe { font-family: var(--fonte-rotulo); font-weight: 700; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--lilas); }
+
+/* ---------- Vídeo curto que toca sozinho, sem som (só enquanto está na tela), com pausa ---------- */
+.video-auto { position: relative; overflow: hidden; background: #0c0a2a; }
+.video-auto__video { display: block; width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+.video-auto__botao { position: absolute; right: 12px; bottom: 12px; z-index: 2; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: rgba(16, 4, 72, .74); color: var(--branco); box-shadow: inset 0 0 0 1.5px rgba(203, 148, 255, .65); cursor: pointer; transition: box-shadow var(--dur-rapida) var(--curva); }
+.video-auto__botao:hover { box-shadow: inset 0 0 0 1.5px var(--aqua), 0 0 12px rgba(49, 245, 255, .45); }
+.video-auto__botao:focus-visible { outline: 3px solid var(--aqua); outline-offset: 2px; }
+.video-auto__botao .icone { width: 20px; height: 20px; }
+.video-auto__botao .icone-play { display: none; }
+.video-auto--parado .video-auto__botao .icone-pausa { display: none; }
+.video-auto--parado .video-auto__botao .icone-play { display: block; margin-left: 2px; }
 
 /* ---------- A abelha do livro voando ---------- */
 /* a abelha voa só na faixa vazia do alto da seção (o respiro acima do título): nunca passa sobre o texto */

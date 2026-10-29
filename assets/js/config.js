@@ -63,9 +63,13 @@ window.INCLUSIVR_CONFIG = {
     cupom: 'IGOR',
     /* Durante a campanha, o preço mostrado no site muda para este: */
     preco: { de: 'R$ 149,90', por: 'R$ 99,90' },
-    notaPreco: 'Preço com o cupom IGOR. Um cupom por pedido. O valor final aparece na loja.',
+    /* O cupom aparece em destaque ao lado do preço ("com o cupom IGOR"); a nota completa a informação. */
+    notaPreco: 'Um cupom por pedido. O valor final aparece na loja.',
     chamada: 'Black November: com o cupom {cupom}, o livro sai de R$ 149,90 por R$ 99,90 até 30 de novembro.',
     cupomHistoria: '{cupom} é o cupom do artista: quem compra com ele apoia o Igor Bucioli, o artista surdo que desenhou o livro.',
+    /* Caixa da campanha no botão "Livro SinalizaAção" do topo do início:
+       'abaixo' = logo abaixo do botão (pedido de 28/10); 'acima' = no canto de cima do botão. */
+    seloTopoInicio: 'abaixo',
     /* Presente da campanha (aparece com a imagem do marca-páginas). Deixe '' para esconder. */
     brinde: 'De presente: um marca-páginas exclusivo de Signária, assinado pelo Igor e pelo Luciano.'
   },
@@ -128,6 +132,11 @@ window.INCLUSIVR_CONFIG = {
      link: 'https://www.instagram.com/p/CODIGO/', texto: 'Uma frase sobre o post' } */
   instagramPosts: [],
 
+  /* Blog: os posts aparecem do mais recente para o mais antigo (campo "data" do blog/posts.json).
+     Quando houver mais posts do que "postsPorPagina", o blog mostra os mais recentes e o botão
+     "Ver publicações mais antigas" (pedido de 28/10: a paginação entra quando a lista crescer). */
+  blog: { postsPorPagina: 9 },
+
   /* ---------------------------------------------------------------------------
      FORMULÁRIOS
      Cole aqui o endereço de envio do serviço escolhido (Formspree, Brevo,
@@ -163,7 +172,11 @@ window.INCLUSIVR_CONFIG = {
              { tipo: 'imagem', src: 'assets/img/vr/espelho-magico.gif', alt: 'O que a imagem mostra', legenda: 'Texto embaixo da imagem.' } */
   midias: {
     'ar-do-livro': [],
-    vr: []
+    /* Trecho do jogo enviado em 28/10 (Pasta Exemplo, SinalizacaoVR.mp4), já otimizado (sem a trilha muda):
+       também aparece, tocando sozinho e sem som, no "O que vem por aí" do início. */
+    vr: [
+      { tipo: 'video', src: 'assets/video/sinalizaacao-vr-trecho.mp4', capa: 'assets/img/vr/sinalizaacao-vr-trecho-capa-784.jpg', legenda: 'Trecho do SinalizaAção VR em desenvolvimento: a Maga Aia na trilha da floresta de Signária (vídeo sem som).' }
+    ]
   },
 
   /* Modelos 3D dos animais (.glb). Com o arquivo, a galeria mostra o animal em 3D
@@ -181,6 +194,9 @@ window.INCLUSIVR_CONFIG = {
        e a Aia chegam, em menos de 4 s) e o brilho ao passar o mouse. Desligada a
        pedido da equipe: o topo fica parado. Para ligar de novo, troque por true. */
     aberturaTopo: false,
+    /* Esferas do logo do topo girando nas órbitas enquanto o mouse passa por cima
+       (no celular, um toque faz girar por 2 s). Pedido de 28/10. false desliga. */
+    orbitasNoMouse: true,
     /* Mini-jogo: os 5 animais do livro escondidos pelo site. */
     animaisEscondidos: true,
     /* Prêmio de quem encontra os 5 animais. A pessoa tira um print da tela do

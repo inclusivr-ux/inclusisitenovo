@@ -56,6 +56,8 @@ a:hover { text-decoration-thickness: 3px; }
 .cabeca-secao--centro { margin-inline: auto; text-align: center; }
 .acoes { display: flex; flex-wrap: wrap; gap: var(--e-3) var(--e-4); align-items: center; }
 .acoes > * { flex: 0 0 auto; }
+/* botão com texto longo numa tela estreita: quebra a linha em vez de passar da borda */
+.acoes > .botao { max-width: 100%; }
 @media (max-width: 479px) { .acoes--bloco > .botao { flex: 1 1 100%; } }
 
 /* pular para o conteúdo */
@@ -196,6 +198,10 @@ a:hover { text-decoration-thickness: 3px; }
 .rodape__contato svg { width: 22px; height: 22px; flex: 0 0 auto; }
 .rodape__base { margin-top: var(--e-9); padding-top: var(--e-6); border-top: 1px solid rgba(203, 148, 255, .22); display: grid; grid-template-columns: 1fr auto; gap: var(--e-3) var(--e-5); align-items: center; font-size: .875rem; color: var(--lilas); }
 .rodape__base p { margin: 0; }
+
+/* ---------- Idioma: enquanto o inglês é aplicado, a página fica escondida (no máximo 2,5 s) ---------- */
+html.traduzindo body { opacity: 0; animation: idioma-mostrar 0s linear 2.5s forwards; }
+@keyframes idioma-mostrar { to { opacity: 1; } }
 
 /* ---------- Movimento ---------- */
 @media (prefers-reduced-motion: reduce) {

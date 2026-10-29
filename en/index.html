@@ -31,10 +31,12 @@
 <link rel="stylesheet" href="../assets/css/componentes.css">
 <link rel="stylesheet" href="../assets/css/paginas.css">
 <link rel="stylesheet" href="../assets/css/impressao.css" media="print">
+<script src="../assets/js/idioma.js"></script>
 <script src="../assets/js/config.js" defer></script>
 <script src="../assets/js/main.js" defer></script>
 <script src="../assets/js/formularios.js" defer></script>
 <script src="../assets/js/animacoes.js" defer></script>
+<script src="../assets/js/traducao.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://inclusivr.com.br/#organizacao", "name": "InclusiVR", "url": "https://inclusivr.com.br/", "logo": "https://inclusivr.com.br/assets/img/marca/icone-512.png", "email": "contato@inclusivr.com.br", "sameAs": ["https://www.instagram.com/inclusivr/"], "legalName": "InclusiVR LTDA", "foundingDate": "2023", "taxID": "63.821.106/0001-76", "slogan": "Conectando mundos por meio das línguas de sinais e tecnologia.", "description": "EdTech startup born at the University of São Paulo that teaches LIBRAS (Brazilian Sign Language) through books with augmented reality, apps and games."}</script>
 </head>
 <body>
@@ -54,7 +56,7 @@
   <svg class="hud hud--fraco" data-hud="topo" aria-hidden="true"></svg>
   <div class="container abertura__grade">
     <div class="abertura__texto">
-      <h1 id="titulo-en">Connecting worlds through sign languages and technology.</h1>
+      <h1 id="titulo-en">Connecting worlds through sign languages and technology</h1>
       <p class="lead">InclusiVR is an EdTech startup born at the University of São Paulo (USP). We teach LIBRAS (Brazilian Sign Language) through playful books, apps and games set in Signária, a city where everyone signs.</p>
       <div class="acoes"><a class="botao botao--ciano" href="#contact">Contact the team</a></div>
       <p class="micro en-evento"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s6.5-6.2 6.5-11a6.5 6.5 0 1 0-13 0c0 4.8 6.5 11 6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span>Meet us at Web Summit Lisbon, 9–12 November 2026.</span></p>
@@ -63,21 +65,30 @@
   </div>
 </section><section class="secao sup-clara" aria-labelledby="titulo-problem">
   <div class="container">
-    <div class="cabeca-secao"><h2 id="titulo-problem">The problem.</h2><p>Learning LIBRAS is still hard, and those who need it most start late.</p></div>
-    <div class="problema-numero">
-      <p class="numero-grande">90%<small>of deaf children are born to hearing families.</small></p>
-      <ul class="lista-pontos" role="list">
-        <li>These families need to learn LIBRAS to talk with their child from the start.</li>
-        <li>People who study alone see the sign on video, but can't tell if they are signing correctly.</li>
-        <li>Brazilian law recognizes LIBRAS (Law 10,436/2002), includes it in teacher and speech therapist training (Decree 5,626/2005) and guarantees bilingual education for deaf students (Law 14,191/2021).</li>
-      </ul>
+    <div class="cabeca-secao"><h2 id="titulo-problem">The problem</h2><p>When there is no LIBRAS, there is no conversation.</p></div>
+    <div class="problema-grade">
+      <div class="problema-texto">
+        <p class="problema-texto__abertura">LIBRAS is the language of many deaf people in Brazil, but few hearing people know it. Without a shared language, conversation does not happen, and deaf people are left out: at school, at work, in public services and even at home.</p>
+        <ul class="lista-pontos" role="list">
+          <li>Many hearing families of deaf children have to learn LIBRAS from scratch to talk with their child from an early age.</li>
+          <li>Learners find little material to practice with and, studying alone, can't tell if they are signing correctly.</li>
+          <li>Inclusion cannot depend on deaf people alone. The more people know LIBRAS, the more natural communication between deaf and hearing people becomes.</li>
+        </ul>
+      </div>
+      <aside class="problema-lei" aria-labelledby="titulo-law">
+        <h3 id="titulo-law">What the law says</h3>
+        <ul role="list">
+          <li><strong>2002</strong><span>LIBRAS is recognized as a legal means of communication (Law 10,436).</span></li>
+          <li><strong>2005</strong><span>LIBRAS becomes part of teacher and speech therapist training (Decree 5,626).</span></li>
+          <li><strong>2021</strong><span>The law guarantees bilingual education for deaf students (Law 14,191).</span></li>
+        </ul>
+      </aside>
     </div>
-    <p class="fonte">Source: Mitchell, R. E.; Karchmer, M. A. Chasing the mythical ten percent: parental hearing status of deaf and hard of hearing students in the United States. <cite>Sign Language Studies</cite>, 4(2), 138–163, 2004. US data: fewer than 5% of deaf students have a deaf parent.</p>
   </div>
 </section><section class="secao sup-roxo-profundo" id="products" style="overflow:hidden" aria-labelledby="titulo-products">
   <span class="aura aura--lilas" aria-hidden="true" style="width:520px;height:520px;right:-160px;top:-120px;opacity:.35"></span>
   <div class="container">
-    <div class="cabeca-secao"><h2 id="titulo-products">One world, three ways to learn.</h2><p>All our products take place in SinalizaAção, our original story universe.</p></div>
+    <div class="cabeca-secao"><h2 id="titulo-products">One world, three ways to learn</h2><p>All our products take place in SinalizaAção, our original story universe.</p></div>
     <ul class="en-produtos" role="list">
       <li class="cartao cartao--brilho en-produto">
   <div class="en-produto__imagem"><picture><source type="image/webp" srcset="../assets/img/livro/livro-capa-3d-480.webp 480w, ../assets/img/livro/livro-capa-3d-800.webp 800w" sizes="160px"><img src="../assets/img/livro/livro-capa-3d-480.png" alt="Cover of the book SinalizaAção: Animais em Voga." width="800" height="1195" loading="lazy" decoding="async"></picture></div>
@@ -101,13 +112,13 @@
   </div>
 </section><section class="secao sup-orquidea" aria-labelledby="titulo-approach">
   <div class="container">
-    <div class="cabeca-secao"><h2 id="titulo-approach">Our approach.</h2><p>Pedagogy, storytelling and technology, built with the deaf community: more than 250 interviews with deaf and hearing people (2023–2025).</p></div>
+    <div class="cabeca-secao"><h2 id="titulo-approach">Our approach</h2><p>Pedagogy, storytelling and technology, built with the deaf community: more than 250 interviews with deaf and hearing people (2023–2025).</p></div>
     <ul class="principios" role="list"><li class="principio"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v5h-5"/></svg><h3>Show, try, repeat</h3><p>The sign is shown, the learner tries, gets instant feedback and repeats (Applied Behavior Analysis).</p></li><li class="principio"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="6" width="9" height="13" rx="1.6" transform="rotate(-10 8 12.5)"/><rect x="11" y="5" width="9" height="13" rx="1.6" transform="rotate(8 15.5 11.5)"/></svg><h3>Sign, word and image</h3><p>The sign, the written word and the object in the scene appear together (stimulus equivalence).</p></li><li class="principio"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><h3>Many senses</h3><p>See, touch and do: texture, images, 3D and movement (multisensory learning).</p></li><li class="principio"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4.5h11.5a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2z"/><path d="M5 17.5a2 2 0 0 1 2-2h11.5"/><path d="M9 8.5h6M9 11.5h4"/></svg><h3>A good story</h3><p>The narrative gives a reason to practice: helping Aia and Seu Zé find the missing animals.</p></li></ul>
     <p class="abordagem__nota"><span><strong>Technology as support.</strong> It complements teachers and interpreters; it never replaces them. For us, LIBRAS is a language, a culture and a creative force, not just an accessibility feature.</span></p>
   </div>
 </section><section class="secao tracao sup-indigo" id="traction" aria-labelledby="titulo-traction">
   <div class="container">
-    <div class="cabeca-secao"><h2 id="titulo-traction">Milestones and recognition.</h2></div>
+    <div class="cabeca-secao"><h2 id="titulo-traction">Milestones and recognition</h2></div>
     <ul class="numeros" role="list">
       <li><strong>250+</strong><span>interviews with deaf and hearing people (2023–2025)</span></li>
       <li><strong>Top 8</strong><span>Tools Competition 2026, out of 1,400+ proposals</span></li>
@@ -116,36 +127,36 @@
   </div>
 </section><section class="secao sup-clara" aria-labelledby="titulo-model">
   <div class="container">
-    <div class="cabeca-secao"><h2 id="titulo-model">Business model.</h2></div>
+    <div class="cabeca-secao"><h2 id="titulo-model">Who we serve</h2><p>We serve people and organizations looking for inclusive tools or for accessibility solutions in LIBRAS.</p></div>
     <ul class="modelo" role="list">
-      <li><strong>B2C</strong><span>Book sales to families.</span></li>
-      <li><strong>B2B</strong><span>Schools, bookstores and companies.</span></li>
-      <li><strong>B2G</strong><span>National textbook program (PNLD/MEC), education departments and reading programs.</span></li>
-      <li><strong>SaaS</strong><span>Signaria AI: free plan and institutional licenses.</span></li>
+      <li><strong>Families</strong><span>A book, cards and games to learn LIBRAS together with children at home.</span></li>
+      <li><strong>Schools</strong><span>Playful materials to work on LIBRAS with deaf and hearing students, and with their families.</span></li>
+      <li><strong>Companies</strong><span>Tools for teams that want to serve deaf customers and include deaf colleagues.</span></li>
+      <li><strong>Governments</strong><span>Solutions for reading, education and accessibility programs, with LIBRAS in a playful way.</span></li>
     </ul>
   </div>
 </section><section class="secao sup-orquidea" id="team" aria-labelledby="titulo-team">
   <div class="container">
-    <div class="cabeca-secao"><h2 id="titulo-team">Team.</h2><p>Five co-founders with complementary backgrounds, working with a deaf partner illustrator.</p></div>
+    <div class="cabeca-secao"><h2 id="titulo-team">Team</h2><p>Five co-founders with complementary backgrounds, working with a deaf partner illustrator.</p></div>
     <ul class="equipe equipe--compacta" role="list"><li class="pessoa">
-  <picture><source type="image/webp" srcset="../assets/img/equipe/luciano-delphino-200.webp 200w, ../assets/img/equipe/luciano-delphino-400.webp 400w" sizes="168px"><img class="pessoa__foto" src="../assets/img/equipe/luciano-delphino-400.jpg" alt="Photo of Luciano Delphino de Azevedo Junior." width="400" height="400" loading="lazy" decoding="async"></picture>
-  <h3>Luciano Delphino de Azevedo Junior</h3>
+  <picture><source type="image/webp" srcset="../assets/img/equipe/luciano-delphino-200.webp 200w, ../assets/img/equipe/luciano-delphino-400.webp 400w" sizes="168px"><img class="pessoa__foto" src="../assets/img/equipe/luciano-delphino-400.jpg" alt="Photo of Luciano Azevedo." width="400" height="400" loading="lazy" decoding="async"></picture>
+  <h3>Luciano Azevedo</h3>
   <p class="pessoa__papel">CEO and creative director</p>
 </li><li class="pessoa">
-  <picture><source type="image/webp" srcset="../assets/img/equipe/maria-clara-cardoso-200.webp 200w, ../assets/img/equipe/maria-clara-cardoso-400.webp 400w" sizes="168px"><img class="pessoa__foto" src="../assets/img/equipe/maria-clara-cardoso-400.jpg" alt="Photo of Maria Clara Franco Cardoso." width="400" height="400" loading="lazy" decoding="async"></picture>
-  <h3>Maria Clara Franco Cardoso</h3>
+  <picture><source type="image/webp" srcset="../assets/img/equipe/maria-clara-cardoso-200.webp 200w, ../assets/img/equipe/maria-clara-cardoso-400.webp 400w" sizes="168px"><img class="pessoa__foto" src="../assets/img/equipe/maria-clara-cardoso-400.jpg" alt="Photo of Maria Clara Franco." width="400" height="400" loading="lazy" decoding="async"></picture>
+  <h3>Maria Clara Franco</h3>
   <p class="pessoa__papel">Co-founder: operations, finance and user research</p>
 </li><li class="pessoa">
-  <picture><source type="image/webp" srcset="../assets/img/equipe/victor-sad-200.webp 200w, ../assets/img/equipe/victor-sad-400.webp 400w" sizes="168px"><img class="pessoa__foto" src="../assets/img/equipe/victor-sad-400.jpg" alt="Photo of Victor Sad de Souza." width="400" height="400" loading="lazy" decoding="async"></picture>
-  <h3>Victor Sad de Souza</h3>
+  <picture><source type="image/webp" srcset="../assets/img/equipe/victor-sad-200.webp 200w, ../assets/img/equipe/victor-sad-400.webp 400w" sizes="168px"><img class="pessoa__foto" src="../assets/img/equipe/victor-sad-400.jpg" alt="Photo of Victor Sad." width="400" height="400" loading="lazy" decoding="async"></picture>
+  <h3>Victor Sad</h3>
   <p class="pessoa__papel">Legal, business and marketing</p>
 </li><li class="pessoa">
-  <picture><source type="image/webp" srcset="../assets/img/equipe/jose-leonardo-martins-200.webp 200w, ../assets/img/equipe/jose-leonardo-martins-400.webp 400w" sizes="168px"><img class="pessoa__foto" src="../assets/img/equipe/jose-leonardo-martins-400.jpg" alt="Photo of José Leonardo Martins." width="400" height="400" loading="lazy" decoding="async"></picture>
-  <h3>José Leonardo Martins (JLeo)</h3>
+  <picture><source type="image/webp" srcset="../assets/img/equipe/jose-leonardo-martins-200.webp 200w, ../assets/img/equipe/jose-leonardo-martins-400.webp 400w" sizes="168px"><img class="pessoa__foto" src="../assets/img/equipe/jose-leonardo-martins-400.jpg" alt="Photo of JLeo." width="400" height="400" loading="lazy" decoding="async"></picture>
+  <h3>JLeo</h3>
   <p class="pessoa__papel">XR and AI developer</p>
 </li><li class="pessoa">
-  <picture><source type="image/webp" srcset="../assets/img/equipe/fauston-zandona-200.webp 200w, ../assets/img/equipe/fauston-zandona-400.webp 400w" sizes="168px"><img class="pessoa__foto" src="../assets/img/equipe/fauston-zandona-400.jpg" alt="Photo of Fauston Henrique Della Flora Zandoná." width="400" height="400" loading="lazy" decoding="async"></picture>
-  <h3>Fauston Henrique Della Flora Zandoná</h3>
+  <picture><source type="image/webp" srcset="../assets/img/equipe/fauston-zandona-200.webp 200w, ../assets/img/equipe/fauston-zandona-400.webp 400w" sizes="168px"><img class="pessoa__foto" src="../assets/img/equipe/fauston-zandona-400.jpg" alt="Photo of Fauston." width="400" height="400" loading="lazy" decoding="async"></picture>
+  <h3>Fauston</h3>
   <p class="pessoa__papel">LIBRAS specialist and interpreter</p>
 </li><li class="pessoa">
   <picture><source type="image/webp" srcset="../assets/img/equipe/igor-bucioli-200.webp 200w, ../assets/img/equipe/igor-bucioli-400.webp 400w" sizes="168px"><img class="pessoa__foto" src="../assets/img/equipe/igor-bucioli-400.jpg" alt="Photo of Igor de Campos Bucioli." width="400" height="400" loading="lazy" decoding="async"></picture>
@@ -158,7 +169,7 @@
   <svg class="hud hud--fraco" data-hud="canto" aria-hidden="true"></svg>
   <div class="container fechamento__grade">
     <div>
-      <h2 id="titulo-contact">Let's talk.</h2>
+      <h2 id="titulo-contact">Let's talk</h2>
       <p>We reply in writing, in English or Portuguese. Investors, partners and press are welcome.</p>
       <p class="en-pt"><a class="link-forte" href="../quem-somos/" hreflang="pt-BR" lang="pt-BR">Versão completa em português</a></p>
     </div>
@@ -176,7 +187,7 @@
       <div class="rodape__marca">
         <img class="marca-escura" src="../assets/img/marca/inclusivr-branco-ciano-240.webp" width="240" height="334" alt="InclusiVR" loading="lazy">
         <img class="marca-clara" src="../assets/img/marca/inclusivr-roxo-240.webp" width="240" height="334" alt="InclusiVR" loading="lazy" hidden>
-        <p class="rodape__frase">Connecting worlds through sign languages and technology.</p>
+        <p class="rodape__frase">Connecting worlds through sign languages and technology</p>
       </div>
       <nav aria-label="Footer: this page">
         <h2>This page</h2>

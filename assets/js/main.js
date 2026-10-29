@@ -266,6 +266,8 @@
       if (camp.brinde && t) t.textContent = camp.brinde; else el.hidden = true;
     });
     $$('[data-campanha-selo], [data-campanha-placa], [data-campanha-bloco]').forEach(function (el) { el.hidden = false; });
+    /* caixa do botão do topo do início: abaixo (padrão) ou no canto de cima, como nos outros botões */
+    if (camp.seloTopoInicio === 'acima') $$('.botao--selo-abaixo').forEach(function (el) { el.classList.remove('botao--selo-abaixo'); });
   }
 
   /* Natal: a frase das datas de corte da entrega aparece perto do preço quando a equipe preencher o config */
@@ -546,6 +548,43 @@
   });
 
   /* =========================================================================
+     Vídeo curto que toca sozinho, sem som, só enquanto está na tela (ex.: o
+     trecho do SinalizaAção VR no início). Tem botão de pausa (WCAG 2.2.2).
+     Com "reduzir movimento" ou economia de dados ligada, só toca no clique.
+     Sem JavaScript, fica o player do navegador com a capa.
+     ========================================================================= */
+  $$('[data-video-auto]').forEach(function (caixa) {
+    var v = caixa.querySelector('video');
+    var b = caixa.querySelector('[data-video-auto-botao]');
+    if (!v || !b) return;
+    v.removeAttribute('controls');
+    v.muted = true;
+    b.hidden = false;
+    var pausadoPelaPessoa = false;
+    var economia = !!(navigator.connection && navigator.connection.saveData);
+    var podeSozinho = function () { return IVR.movimentoPermitido() && !economia && !pausadoPelaPessoa; };
+    var mostrar = function () {
+      caixa.classList.toggle('video-auto--parado', v.paused);
+      b.setAttribute('aria-label', v.paused ? 'Tocar o vídeo' : 'Pausar o vídeo');
+    };
+    var tocar = function () { var p = v.play(); if (p && p.catch) p.catch(mostrar); };
+    b.addEventListener('click', function () {
+      if (v.paused) { pausadoPelaPessoa = false; tocar(); } else { pausadoPelaPessoa = true; v.pause(); }
+    });
+    v.addEventListener('click', function () { b.click(); });
+    v.addEventListener('play', mostrar);
+    v.addEventListener('pause', mostrar);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (ents) {
+        if (ents[0].isIntersecting) { if (podeSozinho()) tocar(); }
+        else if (!v.paused) v.pause();
+      }, { threshold: .35 }).observe(caixa);
+    }
+    document.addEventListener('inclusivr:movimento', function (e) { if (!e.detail.permitido && !v.paused) v.pause(); });
+    mostrar();
+  });
+
+  /* =========================================================================
      Vídeos e imagens extras de uma seção (config.js, midias). Ex.: os GIFs e
      vídeos curtos do "Espelho Mágico da Aia" na página do SinalizaAção VR.
      ========================================================================= */
@@ -598,13 +637,28 @@
   /* =========================================================================
      Novidades do blog (lidas de blog/posts.json; sem JS fica a lista do HTML)
      ========================================================================= */
+  /* ordem por data, do mais recente para o mais antigo (campo "data" do posts.json:
+     "AAAA-MM-DD", "AAAA-MM" ou só "AAAA"). Data incompleta conta como o fim do período;
+     empate mantém a ordem do arquivo. */
+  function chaveData(p) { return (String((p && p.data) || '') + '-99-99').slice(0, 10); }
+  function porData(posts) {
+    return posts.map(function (p, i) { return { p: p, i: i }; }).sort(function (a, b) {
+      var ka = chaveData(a.p), kb = chaveData(b.p);
+      return ka < kb ? 1 : ka > kb ? -1 : a.i - b.i;
+    }).map(function (x) { return x.p; });
+  }
+  IVR.postsPorData = porData;
   $$('[data-posts]').forEach(function (lista) {
     var qtd = parseInt(lista.getAttribute('data-posts'), 10) || 100;
     if (!window.fetch) return;
     fetch(raiz + 'blog/posts.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : Promise.reject(); }).then(function (posts) {
       if (!Array.isArray(posts) || !posts.length) return;
+      posts = porData(posts);
       lista.innerHTML = '';
       var destaque = lista.classList.contains('posts--blog') || lista.classList.contains('posts--destaque');
+      /* blog: mostra até "postsPorPagina" (config.js); com mais posts, aparece o botão "Ver publicações mais antigas" */
+      var porPagina = (C.blog && C.blog.postsPorPagina) || 9;
+      var paginar = lista.classList.contains('posts--blog') && posts.length > porPagina;
       posts.slice(0, qtd).forEach(function (p, i) {
         var li = document.createElement('li');
         var url = IVR.urlInterna('blog/' + p.pasta + '/');
@@ -619,8 +673,22 @@
         li.querySelector('.data').textContent = p.dataExibicao || '';
         var a = li.querySelector(nivel + ' a'); a.href = url; a.textContent = p.titulo;
         li.querySelector('.resumo').textContent = p.resumo || '';
+        if (paginar && i >= porPagina) li.hidden = true;
         lista.appendChild(li);
       });
+      if (paginar) {
+        var mais = document.createElement('p');
+        mais.className = 'mais-antigos';
+        mais.innerHTML = '<button type="button" class="botao botao--contorno">Ver publicações mais antigas</button>';
+        lista.parentNode.insertBefore(mais, lista.nextSibling);
+        mais.querySelector('button').addEventListener('click', function () {
+          var ocultos = $$('li[hidden]', lista);
+          ocultos.slice(0, porPagina).forEach(function (li) { li.hidden = false; });
+          var primeiro = ocultos[0] && ocultos[0].querySelector('a');
+          if (primeiro) primeiro.focus();
+          if (ocultos.length <= porPagina) mais.remove();
+        });
+      }
     }).catch(function () { /* mantém a lista estática do HTML */ });
   });
 
@@ -633,8 +701,10 @@
       e.preventDefault();
       var url = b.getAttribute('data-copiar-link') || window.location.href;
       var ok = function () { IVR.aviso({ titulo: 'Link copiado', texto: 'Agora é só colar onde quiser.', tempo: 3500 }); };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(ok, function () { window.prompt('Copie o link:', url); });
-      else window.prompt('Copie o link:', url);
+      /* a pergunta do navegador não fica na página: traduz aqui quando o site está em inglês */
+      var pedir = function () { window.prompt(IVR.traduzir ? IVR.traduzir('Copie o link:') : 'Copie o link:', url); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(ok, pedir);
+      else pedir();
     }
     var p = e.target.closest('[data-imprimir]');
     if (p) { e.preventDefault(); window.print(); }
